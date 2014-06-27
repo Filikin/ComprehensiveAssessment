@@ -47,11 +47,35 @@
         </connector>
     </assignments>
     <choices>
+        <name>Always_nearly_always</name>
+        <choiceText>Always/nearly always</choiceText>
+        <dataType>Number</dataType>
+        <value>
+            <numberValue>3.0</numberValue>
+        </value>
+    </choices>
+    <choices>
         <name>Brother</name>
         <choiceText>Brother</choiceText>
         <dataType>String</dataType>
         <value>
             <elementReference>c_Brother</elementReference>
+        </value>
+    </choices>
+    <choices>
+        <name>Choice_No</name>
+        <choiceText>No</choiceText>
+        <dataType>Boolean</dataType>
+        <value>
+            <booleanValue>false</booleanValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Choice_Yes</name>
+        <choiceText>Yes</choiceText>
+        <dataType>Boolean</dataType>
+        <value>
+            <booleanValue>true</booleanValue>
         </value>
     </choices>
     <choices>
@@ -95,11 +119,27 @@
         </value>
     </choices>
     <choices>
+        <name>Never_almost_never</name>
+        <choiceText>Never/almost never</choiceText>
+        <dataType>Number</dataType>
+        <value>
+            <numberValue>0.0</numberValue>
+        </value>
+    </choices>
+    <choices>
         <name>No</name>
         <choiceText>No</choiceText>
         <dataType>Boolean</dataType>
         <value>
             <booleanValue>false</booleanValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Often</name>
+        <choiceText>Often</choiceText>
+        <dataType>Number</dataType>
+        <value>
+            <numberValue>2.0</numberValue>
         </value>
     </choices>
     <choices>
@@ -124,6 +164,14 @@
         <dataType>String</dataType>
         <value>
             <elementReference>c_Sister</elementReference>
+        </value>
+    </choices>
+    <choices>
+        <name>Sometimes</name>
+        <choiceText>Sometimes</choiceText>
+        <dataType>Number</dataType>
+        <value>
+            <numberValue>1.0</numberValue>
         </value>
     </choices>
     <choices>
@@ -227,6 +275,13 @@
             <stringValue>Wife</stringValue>
         </value>
     </constants>
+    <constants>
+        <name>c_Zero</name>
+        <dataType>Number</dataType>
+        <value>
+            <numberValue>0.0</numberValue>
+        </value>
+    </constants>
     <decisions>
         <name>Check_for_next_of_kin</name>
         <label>Check for next of kin</label>
@@ -250,47 +305,103 @@
         </rules>
     </decisions>
     <decisions>
-        <name>Is_Referrer_found</name>
-        <label>Is Referrer found</label>
-        <locationX>724</locationX>
-        <locationY>614</locationY>
+        <name>Did_receive_help_for_drug_use_in_past</name>
+        <label>Did receive help for drug use in past</label>
+        <locationX>1057</locationX>
+        <locationY>198</locationY>
         <defaultConnector>
-            <targetReference>CreateAssessmentRecord</targetReference>
+            <targetReference>SubstanceUse</targetReference>
         </defaultConnector>
-        <defaultConnectorLabel>Continue</defaultConnectorLabel>
+        <defaultConnectorLabel>Did not receive help for drug use in past</defaultConnectorLabel>
         <rules>
-            <name>Referrer_not_found</name>
+            <name>Received_help_for_drug_use_in_past</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>ReferrerID</leftValueReference>
+                <leftValueReference>Have_you_ever_received_help_for_your_drug_use_in_the_past</leftValueReference>
                 <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
             </conditions>
             <connector>
-                <targetReference>Enter_Referrer_Details</targetReference>
+                <targetReference>Help_for_drug_use_in_the_past</targetReference>
             </connector>
-            <label>Referrer not found</label>
+            <label>Received help for drug use in past</label>
         </rules>
     </decisions>
     <decisions>
-        <name>Is_referring_agency_found</name>
-        <label>Is referring agency found</label>
-        <locationX>733</locationX>
-        <locationY>948</locationY>
+        <name>Did_Received_help_for_alcohol_use_in_the_past</name>
+        <label>Did received help for alcohol use in the past</label>
+        <locationX>1479</locationX>
+        <locationY>194</locationY>
         <defaultConnector>
-            <targetReference>Create_Referrer</targetReference>
+            <targetReference>Did_receive_help_for_drug_use_in_past</targetReference>
         </defaultConnector>
-        <defaultConnectorLabel>Referring Agency Found</defaultConnectorLabel>
+        <defaultConnectorLabel>Did Not receive help for alcohol use in the past</defaultConnectorLabel>
         <rules>
-            <name>Referring_Agency_Not_Found</name>
+            <name>Received_help_for_alcohol_use_in_the_past</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>ReferringAgencyID</leftValueReference>
+                <leftValueReference>Have_you_ever_received_help_for_your_alcohol_use_in_the_past</leftValueReference>
                 <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
             </conditions>
             <connector>
-                <targetReference>ReferringAgencyNotFound</targetReference>
+                <targetReference>Help_for_alcohol_in_past</targetReference>
             </connector>
-            <label>Referring Agency Not Found</label>
+            <label>Received help for alcohol use in the past</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_Substance_entered</name>
+        <label>Is Substance entered</label>
+        <locationX>861</locationX>
+        <locationY>612</locationY>
+        <defaultConnector>
+            <targetReference>Create_Substance_Use</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Record a substance use</defaultConnectorLabel>
+        <rules>
+            <name>No_Substance_entered</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Name_of_substance</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue></stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Finished</targetReference>
+            </connector>
+            <label>No Substance entered</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_substance_use_an_issue</name>
+        <label>Is substance use an issue</label>
+        <locationX>904</locationX>
+        <locationY>87</locationY>
+        <defaultConnector>
+            <targetReference>Finished</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Substance use not an issue</defaultConnectorLabel>
+        <rules>
+            <name>Substance_use_is_an_issue</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Is_substance_use_and_issue</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Substance_use_details_past</targetReference>
+            </connector>
+            <label>Substance use is an issue</label>
         </rules>
     </decisions>
     <decisions>
@@ -328,8 +439,11 @@
             <name>Still_No_NOK_Entered</name>
             <conditionLogic>and</conditionLogic>
             <conditions>
-                <leftValueReference>ClientNOKName</leftValueReference>
+                <leftValueReference>Last_name_of_next_of_kin</leftValueReference>
                 <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue></stringValue>
+                </rightValue>
             </conditions>
             <connector>
                 <targetReference>Referral_Details</targetReference>
@@ -347,6 +461,9 @@
         <connector>
             <targetReference>Update_Client_with_NOK</targetReference>
         </connector>
+        <faultConnector>
+            <targetReference>Referral_Details</targetReference>
+        </faultConnector>
         <inputAssignments>
             <field>FirstName</field>
             <value>
@@ -392,80 +509,33 @@
         <object>Contact</object>
     </recordCreates>
     <recordCreates>
-        <name>Create_Referrer</name>
-        <label>Create Referrer</label>
-        <locationX>1104</locationX>
-        <locationY>797</locationY>
-        <assignRecordIdToReference>ReferrerID</assignRecordIdToReference>
+        <name>Create_Substance_Use</name>
+        <label>Create Substance Use</label>
+        <locationX>1167</locationX>
+        <locationY>647</locationY>
+        <assignRecordIdToReference>Latestsubstanceuse</assignRecordIdToReference>
         <connector>
-            <targetReference>CreateAssessmentRecord</targetReference>
+            <targetReference>SubstanceUse</targetReference>
         </connector>
         <inputAssignments>
-            <field>AccountId</field>
+            <field>Comprehensive_Assessment__c</field>
             <value>
-                <elementReference>ReferringAgencyID</elementReference>
+                <elementReference>NewAssessment</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
-            <field>FirstName</field>
+            <field>Is_use_out_of_control__c</field>
             <value>
-                <elementReference>First_Name_of_referrer</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>LastName</field>
-            <value>
-                <elementReference>Last_Name_of_referrer</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Phone</field>
-            <value>
-                <elementReference>Contact_number_of_referrer</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>RecordTypeId</field>
-            <value>
-                <elementReference>GeneralRecordTypeID</elementReference>
-            </value>
-        </inputAssignments>
-        <object>Contact</object>
-    </recordCreates>
-    <recordCreates>
-        <name>Create_Referring_Agency</name>
-        <label>Create Referring Agency</label>
-        <locationX>720</locationX>
-        <locationY>1187</locationY>
-        <assignRecordIdToReference>ReferringAgencyID</assignRecordIdToReference>
-        <connector>
-            <targetReference>Create_Referrer</targetReference>
-        </connector>
-        <inputAssignments>
-            <field>BillingCity</field>
-            <value>
-                <elementReference>Referring_Agency_Area_Town</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>BillingState</field>
-            <value>
-                <elementReference>Referring_Agency_City_County</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>BillingStreet</field>
-            <value>
-                <elementReference>Referring_Agency_Street</elementReference>
+                <elementReference>Do_you_think_the_use_is_out_of_control</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
             <field>Name</field>
             <value>
-                <elementReference>Referring_Agency</elementReference>
+                <elementReference>Name_of_substance</elementReference>
             </value>
         </inputAssignments>
-        <object>Account</object>
+        <object>Substance_Use__c</object>
     </recordCreates>
     <recordCreates>
         <name>CreateAssessmentRecord</name>
@@ -474,11 +544,8 @@
         <locationY>596</locationY>
         <assignRecordIdToReference>NewAssessment</assignRecordIdToReference>
         <connector>
-            <targetReference>Finished</targetReference>
+            <targetReference>Substance_Use_Description</targetReference>
         </connector>
-        <inputAssignments>
-            <field>Address_of_referring_agency__c</field>
-        </inputAssignments>
         <inputAssignments>
             <field>Assessment_Date__c</field>
             <value>
@@ -490,9 +557,6 @@
             <value>
                 <elementReference>ClientID</elementReference>
             </value>
-        </inputAssignments>
-        <inputAssignments>
-            <field>Contact_number_of_referrer_referring__c</field>
         </inputAssignments>
         <inputAssignments>
             <field>Is_this_person_aware_of_your_drug_use__c</field>
@@ -533,41 +597,6 @@
         <object>Comprehensive_Assessment__c</object>
     </recordCreates>
     <recordLookups>
-        <name>Check_Referrer_Is_in_System</name>
-        <label>Check Referrer Is in System</label>
-        <locationX>708</locationX>
-        <locationY>517</locationY>
-        <connector>
-            <targetReference>Is_Referrer_found</targetReference>
-        </connector>
-        <filters>
-            <field>FirstName</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>First_Name_of_referrer</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>LastName</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>Last_Name_of_referrer</elementReference>
-            </value>
-        </filters>
-        <filters>
-            <field>RecordTypeId</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>GeneralRecordTypeID</elementReference>
-            </value>
-        </filters>
-        <object>Contact</object>
-        <outputAssignments>
-            <assignToReference>ReferrerID</assignToReference>
-            <field>Id</field>
-        </outputAssignments>
-    </recordLookups>
-    <recordLookups>
         <name>Find_Client</name>
         <label>Find Client</label>
         <locationX>340</locationX>
@@ -602,27 +631,6 @@
         <outputAssignments>
             <assignToReference>NOKID</assignToReference>
             <field>eCASS02t1__Next_of_Kin__c</field>
-        </outputAssignments>
-    </recordLookups>
-    <recordLookups>
-        <name>Find_referring_agency</name>
-        <label>Find referring agency</label>
-        <locationX>723</locationX>
-        <locationY>836</locationY>
-        <connector>
-            <targetReference>Is_referring_agency_found</targetReference>
-        </connector>
-        <filters>
-            <field>Name</field>
-            <operator>EqualTo</operator>
-            <value>
-                <elementReference>Referring_Agency</elementReference>
-            </value>
-        </filters>
-        <object>Account</object>
-        <outputAssignments>
-            <assignToReference>ReferringAgencyID</assignToReference>
-            <field>Id</field>
         </outputAssignments>
     </recordLookups>
     <recordLookups>
@@ -675,6 +683,118 @@
         </outputAssignments>
     </recordLookups>
     <recordUpdates>
+        <name>Update_Assessement_with_Alcohol_Use_Details</name>
+        <label>Update Assessement with Alcohol Use Details</label>
+        <locationX>1223</locationX>
+        <locationY>247</locationY>
+        <connector>
+            <targetReference>Did_receive_help_for_drug_use_in_past</targetReference>
+        </connector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>NewAssessment</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Ever_received_help_re_alcohol_use__c</field>
+            <value>
+                <elementReference>Have_you_ever_received_help_for_your_alcohol_use_in_the_past</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>If_help_received_re_alcohol_where_when__c</field>
+            <value>
+                <elementReference>Where_did_you_receive_the_treatment_help_for_alcohol_use</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Most_useful_about_alcohol_help_treatment__c</field>
+            <value>
+                <elementReference>What_did_you_find_most_useful_about_this_help_treatment_alcohol</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Overall_ourcome_after_alcohol_treatment__c</field>
+            <value>
+                <elementReference>Overall_outcome_after_alcohol_treatment</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Type_help_treatment_received_re_alcohol__c</field>
+            <value>
+                <elementReference>Type_of_treatment_help_received_alcohol</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Type_of_treatment_re_alcoho_required_now__c</field>
+            <value>
+                <elementReference>What_type_of_help_treatment_do_you_think_would_be_beneficial_to_you_now_alcohol</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Comprehensive_Assessment__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Assessement_with_Drug_Use_Details</name>
+        <label>Update Assessement with Drug Use Details</label>
+        <locationX>1080</locationX>
+        <locationY>498</locationY>
+        <connector>
+            <targetReference>SubstanceUse</targetReference>
+        </connector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>NewAssessment</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Ever_received_help_re_drug_use__c</field>
+            <value>
+                <elementReference>Have_you_ever_received_help_for_your_drug_use_in_the_past</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>If_help_received_re_drug_where_when__c</field>
+            <value>
+                <elementReference>Where_did_you_receive_the_treatment_help_for_drug_use</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Most_useful_about_drug_help_treatment__c</field>
+            <value>
+                <elementReference>What_did_you_find_most_useful_about_this_help_treatment_drug</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Overall_ourcome_after_drug_treatment__c</field>
+            <value>
+                <elementReference>Overall_outcome_after_drug_treatment</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Type_help_treatment_received_re_drug__c</field>
+            <value>
+                <elementReference>Type_of_treatment_help_received_drug</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Type_of_treatment_re_drug_required_now__c</field>
+            <value>
+                <elementReference>What_type_of_help_treatment_do_you_think_would_be_beneficial_to_you_now_drug</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Withdrawal_symptom_stop_taking_substance__c</field>
+            <value>
+                <elementReference>Withdrawal_symptoms_when_you_stop_taking_substance</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Comprehensive_Assessment__c</object>
+    </recordUpdates>
+    <recordUpdates>
         <name>Update_Client_with_NOK</name>
         <label>Update Client with NOK</label>
         <locationX>268</locationX>
@@ -704,40 +824,10 @@
         <object>Contact</object>
     </recordUpdates>
     <screens>
-        <name>Enter_Referrer_Details</name>
-        <label>Enter Referrer Details</label>
-        <locationX>717</locationX>
-        <locationY>732</locationY>
-        <allowBack>true</allowBack>
-        <allowFinish>true</allowFinish>
-        <connector>
-            <targetReference>Find_referring_agency</targetReference>
-        </connector>
-        <fields>
-            <name>Referrernotfoundheader</name>
-            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;{!First_Name_of_referrer} &lt;FONT KERNING=&quot;1&quot;&gt;{!Last_Name_of_referrer} &lt;/FONT&gt;was not found in the system.&lt;/FONT&gt;&lt;/SPAN&gt;&lt;DIV ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Please enter the name of their agency and their phone number and the will be stored as a new contact.&lt;/FONT&gt;&lt;/DIV&gt;</fieldText>
-            <fieldType>DisplayText</fieldType>
-        </fields>
-        <fields>
-            <name>Referring_Agency</name>
-            <dataType>String</dataType>
-            <fieldText>Referring Agency</fieldText>
-            <fieldType>InputField</fieldType>
-            <isRequired>false</isRequired>
-        </fields>
-        <fields>
-            <name>Contact_number_of_referrer</name>
-            <dataType>String</dataType>
-            <fieldText>Contact number of referrer</fieldText>
-            <fieldType>InputField</fieldType>
-            <isRequired>false</isRequired>
-        </fields>
-    </screens>
-    <screens>
         <name>EnterNOKDetails</name>
         <label>EnterNOKDetails</label>
-        <locationX>233</locationX>
-        <locationY>253</locationY>
+        <locationX>231</locationX>
+        <locationY>240</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <connector>
@@ -823,6 +913,115 @@
         </fields>
     </screens>
     <screens>
+        <name>Help_for_alcohol_in_past</name>
+        <label>Help for alcohol in past</label>
+        <locationX>1332</locationX>
+        <locationY>359</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Update_Assessement_with_Alcohol_Use_Details</targetReference>
+        </connector>
+        <fields>
+            <name>AlcoholTreatmentDetails</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Alcohol Treatment Details&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Where_did_you_receive_the_treatment_help_for_alcohol_use</name>
+            <fieldText>Where did you receive the treatment/help for alcohol use?</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Type_of_treatment_help_received_alcohol</name>
+            <fieldText>Type of treatment/help received</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <helpText>Please describe the type of help/ treatment you received
+
+(E.g. individual counselling, group counselling, residential rehabilitation, etc)</helpText>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>What_did_you_find_most_useful_about_this_help_treatment_alcohol</name>
+            <fieldText>What did you find most useful about this help/ treatment?</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Overall_outcome_after_alcohol_treatment</name>
+            <fieldText>Overall outcome after alcohol treatment</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <helpText>What, in your opinion, was the overall outcome for you and your alcohol use having received this help / treatment?</helpText>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>What_type_of_help_treatment_do_you_think_would_be_beneficial_to_you_now_alcohol</name>
+            <fieldText>What type of help /treatment do you think would be beneficial to you now?</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+    </screens>
+    <screens>
+        <name>Help_for_drug_use_in_the_past</name>
+        <label>Help for drug use in the past</label>
+        <locationX>1152</locationX>
+        <locationY>389</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Update_Assessement_with_Drug_Use_Details</targetReference>
+        </connector>
+        <fields>
+            <name>DrugTreatmentDetails</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Drug Treatment Details&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Where_did_you_receive_the_treatment_help_for_drug_use</name>
+            <fieldText>Where did you receive the treatment/help for drug use?</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Type_of_treatment_help_received_drug</name>
+            <fieldText>Type of treatment/help received</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <helpText>Please describe the type of help/ treatment you received
+
+(E.g. individual counselling, residential detox, residential rehabilitation, methadone maintenance, etc.)</helpText>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>What_did_you_find_most_useful_about_this_help_treatment_drug</name>
+            <fieldText>What did you find most useful about this treatment/help?</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Overall_outcome_after_drug_treatment</name>
+            <fieldText>Overall outcome after drug treatment</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <helpText>What, in your opinion, was the overall outcome for you and your drug use having received of this help / treatment?</helpText>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>What_type_of_help_treatment_do_you_think_would_be_beneficial_to_you_now_drug</name>
+            <fieldText>What type of help /treatment do you think would be beneficial to you now?</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Withdrawal_symptoms_when_you_stop_taking_substance</name>
+            <fieldText>Withdrawal symptoms when you stop taking substance</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <helpText>Do you experience withdrawal symptoms when you stop taking substances? 
+(Examples may include nausea, vomiting, diahorrea, abdominal discomfort, muscle aches, anxiety, irritability, insomnia, palpitations, shakes) 
+Please give details</helpText>
+            <isRequired>false</isRequired>
+        </fields>
+    </screens>
+    <screens>
         <name>In_Case_Of_An_Emergency</name>
         <label>In Case Of An Emergency</label>
         <locationX>504</locationX>
@@ -865,18 +1064,8 @@
         </connector>
         <fields>
             <name>InitialScreenTitle</name>
-            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#CC0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Record a Comprehensive Assessment&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#CC0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Record a Comprehensive Assessment for {!ClientName}&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
-        </fields>
-        <fields>
-            <name>Client</name>
-            <dataType>String</dataType>
-            <defaultValue>
-                <elementReference>ClientName</elementReference>
-            </defaultValue>
-            <fieldText>Client</fieldText>
-            <fieldType>InputField</fieldType>
-            <isRequired>false</isRequired>
         </fields>
         <fields>
             <name>Assessment_Date</name>
@@ -916,21 +1105,12 @@
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <connector>
-            <targetReference>Check_Referrer_Is_in_System</targetReference>
+            <targetReference>CreateAssessmentRecord</targetReference>
         </connector>
         <fields>
-            <name>First_Name_of_referrer</name>
-            <dataType>String</dataType>
-            <fieldText>First Name of referrer</fieldText>
-            <fieldType>InputField</fieldType>
-            <isRequired>false</isRequired>
-        </fields>
-        <fields>
-            <name>Last_Name_of_referrer</name>
-            <dataType>String</dataType>
-            <fieldText>Last Name of referrer</fieldText>
-            <fieldType>InputField</fieldType>
-            <isRequired>false</isRequired>
+            <name>TODOReferral</name>
+            <fieldText>Add code here to select the referral</fieldText>
+            <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
             <name>Reason_for_referral</name>
@@ -948,40 +1128,101 @@
         </fields>
     </screens>
     <screens>
-        <name>ReferringAgencyNotFound</name>
-        <label>ReferringAgencyNotFound</label>
-        <locationX>724</locationX>
-        <locationY>1072</locationY>
+        <name>Substance_Use_Description</name>
+        <label>Substance Use Description</label>
+        <locationX>729</locationX>
+        <locationY>95</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <connector>
-            <targetReference>Create_Referring_Agency</targetReference>
+            <targetReference>Is_substance_use_an_issue</targetReference>
         </connector>
         <fields>
-            <name>ReferringAgencyNotFoundTitle</name>
-            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;{!Referring_Agency} could not be found in the system.&lt;/FONT&gt;&lt;/SPAN&gt;&lt;DIV ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Please enter their address&lt;/FONT&gt;&lt;/DIV&gt;</fieldText>
+            <name>Is_substance_use_and_issue</name>
+            <choiceReferences>Yes</choiceReferences>
+            <choiceReferences>No</choiceReferences>
+            <dataType>Boolean</dataType>
+            <fieldText>Is substance use an issue</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <helpText>If substance use is not an issue, ignore the &quot;Current substance use and description&quot;</helpText>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Current_substance_use_description</name>
+            <fieldText>Current substance use description</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <helpText>Is there anything you would like to tell me about your current substance use including any current Drug Using Risk Behaviours? 
+(Refer to Current Drug Use &amp; Drug Using Risk Behaviours in Initial Assessment.)</helpText>
+    </screens>
+    <screens>
+        <name>Substance_use_details_past</name>
+        <label>Substance use details</label>
+        <locationX>1169</locationX>
+        <locationY>90</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Did_Received_help_for_alcohol_use_in_the_past</targetReference>
+        </connector>
+        <fields>
+            <name>SubstanceUsePastTitle</name>
+            <fieldText>Have you ever received help for your drug or alcohol use in the past?</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
-            <name>Referring_Agency_Street</name>
+            <name>Have_you_ever_received_help_for_your_drug_use_in_the_past</name>
+            <choiceReferences>Yes</choiceReferences>
+            <choiceReferences>No</choiceReferences>
+            <dataType>Boolean</dataType>
+            <fieldText>Have you ever received help for your drug use in the past?</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Have_you_ever_received_help_for_your_alcohol_use_in_the_past</name>
+            <choiceReferences>Yes</choiceReferences>
+            <choiceReferences>No</choiceReferences>
+            <dataType>Boolean</dataType>
+            <fieldText>Have you ever received help for your alcohol use in the past?</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+    </screens>
+    <screens>
+        <name>SubstanceUse</name>
+        <label>Substance Use</label>
+        <locationX>890</locationX>
+        <locationY>483</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Is_Substance_entered</targetReference>
+        </connector>
+        <fields>
+            <name>SubstanceUseTitle</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Substance Use - Leave blank if no further substances&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Name_of_substance</name>
             <dataType>String</dataType>
-            <fieldText>Street</fieldText>
+            <fieldText>Name of substance</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>false</isRequired>
         </fields>
         <fields>
-            <name>Referring_Agency_Area_Town</name>
-            <dataType>String</dataType>
-            <fieldText>Area/Town</fieldText>
-            <fieldType>InputField</fieldType>
+            <name>Do_you_think_the_use_is_out_of_control</name>
+            <choiceReferences>Never_almost_never</choiceReferences>
+            <choiceReferences>Sometimes</choiceReferences>
+            <choiceReferences>Often</choiceReferences>
+            <choiceReferences>Always_nearly_always</choiceReferences>
+            <dataType>Number</dataType>
+            <fieldText>Do you think the use is out of control?</fieldText>
+            <fieldType>DropdownBox</fieldType>
             <isRequired>false</isRequired>
-        </fields>
-        <fields>
-            <name>Referring_Agency_City_County</name>
-            <dataType>String</dataType>
-            <fieldText>City/County</fieldText>
-            <fieldType>InputField</fieldType>
-            <isRequired>false</isRequired>
+            <scale>0</scale>
         </fields>
     </screens>
     <startElementReference>Get_General_Contact_Record_Type</startElementReference>
@@ -1026,6 +1267,12 @@
     </variables>
     <variables>
         <name>GeneralRecordTypeID</name>
+        <dataType>String</dataType>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>Latestsubstanceuse</name>
         <dataType>String</dataType>
         <isInput>false</isInput>
         <isOutput>false</isOutput>

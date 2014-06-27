@@ -2483,7 +2483,7 @@ If ‘yes’ to above please give details</inlineHelpText>
         <inlineHelpText>What, in your opinion, was the overall outcome for you 
 and your alcohol use having received this 
 help / treatment?</inlineHelpText>
-        <label>Overall ourcome after alcohol treatment</label>
+        <label>Overall outcome after alcohol treatment</label>
         <length>1000</length>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
@@ -2492,8 +2492,8 @@ help / treatment?</inlineHelpText>
     <fields>
         <fullName>Overall_ourcome_after_drug_treatment__c</fullName>
         <externalId>false</externalId>
-        <inlineHelpText>What, in your opinion, was the overall outcome for you and your drug use having received of this help / treatment?</inlineHelpText>
-        <label>Overall ourcome after drug treatment</label>
+        <inlineHelpText>What, in your opinion, was the overall outcome for you and your drug use having received this help / treatment?</inlineHelpText>
+        <label>Overall outcome after drug treatment</label>
         <length>1000</length>
         <trackTrending>false</trackTrending>
         <type>LongTextArea</type>
