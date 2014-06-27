@@ -46,6 +46,38 @@
             <targetReference>Still_No_NOK</targetReference>
         </connector>
     </assignments>
+    <assignments>
+        <name>Set_Sexual_Health_flag</name>
+        <label>Set Sexual Health flag</label>
+        <locationX>857</locationX>
+        <locationY>1129</locationY>
+        <assignmentItems>
+            <assignToReference>IsSexualHealthConcerns</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Sexual_Health_Issues_Screen</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>SetDentalHealthFlag</name>
+        <label>SetDentalHealthFlag</label>
+        <locationX>819</locationX>
+        <locationY>828</locationY>
+        <assignmentItems>
+            <assignToReference>IsDentalHealthAnIssue</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Dental_Health</targetReference>
+        </connector>
+    </assignments>
     <choices>
         <name>Always_nearly_always</name>
         <choiceText>Always/nearly always</choiceText>
@@ -111,6 +143,14 @@
         </value>
     </choices>
     <choices>
+        <name>Impossible</name>
+        <choiceText>Impossible</choiceText>
+        <dataType>Number</dataType>
+        <value>
+            <numberValue>3.0</numberValue>
+        </value>
+    </choices>
+    <choices>
         <name>Mother</name>
         <choiceText>Mother</choiceText>
         <dataType>String</dataType>
@@ -132,6 +172,14 @@
         <dataType>Boolean</dataType>
         <value>
             <booleanValue>false</booleanValue>
+        </value>
+    </choices>
+    <choices>
+        <name>Not_difficult</name>
+        <choiceText>Not difficult</choiceText>
+        <dataType>Number</dataType>
+        <value>
+            <numberValue>0.0</numberValue>
         </value>
     </choices>
     <choices>
@@ -159,6 +207,14 @@
         </value>
     </choices>
     <choices>
+        <name>Quite_difficult</name>
+        <choiceText>Quite difficult</choiceText>
+        <dataType>Number</dataType>
+        <value>
+            <numberValue>1.0</numberValue>
+        </value>
+    </choices>
+    <choices>
         <name>Sister</name>
         <choiceText>Sister</choiceText>
         <dataType>String</dataType>
@@ -180,6 +236,14 @@
         <dataType>String</dataType>
         <value>
             <elementReference>c_Son</elementReference>
+        </value>
+    </choices>
+    <choices>
+        <name>Very_difficult</name>
+        <choiceText>Very difficult</choiceText>
+        <dataType>Number</dataType>
+        <value>
+            <numberValue>2.0</numberValue>
         </value>
     </choices>
     <choices>
@@ -355,6 +419,56 @@
         </rules>
     </decisions>
     <decisions>
+        <name>Is_Dental_Health_issues_filled_in</name>
+        <label>Is Dental Health issues filled in</label>
+        <locationX>493</locationX>
+        <locationY>836</locationY>
+        <defaultConnector>
+            <targetReference>Update_physical_health</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No dental health issues</defaultConnectorLabel>
+        <rules>
+            <name>There_is_a_dental_health_issue</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>If_yes_dental_needs_please_give_details</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue></stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>SetDentalHealthFlag</targetReference>
+            </connector>
+            <label>There is a dental health issue</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Is_Sexual_Health_Issues</name>
+        <label>Is Sexual Health Issues</label>
+        <locationX>610</locationX>
+        <locationY>1128</locationY>
+        <defaultConnector>
+            <targetReference>Update_sexual_health_0</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No Sexual Health Issues</defaultConnectorLabel>
+        <rules>
+            <name>Sexual_Health_Issues</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>If_you_have_any_sexual_health_concerns_please_specify</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue></stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_Sexual_Health_flag</targetReference>
+            </connector>
+            <label>Sexual Health Issues</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Is_Substance_entered</name>
         <label>Is Substance entered</label>
         <locationX>861</locationX>
@@ -374,7 +488,7 @@
                 </rightValue>
             </conditions>
             <connector>
-                <targetReference>Finished</targetReference>
+                <targetReference>Goals_and_changes</targetReference>
             </connector>
             <label>No Substance entered</label>
         </rules>
@@ -382,10 +496,10 @@
     <decisions>
         <name>Is_substance_use_an_issue</name>
         <label>Is substance use an issue</label>
-        <locationX>904</locationX>
+        <locationX>918</locationX>
         <locationY>87</locationY>
         <defaultConnector>
-            <targetReference>Finished</targetReference>
+            <targetReference>Physical_Health</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>Substance use not an issue</defaultConnectorLabel>
         <rules>
@@ -451,6 +565,11 @@
             <label>Still No NOK Entered</label>
         </rules>
     </decisions>
+    <formulas>
+        <name>IsDentalConcern</name>
+        <expression>if (isblank({!If_yes_dental_needs_please_give_details}),0,1)</expression>
+        <scale>0</scale>
+    </formulas>
     <label>Comprehensive Assessment</label>
     <recordCreates>
         <name>Create_new_NOK</name>
@@ -518,9 +637,27 @@
             <targetReference>SubstanceUse</targetReference>
         </connector>
         <inputAssignments>
+            <field>Anxiety_at_prospect_of_missing_fix__c</field>
+            <value>
+                <elementReference>Anxiety_at_prospect_of_missing_fix</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
             <field>Comprehensive_Assessment__c</field>
             <value>
                 <elementReference>NewAssessment</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Do_you_wish_you_could_stop__c</field>
+            <value>
+                <elementReference>Do_you_wish_you_could_stop</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>How_difficult_did_you_find_it_to_stop__c</field>
+            <value>
+                <elementReference>How_difficult_did_you_find_it_to_stop</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -533,6 +670,12 @@
             <field>Name</field>
             <value>
                 <elementReference>Name_of_substance</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Worry_about_use__c</field>
+            <value>
+                <elementReference>Worry_about_use</elementReference>
             </value>
         </inputAssignments>
         <object>Substance_Use__c</object>
@@ -683,6 +826,59 @@
         </outputAssignments>
     </recordLookups>
     <recordUpdates>
+        <name>Update_Assesement_with_goals_and_changes</name>
+        <label>Update Assesement with goals and changes</label>
+        <locationX>668</locationX>
+        <locationY>655</locationY>
+        <connector>
+            <targetReference>Physical_Health</targetReference>
+        </connector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>NewAssessment</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Change_1_re_substance_use_short_term__c</field>
+            <value>
+                <elementReference>Change_1_substance_use</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Change_2_re_substance_use_short_term__c</field>
+            <value>
+                <elementReference>Change_2_substance_use</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Change_3_re_substance_use_short_term__c</field>
+            <value>
+                <elementReference>Change_3_substance_use</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Goals_1_re_substance_use_long_term__c</field>
+            <value>
+                <elementReference>Goal_1_substance_use</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Goals_2_re_substance_use_long_term__c</field>
+            <value>
+                <elementReference>Goal_2_substance_use</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Goals_3_re_substance_use_long_term__c</field>
+            <value>
+                <elementReference>Goal_3_substance_use</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Comprehensive_Assessment__c</object>
+    </recordUpdates>
+    <recordUpdates>
         <name>Update_Assessement_with_Alcohol_Use_Details</name>
         <label>Update Assessement with Alcohol Use Details</label>
         <locationX>1223</locationX>
@@ -823,6 +1019,87 @@
         </inputAssignments>
         <object>Contact</object>
     </recordUpdates>
+    <recordUpdates>
+        <name>Update_physical_health</name>
+        <label>Update physical/Dental health</label>
+        <locationX>507</locationX>
+        <locationY>1024</locationY>
+        <connector>
+            <targetReference>Is_Sexual_Health_Issues</targetReference>
+        </connector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>NewAssessment</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Do_you_have_any_dental_health_needs__c</field>
+            <value>
+                <elementReference>IsDentalHealthAnIssue</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>If_yes_dental_needs_please_give_detail__c</field>
+            <value>
+                <elementReference>If_yes_dental_needs_please_give_details</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Information_about_medical_history__c</field>
+            <value>
+                <elementReference>Information_about_medical_history</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Comprehensive_Assessment__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_sexual_health_0</name>
+        <label>Update sexual health</label>
+        <locationX>529</locationX>
+        <locationY>1359</locationY>
+        <connector>
+            <targetReference>Finished</targetReference>
+        </connector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>NewAssessment</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Concerns_about_your_sexual_health__c</field>
+            <value>
+                <elementReference>IsSexualHealthConcerns</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>If_yes_sexual_health_please_specify__c</field>
+            <value>
+                <elementReference>If_you_have_any_sexual_health_concerns_please_specify</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Protect_against_sexual_trans_infections__c</field>
+            <value>
+                <elementReference>Do_you_know_how_you_can_protect_yourself_against_sexually_transmitted_infections</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Comprehensive_Assessment__c</object>
+    </recordUpdates>
+    <screens>
+        <name>Dental_Health</name>
+        <label>Dental Health</label>
+        <locationX>809</locationX>
+        <locationY>969</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Update_physical_health</targetReference>
+        </connector>
+    </screens>
     <screens>
         <name>EnterNOKDetails</name>
         <label>EnterNOKDetails</label>
@@ -902,14 +1179,71 @@
     <screens>
         <name>Finished</name>
         <label>Finished</label>
-        <locationX>497</locationX>
-        <locationY>728</locationY>
+        <locationX>510</locationX>
+        <locationY>1506</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <fields>
             <name>Done</name>
             <fieldText>&lt;SPAN ALIGN=&quot;CENTER&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:18px&quot; COLOR=&quot;#CC0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Finished - Comprehensive Assessment has been created&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+        </fields>
+    </screens>
+    <screens>
+        <name>Goals_and_changes</name>
+        <label>Goals and changes</label>
+        <locationX>802</locationX>
+        <locationY>735</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Update_Assesement_with_goals_and_changes</targetReference>
+        </connector>
+        <fields>
+            <name>Identifythegoalsyouhaveinrelationtoyoursubstanceuseinthelongerterm</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#CC0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Identify the goals you have in relation to your substance use in the longer term&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Goal_1_substance_use</name>
+            <fieldText>Goal 1</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Goal_2_substance_use</name>
+            <fieldText>Goal 2</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Goal_3_substance_use</name>
+            <fieldText>Goal 3</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Changeswouldyouliketomakeinrelationtoyoursubstanceuseinshortterm</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#CC0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Changes would you like to make in relation to your substance use in short term&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Change_1_substance_use</name>
+            <fieldText>Change 1</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Change_2_substance_use</name>
+            <fieldText>Change 2</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Change_3_substance_use</name>
+            <fieldText>Change 3</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
         </fields>
     </screens>
     <screens>
@@ -1098,6 +1432,50 @@ Please give details</helpText>
         </fields>
     </screens>
     <screens>
+        <name>Physical_Health</name>
+        <label>Physical Health</label>
+        <locationX>507</locationX>
+        <locationY>737</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Is_Dental_Health_issues_filled_in</targetReference>
+        </connector>
+        <fields>
+            <name>PhysicalHealthTitle</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#CC0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Physical Health&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Information_about_medical_history</name>
+            <fieldText>Information about medical history</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <helpText>Is there any additional information about your current or past medical history that you think it would helpful for us to know about? (Refer to Initial Assessment)</helpText>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>If_yes_dental_needs_please_give_details</name>
+            <fieldText>If you have any dental health needs please give details</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>If_you_have_any_sexual_health_concerns_please_specify</name>
+            <fieldText>If you have any sexual health concerns please specify</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Do_you_know_how_you_can_protect_yourself_against_sexually_transmitted_infections</name>
+            <choiceReferences>Yes</choiceReferences>
+            <choiceReferences>No</choiceReferences>
+            <dataType>Boolean</dataType>
+            <fieldText>Do you know how you can protect yourself against sexually transmitted infections?</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+    </screens>
+    <screens>
         <name>Referral_Details</name>
         <label>Referral Details</label>
         <locationX>500</locationX>
@@ -1126,6 +1504,17 @@ Please give details</helpText>
             <fieldType>InputField</fieldType>
             <isRequired>false</isRequired>
         </fields>
+    </screens>
+    <screens>
+        <name>Sexual_Health_Issues_Screen</name>
+        <label>Sexual Health Issues</label>
+        <locationX>792</locationX>
+        <locationY>1290</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Update_sexual_health_0</targetReference>
+        </connector>
     </screens>
     <screens>
         <name>Substance_Use_Description</name>
@@ -1224,6 +1613,74 @@ Please give details</helpText>
             <isRequired>false</isRequired>
             <scale>0</scale>
         </fields>
+        <fields>
+            <name>Anxiety_at_prospect_of_missing_fix</name>
+            <choiceReferences>Never_almost_never</choiceReferences>
+            <choiceReferences>Sometimes</choiceReferences>
+            <choiceReferences>Often</choiceReferences>
+            <choiceReferences>Always_nearly_always</choiceReferences>
+            <dataType>Number</dataType>
+            <fieldText>Anxiety at prospect of missing fix</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <helpText>Did the prospect of missing a fix (or dose) make you anxious or worried?
+0 = Never/almost never
+1 =Sometimes
+2 = Often
+3 = Always/nearly always</helpText>
+            <isRequired>false</isRequired>
+            <scale>0</scale>
+        </fields>
+        <fields>
+            <name>Worry_about_use</name>
+            <choiceReferences>Never_almost_never</choiceReferences>
+            <choiceReferences>Sometimes</choiceReferences>
+            <choiceReferences>Often</choiceReferences>
+            <choiceReferences>Always_nearly_always</choiceReferences>
+            <dataType>Number</dataType>
+            <fieldText>Worry about use</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <helpText>Did you worry about your use of the substance?
+0 = Never/almost never
+1 =Sometimes
+2 = Often
+3 = Always/nearly always</helpText>
+            <isRequired>false</isRequired>
+            <scale>0</scale>
+        </fields>
+        <fields>
+            <name>Do_you_wish_you_could_stop</name>
+            <choiceReferences>Never_almost_never</choiceReferences>
+            <choiceReferences>Sometimes</choiceReferences>
+            <choiceReferences>Often</choiceReferences>
+            <choiceReferences>Always_nearly_always</choiceReferences>
+            <dataType>Number</dataType>
+            <fieldText>Do you wish you could stop?</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <helpText>Do you wish you could stop?
+0 = Never/almost never
+1 =Sometimes
+2 = Often
+3 = Always/nearly always</helpText>
+            <isRequired>false</isRequired>
+            <scale>0</scale>
+        </fields>
+        <fields>
+            <name>How_difficult_did_you_find_it_to_stop</name>
+            <choiceReferences>Not_difficult</choiceReferences>
+            <choiceReferences>Quite_difficult</choiceReferences>
+            <choiceReferences>Very_difficult</choiceReferences>
+            <choiceReferences>Impossible</choiceReferences>
+            <dataType>Number</dataType>
+            <fieldText>How difficult did you find it to stop?</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <helpText>How difficult did you find it to stop or go without the substance?
+0 = Not difficult
+1 = Quite difficult
+2 = Very difficult
+3 = Impossible</helpText>
+            <isRequired>false</isRequired>
+            <scale>0</scale>
+        </fields>
     </screens>
     <startElementReference>Get_General_Contact_Record_Type</startElementReference>
     <variables>
@@ -1270,6 +1727,18 @@ Please give details</helpText>
         <dataType>String</dataType>
         <isInput>false</isInput>
         <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>IsDentalHealthAnIssue</name>
+        <dataType>Boolean</dataType>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>IsSexualHealthConcerns</name>
+        <dataType>Boolean</dataType>
+        <isInput>true</isInput>
+        <isOutput>true</isOutput>
     </variables>
     <variables>
         <name>Latestsubstanceuse</name>

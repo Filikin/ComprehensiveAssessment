@@ -51,6 +51,22 @@
     <enableHistory>false</enableHistory>
     <enableReports>true</enableReports>
     <fields>
+        <fullName>Anxiety_at_prospect_of_missing_fix__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Did the prospect of missing a fix (or dose) make you anxious or worried?
+0 = Never/almost never
+1 =Sometimes
+2 = Often
+3 = Always/nearly always</inlineHelpText>
+        <label>Anxiety at prospect of missing fix</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Comprehensive_Assessment__c</fullName>
         <externalId>false</externalId>
         <label>Comprehensive Assessment</label>
@@ -64,6 +80,38 @@
         <writeRequiresMasterRead>false</writeRequiresMasterRead>
     </fields>
     <fields>
+        <fullName>Do_you_wish_you_could_stop__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you wish you could stop?
+0 = Never/almost never
+1 =Sometimes
+2 = Often
+3 = Always/nearly always</inlineHelpText>
+        <label>Do you wish you could stop</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>How_difficult_did_you_find_it_to_stop__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>How difficult did you find it to stop or go without the substance?
+0 = Not difficult
+1 = Quite difficult
+2 = Very difficult
+3 = Impossible</inlineHelpText>
+        <label>How difficult did you find it to stop</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
         <fullName>Is_use_out_of_control__c</fullName>
         <externalId>false</externalId>
         <inlineHelpText>Do you think the use of (preference substance) was out of control?
@@ -72,6 +120,35 @@
 2 = Often
 3 = Always/nearly always</inlineHelpText>
         <label>Is use out of control?</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SDS_Total__c</fullName>
+        <externalId>false</externalId>
+        <formula>Do_you_wish_you_could_stop__c + Is_use_out_of_control__c + Anxiety_at_prospect_of_missing_fix__c + Worry_about_use__c + How_difficult_did_you_find_it_to_stop__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>SDS Total</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Worry_about_use__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Did you worry about your use of the substance?
+0 = Never/almost never
+1 =Sometimes
+2 = Often
+3 = Always/nearly always</inlineHelpText>
+        <label>Worry about use</label>
         <precision>1</precision>
         <required>false</required>
         <scale>0</scale>
