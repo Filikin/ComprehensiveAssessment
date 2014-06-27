@@ -1,0 +1,3429 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <fields>
+        <fullName>AUDIT__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>AUDIT</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>AUDIT_score__c</fullName>
+        <externalId>false</externalId>
+        <label>AUDIT score</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Additional_info_re_mental_psycolo_health__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Is there any additional information about your past or current mental/ psychological/ emotional health that you think it would be helpful for us to know about? (Refer to initial assessment)</inlineHelpText>
+        <label>Additional info re mental/psycolo health</label>
+        <length>2000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Address__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(LEN(Client__r.MailingStreet) &gt;1, Client__r.MailingStreet&amp; BR() , &quot;&quot;)&amp;
+IF(LEN( Client__r.MailingCity ) &gt;1, Client__r.MailingCity &amp; BR() , &quot;&quot;)&amp;
+IF(LEN( Client__r.MailingState ) &gt;1, Client__r.MailingState , &quot;&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Address</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Address_of_referring_agency__c</fullName>
+        <externalId>false</externalId>
+        <label>Address of referring agency:</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Age__c</fullName>
+        <externalId>false</externalId>
+        <formula>Client__r.eCASS02t1__Age__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Age</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Age_child_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Age child 1</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Age_child_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Age child 2</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Age_child_3__c</fullName>
+        <externalId>false</externalId>
+        <label>Age child 3</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Age_child_4__c</fullName>
+        <externalId>false</externalId>
+        <label>Age child 4</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Alcohol_drug_use_cost_you_daily__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>On average how much does your alcohol/ drug use cost you daily?</inlineHelpText>
+        <label>Alcohol/ drug use cost you daily?</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Alcohol_drug_use_cost_you_weekly__c</fullName>
+        <externalId>false</externalId>
+        <label>Alcohol/ drug use cost you weekly?</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Anxiety_at_prospect_of_mixing_fix__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Did the prospect of missing a fix (or dose) (of preference substance) make you anxious or worried?
+0 = Never/almost never
+1 =Sometimes
+2 = Often
+3 = Always/nearly always</inlineHelpText>
+        <label>Anxiety at prospect of mixing fix</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Any_benefits_you_are_not_receiving__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Are there any benefits you think you may be entitled to that you are not receiving?</inlineHelpText>
+        <label>Any benefits you are not receiving</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Any_concerns_about_legal_issues__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you currently have any concerns about legal issues?</inlineHelpText>
+        <label>Any concerns about legal issues?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Any_difficulty_with_your_accommodation__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you currently have any concerns or difficulties with your accommodation or living arrangements?</inlineHelpText>
+        <label>Any difficulty with your accommodation?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Any_learning_difficulty_needs__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you have any literacy, numeracy or learning difficulty needs?</inlineHelpText>
+        <label>Any learning difficulty/needs</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Any_other_training_or_education_attained__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Can you tell me of any other training or education you have been involved in?</inlineHelpText>
+        <label>Any other training or education attained</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Any_outstanding_warrants_or_charges__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you have any outstanding warrants or charges?</inlineHelpText>
+        <label>Any outstanding warrants or charges?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Any_recreational_activities_or_hobbies__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Are there any recreational activities or hobbies that you are involved in?</inlineHelpText>
+        <label>Any recreational activities or hobbies</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Any_relative_aware_of_your_substance_use__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Are any of your family members (including your spouse/ partner) aware of your substance use?</inlineHelpText>
+        <label>Any relative aware of your substance use</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Any_relative_has_drugs_difficulties__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Do any of your family members (including your spouse or partner) have difficulties with drugs or alcohol or have a history of addiction?</inlineHelpText>
+        <label>Any relative has drugs difficulties</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Anything_re_cultural_or_ethnic_customs__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you have any cultural or ethnic customs or practices that you think we should know about while we are delivering a service to you?</inlineHelpText>
+        <label>Anything re cultural or ethnic customs</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Anything_re_your_religious_beliefs__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Is there anything you think we need to know in relation to providing you a service that is keeping with your religious beliefs and practices?</inlineHelpText>
+        <label>Anything re your religious beliefs</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Aspect_previous_edu_training_most_useful__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>If you have previously engaged in an education or training course, what did you find most useful or enjoyable about it?</inlineHelpText>
+        <label>Aspect previous edu/training most useful</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Assessment_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Assessment Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Assessors_observations_and_comments__c</fullName>
+        <externalId>false</externalId>
+        <label>Assessors observations and comments</label>
+        <length>2000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>At_what_age_did_you_leave_school__c</fullName>
+        <externalId>false</externalId>
+        <label>At what age did you leave school?</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Aware_HIV_hepatitis_can_be_transmitted__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Are you aware of the ways in which HIV, hepatitis B &amp; C can be transmitted from one person to another?</inlineHelpText>
+        <label>Aware HIV hepatitis can be transmitted</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Been_convicted_of_an_offence__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Been convicted of an offence?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Change_1_re_substance_use_short_term__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What changes would you like to make in relation to your substance use in the short term?</inlineHelpText>
+        <label>Change 1 re substance use short term</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Change_2_re_substance_use_short_term__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What changes would you like to make in relation to your substance use in the short term?</inlineHelpText>
+        <label>Change 2 re substance use short term</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Change_3_re_substance_use_short_term__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What changes would you like to make in relation to your substance use in the short term?</inlineHelpText>
+        <label>Change 3 re substance use short term</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Charged_with_an_offence__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Charged with an offence?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Client__c</fullName>
+        <externalId>false</externalId>
+        <label>Client</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Comprehensive Assessments</relationshipLabel>
+        <relationshipName>Comprehensive_Assessments</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Concerned_re_maintaining_a_home__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Is there anything about running or maintaining a home that you are concerned about or think you might need help with?</inlineHelpText>
+        <label>Concerned re maintaining a home?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Concerns_about_your_children_s_health__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you have any concerns about your children’s health, welfare or development?</inlineHelpText>
+        <label>Concerns about your children’s health</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Concerns_about_your_sexual_health__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Have you any concerns about your sexual health?</inlineHelpText>
+        <label>Concerns about your sexual health</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Connection_drug_alco_use_legal_issues__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you think there is a connection between your drug/alcohol use and your legal issues?</inlineHelpText>
+        <label>Connection drug/alco use &amp; legal issues?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Contact_number_of_GP__c</fullName>
+        <externalId>false</externalId>
+        <label>Contact number of GP</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Contact_number_of_referrer__c</fullName>
+        <externalId>false</externalId>
+        <formula>Referred_from__r.eCASS02t1__Referred_from_Contact__r.Phone</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Contact number of referrer</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Contact_number_of_referrer_referring__c</fullName>
+        <externalId>false</externalId>
+        <label>Contact number of referrer / referring</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Cultural_Ethnic_Matters_NI__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>NI = Need Identified. Please tick support area as appropriate</inlineHelpText>
+        <label>Cultural/Ethnic Matters-NI</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Current_substance_use_description__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Is there anything you would like to tell me about your current substance use including any current Drug Using Risk Behaviours? (Refer to Current Drug Use &amp; Drug Using Risk Behaviours in Initial Assessment.)</inlineHelpText>
+        <label>Current substance use description</label>
+        <length>2000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Currently_in_receipt_of_any_benefits__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Are you currently in receipt of any benefits?</inlineHelpText>
+        <label>Currently in receipt of any benefits?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>DOB__c</fullName>
+        <externalId>false</externalId>
+        <formula>Client__r.Birthdate</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>DOB</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>DUDIT__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>DUDIT</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>DUDIT_score__c</fullName>
+        <externalId>false</externalId>
+        <label>DUDIT score</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Date_assessment_complete__c</fullName>
+        <externalId>false</externalId>
+        <label>Date assessment complete</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Date_referral_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Date referral 1</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Date_referral_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Date referral 2</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Date_referral_3__c</fullName>
+        <externalId>false</externalId>
+        <label>Date referral 3</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Date_referral_4__c</fullName>
+        <externalId>false</externalId>
+        <label>Date referral 4</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Date_referral_5__c</fullName>
+        <externalId>false</externalId>
+        <label>Date referral 5</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Date_vaccinated_against_hepatitis_B__c</fullName>
+        <externalId>false</externalId>
+        <label>Date vaccinated against hepatitis B</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Days_of_week_work_college_training__c</fullName>
+        <externalId>false</externalId>
+        <label>Days of week (work/ college/ training)</label>
+        <length>200</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Do_you_currently_have_any_debts__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Do you currently have any debts?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Do_you_have_a_regular_income__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Do you have a regular income?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Do_you_have_any_dental_health_needs__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Do you have any dental health needs</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Do_you_need_assistance_with_children__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you think you need assistance from any service/agency to help with your children&apos;s health, welfare or development?  If yes please give details</inlineHelpText>
+        <label>Do you need assistance with children</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Do_you_see_child_1_regularly_How_often__c</fullName>
+        <externalId>false</externalId>
+        <label>Do you see child 1 regularly? How often?</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Do_you_see_child_2_regularly_How_often__c</fullName>
+        <externalId>false</externalId>
+        <label>Do you see child 2 regularly? How often?</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Do_you_see_child_3_regularly_How_often__c</fullName>
+        <externalId>false</externalId>
+        <label>Do you see child 3 regularly? How often?</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Do_you_see_child_4_regularly_How_often__c</fullName>
+        <externalId>false</externalId>
+        <label>Do you see child 4 regularly? How often?</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Do_you_wish_you_could_stop__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you wish you could stop?
+0 = Never/almost never
+1 =Sometimes
+2 = Often
+3 = Always/nearly always</inlineHelpText>
+        <label>Do you wish you could stop</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Does_you_income_match_your_expenditure__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Does you income match your expenditure?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Drug_Alco_use_impacted_accomodation__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you think that your drug/ alcohol use has impacted on your accommodation and living arrangements? If ‘yes’ please give details:</inlineHelpText>
+        <label>Drug/Alco use impacted accomodation</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Drug_alcohol_use_causes_financial_issues__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you think that your drug/ alcohol use contributes to your financial issues/ concerns?</inlineHelpText>
+        <label>Drug/alcohol use causes financial issues</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Drug_alcohol_use_impacted_relationships__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you think that your drug/ alcohol use has impacted on your relationships?</inlineHelpText>
+        <label>Drug/alcohol use impacted relationships</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Drug_alcohol_use_re_mental_psycho_health__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you think that there is a link between your drug/ alcohol use and your mental/ psychological/ emotional health? If ‘yes’ please give details:</inlineHelpText>
+        <label>Drug/alcohol use re mental/psycho health</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Drug_alcohol_use_re_physical_health__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you think that your drug/ alcohol use has had an effect on your physical health? If ‘yes’ please give details:</inlineHelpText>
+        <label>Drug/ alcohol use re physical health</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Education_Training_NI__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>NI = Need Identified. Please tick support area as appropriate</inlineHelpText>
+        <label>Education &amp; Training-NI</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Education_training_history__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Can you tell me a bit about your education &amp; training history?</inlineHelpText>
+        <label>Education &amp; training history?</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Employment_status__c</fullName>
+        <externalId>false</externalId>
+        <label>Employment status</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Employed full-time</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Employed part-time</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Unemployed</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Student</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>In training</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other (Please state)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Employment_status_other_please_specify__c</fullName>
+        <externalId>false</externalId>
+        <label>Employment status other, please specify</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Ever_attended_counsellor_psychotherapist__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Have you ever attended a counsellor/ psychotherapist/ support worker to help you with psychological or emotional issues?</inlineHelpText>
+        <label>Ever attended counsellor/psychotherapist</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Ever_been_vaccinated_against_hepatitis_B__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you know if you have ever been vaccinated against hepatitis B?</inlineHelpText>
+        <label>Ever been vaccinated against hepatitis B</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Yes (If ‘yes’ please give estimate of date)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Don’t know</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Ever_considered_or_attempted_suicide__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Have you ever considered or attempted suicide?</inlineHelpText>
+        <label>Ever considered or attempted suicide?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Ever_deliberately_self_harmed__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Have you ever deliberately self-harmed?</inlineHelpText>
+        <label>Ever deliberately self-harmed</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Ever_had_a_smear_test__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>If female have you ever had a smear test?</inlineHelpText>
+        <label>Ever had a smear test?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Ever_received_assistance_re_childrens_H__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Ever received assistance re childrens H</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Ever_received_help_re_alcohol_use__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Have you ever received help for your alcohol use in the past?</inlineHelpText>
+        <label>Ever received help re alcohol use</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Ever_received_help_re_drug_use__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Have you ever received help for your drug use in the past?</inlineHelpText>
+        <label>Ever received help re drug use</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Family_Current_Relationships_NI__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>NI = Need Identified. Please tick support area as appropriate</inlineHelpText>
+        <label>Family &amp; Current Relationships-NI</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Family_aware_you_addressing_substanc_use__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Are any of your family members (including your spouse/ partner) aware that you are trying to address your substance use?</inlineHelpText>
+        <label>Family aware you addressing substanc use</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Family_history_of_mental_health_problems__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Are you aware of any family history of mental health problems? If ‘yes’ please give details:</inlineHelpText>
+        <label>Family history of mental health problems</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Family_would_support_you__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you think that your family members or friends would support you in addressing your substance use?</inlineHelpText>
+        <label>Family would support you</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Flexibility_re_time_work_college_trainin__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Is there any flexibility around the times you attend work/college/ training?
+(We ask this to see what services operate at times that may suit you)</inlineHelpText>
+        <label>Flexibility re time work/college/trainin</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>For_how_long_1__c</fullName>
+        <externalId>false</externalId>
+        <label>For how long 1</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>For_how_long_2__c</fullName>
+        <externalId>false</externalId>
+        <label>For how long 2</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>For_how_long_3__c</fullName>
+        <externalId>false</externalId>
+        <label>For how long 3</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>For_how_long_4__c</fullName>
+        <externalId>false</externalId>
+        <label>For how long 4</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>GP_aware_of_your_substance_use__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Is your GP aware of your substance use and any issues/ difficulties you may have in relation to it?</inlineHelpText>
+        <label>GP aware of your substance use</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Gender__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Client__r.eCASS02t1__X4_Gender__c)</formula>
+        <label>Gender</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Goal_1_re_family_relationship_LT__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please identify what goals you have in relation to your family and relationships in the long term: (If applicable)</inlineHelpText>
+        <label>Goal 1 re family &amp; relationship LT</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Goal_2_re_family_relationship_LT__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please identify what goals you have in relation to your family and relationships in the long term: (If applicable)</inlineHelpText>
+        <label>Goal 2 re family &amp; relationship LT</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Goal_re_Accommodation_LT_1__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please identify any goals you may have in relation to your accommodation and living arrangements in the  long term</inlineHelpText>
+        <label>Goal re Accommodation LT 1</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Goal_re_Accommodation_LT_2__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please identify any goals you may have in relation to your accommodation and living arrangements in the  long term</inlineHelpText>
+        <label>Goal re Accommodation LT 2</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Goal_re_Employment_situation_LT_1__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please identify what goals you may have in relation to your employment situation in the  long term</inlineHelpText>
+        <label>Goal re Employment situation LT 1</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Goal_re_Employment_situation_LT_2__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please identify what goals you may have in relation to your employment situation in the  long term</inlineHelpText>
+        <label>Goal re Employment situation LT 2</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Goal_re_Finances_LT_1__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please identify what goals you may have in relation to your finances in the  long term:</inlineHelpText>
+        <label>Goal re Finances LT 1</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Goal_re_Finances_LT_2__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please identify what goals you may have in relation to your finances in the  long term:</inlineHelpText>
+        <label>Goal re Finances LT 2</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Goals_1_re_general_dental_health_LT__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please identify any goals you have in relation to your general/ dental health in the longer term</inlineHelpText>
+        <label>Goals 1 re general/dental health LT</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Goals_1_re_mental_psyco_health_LT__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please identify any goals you have in relation to your mental/ psychological/ emotional health in the long term: (If applicable)</inlineHelpText>
+        <label>Goals 1 re mental/psyco health LT</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Goals_1_re_substance_use_long_term__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please identify the goals you have in relation to your substance use in the longer term:</inlineHelpText>
+        <label>Goals 1 re substance use long term</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Goals_2_re_general_dental_health_LT__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please identify any goals you have in relation to your general/ dental health in the longer term</inlineHelpText>
+        <label>Goals 2 re general/dental health LT</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Goals_2_re_mental_psyco_health_LT__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please identify any goals you have in relation to your mental/ psychological/ emotional health in the long term: (If applicable)</inlineHelpText>
+        <label>Goals 2 re mental/psyco health LT</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Goals_2_re_substance_use_long_term__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please identify the goals you have in relation to your substance use in the longer term:</inlineHelpText>
+        <label>Goals 2 re substance use long term</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Goals_3_re_general_dental_health_LT__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please identify any goals you have in relation to your general/ dental health in the longer term</inlineHelpText>
+        <label>Goals 3 re general/dental health LT</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Goals_3_re_substance_use_long_term__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please identify the goals you have in relation to your substance use in the longer term</inlineHelpText>
+        <label>Goals 3 re substance use long term</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Goals_re_Cultural_ethnic_matters_LT1__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Cultural &amp; ethnic matters: Please identify what goals you may have in the  long term</inlineHelpText>
+        <label>Goals re Cultural/ethnic matters LT1</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Goals_re_Cultural_ethnic_matters_LT2__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Cultural &amp; ethnic matters: Please identify what goals you may have in the  long term</inlineHelpText>
+        <label>Goals re Cultural/ethnic matters LT2</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Goals_re_Religious_spiritual_matters_LT1__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Religious &amp; spiritual matters: Please identify what goals you may have in the  long term</inlineHelpText>
+        <label>Goals re Religious/spiritual matters LT1</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Goals_re_Religious_spiritual_matters_LT2__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Religious &amp; spiritual matters: Please identify what goals you may have in the  long term</inlineHelpText>
+        <label>Goals re Religious/spiritual matters LT2</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Goals_re_drug_alco_use_Legal_issue_LT1__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please identify what goals you may have in relation to your legal issues in the  long term</inlineHelpText>
+        <label>Goals re drug/alco use &amp; Legal issue LT1</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Goals_re_drug_alco_use_Legal_issue_LT2__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please identify what goals you may have in relation to your legal issues in the  long term</inlineHelpText>
+        <label>Goals re drug/alco use &amp; Legal issue LT2</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Goals_re_edu_training_LT_1__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please identify what goals you may have in relation to your education &amp; training in the  long term: (If applicable)</inlineHelpText>
+        <label>Goals re edu/training LT 1</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Goals_re_edu_training_LT_2__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please identify what goals you may have in relation to your education &amp; training in the  long term: (If applicable)</inlineHelpText>
+        <label>Goals re edu/training LT 2</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Goals_re_recreational_activities_LT_1__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Recreational activities / hobbies: Please identify what goals you may have in the  long term</inlineHelpText>
+        <label>Goals re recreational activities LT 1</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Goals_re_recreational_activities_LT_2__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Recreational activities / hobbies: Please identify what goals you may have in the  long term</inlineHelpText>
+        <label>Goals re recreational activities LT 2</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>HIV_test__c</fullName>
+        <externalId>false</externalId>
+        <label>HIV test</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Don&apos;t know</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Have_a_medical_card__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Have a medical card?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Have_any_concerns_about_contraception__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you have any concerns about contraception?</inlineHelpText>
+        <label>Have any concerns about contraception</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Have_any_financial_issues_concerns__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you currently have any financial issues/ concerns?</inlineHelpText>
+        <label>Have any financial issues/concerns?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Have_any_specific_employment_interests__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you have any specific employment interests or areas of employment that you would like to pursue?</inlineHelpText>
+        <label>Have any specific employment interests</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Have_difficulties_to_live_independently__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you think that there is anything that impacts/ would impact on your capacity to live independently? (E.g. disabilities, mental health problems, etc)</inlineHelpText>
+        <label>Have difficulties to live independently</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Have_you_been_treated_for__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What are you/ have you been treated for, if known: (your diagnosis)</inlineHelpText>
+        <label>Have you been treated for</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Have_you_ever_been_on_a_CE_scheme__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Have you ever been on a CE scheme?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Have_you_ever_experienced_homelessness__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Have you ever experienced homelessness?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Have_you_worked_in_the_past__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Have you worked in the past?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Hepatitis_B_test__c</fullName>
+        <externalId>false</externalId>
+        <label>Hepatitis B test</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Don&apos;t know</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Hepatitis_C_test__c</fullName>
+        <externalId>false</externalId>
+        <label>Hepatitis C test</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Don’t know</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Highest_level_of_education__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What is the highest level of education you have attained? (E.g. primary level, secondary level, third level, special needs education, etc</inlineHelpText>
+        <label>Highest level of education</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Hobbies_Recreational_Activities_NI__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>NI = Need Identified. Please tick support area as appropriate</inlineHelpText>
+        <label>Hobbies &amp; Recreational Activities-NI</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Homeless_registered_with_Local_Authority__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>If you are currently homeless are you registered with a Local Authority</inlineHelpText>
+        <label>Homeless registered with Local Authority</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Hours_of_day_work_college_training__c</fullName>
+        <externalId>false</externalId>
+        <label>Hours of day (work/ college/ training)</label>
+        <length>200</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>How_difficult_did_you_find_it_to_stop__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>How difficult did you find it to stop or go without prefernce substance?
+0 = Not difficult
+1 = Quite difficult
+2 = Very difficult
+3 = Impossible</inlineHelpText>
+        <label>How difficult did you find it to stop?</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Identify_ways_to_overcome_difficulties__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Can you identify ways to overcome these difficulties?</inlineHelpText>
+        <label>Identify ways to overcome difficulties?</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_child_1_not_with_you_who_with__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>If this child does not live with you who do they live with</inlineHelpText>
+        <label>If child 1 not with you, who with?</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>If_child_2_not_with_you_who_with__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>If this child does not live with you who do they live with</inlineHelpText>
+        <label>If child 2 not with you, who with?</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>If_child_3_not_with_you_who_with__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>If this child does not live with you who do they live with</inlineHelpText>
+        <label>If child 3 not with you, who with?</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>If_child_4_not_with_you_who_with__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>If this child does not live with you who do they live with</inlineHelpText>
+        <label>If child 4 not with you, who with?</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>If_help_received_re_alcohol_where_when__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>If yes, please state where and when you received this help/ treatment:</inlineHelpText>
+        <label>If help received re alcohol where &amp; when</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>If_help_received_re_drug_where_when__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>If yes please state where and when you received this help/ treatment:</inlineHelpText>
+        <label>If help received re drug, where &amp; when</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>If_no_how_do_you_finance_your_AE__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>If ‘no’ how do you finance your additional expenditure?</inlineHelpText>
+        <label>If ‘no’ how do you finance your AE</label>
+        <length>200</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>If_no_would_you_like_a_smear_test_taken__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>If ‘no’ would you like to have a smear test taken?</inlineHelpText>
+        <label>If no would you like a smear test taken</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>If_received_a_positive_BBV_specify__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>If you received a positive Blood Bourne Virus (BBV) test result did you received any treatment? Please give details:</inlineHelpText>
+        <label>If received a positive BBV, specify</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_Accomodation_difficulty_specify__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you currently have any concerns or difficulties with your accommodation or living arrangements?  If ‘yes’ please give details:</inlineHelpText>
+        <label>If yes (Accomodation difficulty) specify</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_CE_scheme_details__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Have you ever been on a CE scheme? If ‘yes’ can you give details of when this was and where?</inlineHelpText>
+        <label>If yes (CE scheme) details</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_Drug_Alco_impacted_Acco_specify__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you think that your drug/ alcohol use has impacted on your accommodation and living arrangements? If ‘yes’ please give details:</inlineHelpText>
+        <label>If yes (Drug/Alco impacted Acco) specify</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_Drug_alco_use_LI_specify__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you think there is a connection between your drug/alcohol use and your legal issues?  If ‘yes’ please give details:</inlineHelpText>
+        <label>If yes(Drug/alco use - LI) specify</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_Financial_concerns_specify__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you currently have any financial issues/ concerns? If ‘yes’ please give details:</inlineHelpText>
+        <label>If yes (Financial concerns) specify</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_LD_like_to_address_these_needs__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you have any literacy, numeracy or learning difficulty needs? If ‘yes’ would you like to address these needs?</inlineHelpText>
+        <label>If yes (LD) like to address these needs</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>If_yes_Legal_issues_specify__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you currently have any concerns about legal issues? If ‘yes’ can you give me details?</inlineHelpText>
+        <label>If yes (Legal issues) specify</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_Maintaining_Home_specify__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Is there anything about running or maintaining a home that you are concerned about or think you might need help with? If ‘yes’ please give details:</inlineHelpText>
+        <label>If yes(Maintaining Home) specify</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_agency_assisting_LI_specify__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Are you currently involved with an agency or individual who is assisting you with you legal issues? (E.g. solicitor, probation service/ officer, Citizen’s Advice Bureau) If ‘yes’ please</inlineHelpText>
+        <label>If yes (agency assisting LI) specify</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_are_you_aware_of_results_specify__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>If ‘yes’ to any of the indicated test are you aware of the test results? Please give details:</inlineHelpText>
+        <label>If yes are you aware of results, specify</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_assistance_child_H_specify__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Have you ever received assistance from any service/ agency to help you with your children’s health, welfare or development? If ‘yes’ please give details</inlineHelpText>
+        <label>If yes (assistance child H) specify</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_attempted_suicide_please_specif__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Have you ever considered or attempted suicide? If ‘yes’ can you give me more details?</inlineHelpText>
+        <label>If yes (attempted suicide) please specif</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_aware_addressing_subs_use_speci__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Are any of your family members (including your spouse/ partner) aware that you are trying to address your substance use? If ‘yes’ please give details:</inlineHelpText>
+        <label>If yes (aware/addressing subs use) speci</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_change_employment_specify__c</fullName>
+        <externalId>false</externalId>
+        <label>If yes (change employment) specify</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_concern_re_contraception_specif__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you have any concerns about contraception?, If ‘yes’ please give details?</inlineHelpText>
+        <label>If yes (concern re contraception) specif</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_concerns_children_health_specif__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you have any concerns about your children’s health, welfare or development? If ‘yes’ please give details:</inlineHelpText>
+        <label>If yes (concerns children health) specif</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_convicted_prison_specify__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Have you in the past ever been:
+Charged with an offence? Been convicted of an offence? Received a prison sentence?</inlineHelpText>
+        <label>If yes (convicted/prison) specify</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_counsellor_the_most_useful__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>If ‘yes’ what do/ did you find most useful about this help/ treatment?</inlineHelpText>
+        <label>If yes (counsellor) the most useful</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_cultural_ethnic_custom_specify__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you have any cultural or ethnic customs or practices that you think we should know about while we are delivering a service to you. If ‘yes’ please outline what they are:</inlineHelpText>
+        <label>If yes (cultural, ethnic custom) specify</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_debts_have_a_plan_of_payments__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>If ‘yes’ do you have a plan to manage the payments of your debts?</inlineHelpText>
+        <label>If yes (debts) have a plan of payments</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>If_yes_dental_needs_please_give_detail__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you have any dental health needs?, If ‘yes’ please give details:</inlineHelpText>
+        <label>If yes (dental needs) please give detail</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_drug_alco_money_issue_specify__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you think that your drug/ alcohol use contributes to your financial issues/ concerns (if applicable)?  If ‘yes’ please give details</inlineHelpText>
+        <label>If yes (drug/alco money issue) specify</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_drug_alcohol_use_impact_specify__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you think that your drug/ alcohol use has impacted on your relationships? If ‘yes’ in what ways?</inlineHelpText>
+        <label>If yes (drug/alcohol use impact) specify</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_edu_training_areas_of_interest__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>If ‘yes’ what are your areas of interest or what particular skills you would like to learn?</inlineHelpText>
+        <label>If yes (edu/training) areas of interest</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_family_aware_of_subs_use_specif__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Are any of your family members (including your spouse/ partner) aware of your substance use? If ‘yes’ please give details:</inlineHelpText>
+        <label>If yes (family aware of subs use) specif</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_family_mental_health_specify__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Are you aware of any family history of mental health problems? If ‘yes’ please give details</inlineHelpText>
+        <label>If yes (family mental health) specify</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_family_support_specify__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you think that your family members or friends would support you in addressing your substance use?  
+If ‘yes’ who do you think would support you and in what ways?</inlineHelpText>
+        <label>If yes (family support) specify</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_hobbies_benefits_life_specify__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you think that involvement in recreational activities or hobbies benefits, or would benefit, you and your life? If ‘yes’ in what ways?</inlineHelpText>
+        <label>If yes (hobbies benefits life) specify</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_homelessness_specify__c</fullName>
+        <externalId>false</externalId>
+        <label>If yes (homelessness) specify</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_please_specify_DLI__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you think that there is anything that impacts/ would impact on your capacity to live independently? (E.g. disabilities, mental health problems, etc), If’ yes, please give details:</inlineHelpText>
+        <label>If yes please specify-DLI</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_recreation_hobbies_specify__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Are there any recreational activities or hobbies that you are involved in?
+If ‘yes’ to above please give details</inlineHelpText>
+        <label>If yes (recreation/hobbies) specify</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_regular_income_from_where__c</fullName>
+        <externalId>false</externalId>
+        <label>If yes(regular income) from where</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_relative_drugs_issues_specify__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Do any of your family members (including your spouse or partner) have difficulties with drugs or alcohol or have a history of addiction? If ‘yes’ please give details:</inlineHelpText>
+        <label>If yes (relative drugs issues) specify</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_religious_beliefs_specify__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Is there anything you think we need to know in relation to providing you a service that is keeping with your religious beliefs and practices? If &quot;yes&quot; please give details.</inlineHelpText>
+        <label>If yes (religious beliefs) Specify</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_self_harmed_please_specify__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Have you ever deliberately self-harmed? If ‘yes’ can you give me more details?</inlineHelpText>
+        <label>If yes (self-harmed) please specify</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_sexual_health_please_specify__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Have you any concerns about your sexual health?, If ‘yes’ to above please give details</inlineHelpText>
+        <label>If yes (sexual health) please specify</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_specific_employment_Int_specify__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you have any specific employment interests or areas of employment that you would like to pursue? If ‘yes’ please give details:</inlineHelpText>
+        <label>If yes (specific employment Int) specify</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_warrants_charges_specify__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you have any outstanding warrants or charges? If ‘yes’ please give details:</inlineHelpText>
+        <label>If yes (warrants/charges) specify</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_what_benefits_do_you_receive__c</fullName>
+        <externalId>false</externalId>
+        <label>If ‘yes’ what benefits do you receive</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_worked_in_the_past_specify__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Have you worked in the past?  If ‘yes’ please give details</inlineHelpText>
+        <label>If yes (worked in the past) specify</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Income_Finance_NI__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>NI = Need Identified. Please tick support area as appropriate</inlineHelpText>
+        <label>Income &amp; Finance-NI</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Information_about_medical_history__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Is there any additional information about your current or past medical history that you think it would helpful for us to know about? (Refer to Initial Assessment)</inlineHelpText>
+        <label>Information about medical history</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Information_advice_given_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Information/ advice  given 1</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Information_advice_given_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Information/ advice  given 2</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Information_advice_given_3__c</fullName>
+        <externalId>false</externalId>
+        <label>Information/ advice  given 3</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Information_advice_given_4__c</fullName>
+        <externalId>false</externalId>
+        <label>Information/ advice  given 4</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Information_advice_given_5__c</fullName>
+        <externalId>false</externalId>
+        <label>Information/ advice  given 5</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Interested_in_attending_edu_training__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Would you be interested in attending education or training?</inlineHelpText>
+        <label>Interested in attending edu/training?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Interventions_recommended_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Interventions recommended 1</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Interventions_recommended_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Interventions recommended 2</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Interventions_recommended_3__c</fullName>
+        <externalId>false</externalId>
+        <label>Interventions recommended 3</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Interventions_recommended_4__c</fullName>
+        <externalId>false</externalId>
+        <label>Interventions recommended 4</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Interventions_recommended_5__c</fullName>
+        <externalId>false</externalId>
+        <label>Interventions recommended 5</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Involved_agency_individual_assisting_LI__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Are you currently involved with an agency or individual who is assisting you with you legal issues? (E.g. solicitor, probation service/ officer, Citizen’s Advice Bureau)</inlineHelpText>
+        <label>Involved agency/individual assisting LI</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Involvement_in_hobbies_benefit_your_life__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you think that involvement in recreational activities or hobbies benefits, or would benefit, you and your life?</inlineHelpText>
+        <label>Involvement in hobbies benefit your life</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Is_this_person_aware_of_your_drug_use__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Is this person aware of your drug use/ contact with this service:</inlineHelpText>
+        <label>Is this person aware of your drug use</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Learning_difficulties_details__c</fullName>
+        <externalId>false</externalId>
+        <label>Learning difficulties details</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Legal_Issues_NI__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>NI = Need Identified. Please tick support area as appropriate</inlineHelpText>
+        <label>Legal Issues-NI</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Like_to_change_your_current_employment__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Would you like to change your current employment situation?</inlineHelpText>
+        <label>Like to change your current employment</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Living_where_1__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please give details of where you have lived</inlineHelpText>
+        <label>Living where 1</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Living_where_2__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please give details of where you have lived</inlineHelpText>
+        <label>Living where 2</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Living_where_3__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please give details of where you have lived</inlineHelpText>
+        <label>Living where 3</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Living_where_4__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please give details of where you have lived</inlineHelpText>
+        <label>Living where 4</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Living_with_whom_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Living with whom 1</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Living_with_whom_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Living with whom 2</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Living_with_whom_3__c</fullName>
+        <externalId>false</externalId>
+        <label>Living with whom 3</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Living_with_whom_4__c</fullName>
+        <externalId>false</externalId>
+        <label>Living with whom 4</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Main_area_that_you_want_to_change_now_1__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Can you identify the main areas (including your substance use) that you want to change now (3- 5areas)?</inlineHelpText>
+        <label>Main area that you want to change now 1</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Main_area_that_you_want_to_change_now_2__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Can you identify the main areas (including your substance use) that you want to change now (3- 5areas)?</inlineHelpText>
+        <label>Main area that you want to change now 2</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Main_area_that_you_want_to_change_now_3__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Can you identify the main areas (including your substance use) that you want to change now (3- 5areas)?</inlineHelpText>
+        <label>Main area that you want to change now 3</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Main_area_that_you_want_to_change_now_4__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Can you identify the main areas (including your substance use) that you want to change now (3- 5areas)?</inlineHelpText>
+        <label>Main area that you want to change now 4</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Main_area_that_you_want_to_change_now_5__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Can you identify the main areas (including your substance use) that you want to change now (3- 5areas)?</inlineHelpText>
+        <label>Main area that you want to change now 5</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Mental_Psychological_Emotional_Health_NI__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>NI = Need Identified. Please tick support area as appropriate</inlineHelpText>
+        <label>Mental/Psychological/Emotional Health-NI</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Mobile__c</fullName>
+        <externalId>false</externalId>
+        <formula>Client__r.MobilePhone</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Mobile</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Most_difficult_for_you_in_making_changes__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What do you think will be most difficult for you in making these changes?</inlineHelpText>
+        <label>Most difficult for you in making changes</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Most_important_reasons_for_these_changes__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What are the most important reasons you want to make these changes?</inlineHelpText>
+        <label>Most important reasons for these changes</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Most_useful_about_alcohol_help_treatment__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What did you find most useful about this help/ treatment?</inlineHelpText>
+        <label>Most useful about alcohol help/treatment</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Most_useful_about_drug_help_treatment__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What did you find most useful about this help/ treatment?</inlineHelpText>
+        <label>Most useful about drug help/treatment</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Most_useful_about_this_help_treatment__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What do/ did you find most useful about this help/ treatment?</inlineHelpText>
+        <label>Most useful about this help/ treatment</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>NOK_Address__c</fullName>
+        <externalId>false</externalId>
+        <formula>Client__r.NOK_Address_if_different__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>NOK Address</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>NOK_Mobile__c</fullName>
+        <externalId>false</externalId>
+        <formula>Client__r.eCASS02t1__Next_of_Kin_mobile_phone__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>NOK Mobile</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Name_1_person_you_currently_live_with__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Who do you currently live with? (Refer to Initial Assessment)</inlineHelpText>
+        <label>Name 1 person you currently live with</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Name_2_person_you_currently_live_with__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Who do you currently live with? (Refer to Initial Assessment)</inlineHelpText>
+        <label>Name 2 person you currently live with</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Name_3_person_you_currently_live_with__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Who do you currently live with? (Refer to Initial Assessment)</inlineHelpText>
+        <label>Name 3 person you currently live with</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Name_4_person_you_currently_live_with__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Who do you currently live with? (Refer to Initial Assessment)</inlineHelpText>
+        <label>Name 4 person you currently live with</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Name_of_GP__c</fullName>
+        <externalId>false</externalId>
+        <label>Name of GP</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Name_of_child_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Name of child 1</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Name_of_child_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Name of child 2</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Name_of_child_3__c</fullName>
+        <externalId>false</externalId>
+        <label>Name of child 3</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Name_of_child_4__c</fullName>
+        <externalId>false</externalId>
+        <label>Name of child 4</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Name_of_next_of_kin__c</fullName>
+        <externalId>false</externalId>
+        <formula>Client__r.eCASS02t1__Next_of_Kin__r.eCASS02t1__Full_name__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Name of next of kin</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Need_Assistance_with_Children_details__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you think you need assistance from any service/agency to help with your children&apos;s health, welfare or development?  If yes please give details</inlineHelpText>
+        <label>Need Assistance with Children details</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>On_mobile_number__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>On mobile number</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Other_medical_health_service_specify__c</fullName>
+        <externalId>false</externalId>
+        <label>Other medical/health service, specify</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Overall_ourcome_after_alcohol_treatment__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What, in your opinion, was the overall outcome for you 
+and your alcohol use having received this 
+help / treatment?</inlineHelpText>
+        <label>Overall ourcome after alcohol treatment</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Overall_ourcome_after_drug_treatment__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What, in your opinion, was the overall outcome for you and your drug use having received of this help / treatment?</inlineHelpText>
+        <label>Overall ourcome after drug treatment</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PPS_Number__c</fullName>
+        <externalId>false</externalId>
+        <formula>Client__r.PPS_Number__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>PPS Number</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Physical_Health_NI__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>NI = Need Identified. Please tick support area as appropriate</inlineHelpText>
+        <label>Physical Health-NI</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Please_details_re_benefits_not_recived__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Are there any benefits you think you may be entitled to that you are not receiving? Please give details:</inlineHelpText>
+        <label>Please details re benefits not recived</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Private_health_insurance__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Private health insurance?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Protec_against_sexual_trans_infections__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you know how you can protect yourself against sexually transmitted infections?</inlineHelpText>
+        <label>Protec against sexual trans infections</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Psychiatrist_or_doctor_that_treated_you__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Can you tell me the name and address of the psychiatrist or doctor that treated you:</inlineHelpText>
+        <label>Psychiatrist or doctor that treated you</label>
+        <length>500</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Reason_for_referral__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Can you give me some details about the reason for your referral? (What are the issues / difficulties you have been experiencing?)</inlineHelpText>
+        <label>Reason for referral</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Reason_why_you_want_to_make_changes_now__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Is there a reason why you want to make theses changes now? Please elaborate:</inlineHelpText>
+        <label>Reason why you want to make changes now</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Received_a_prison_sentence__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Received a prison sentence?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Received_info_re_Needle_exchange_service__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Has information been given to you on: (If applicable) 
+Needle exchange services:</inlineHelpText>
+        <label>Received info re Needle exchange service</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Received_info_re_Safer_drug_use_practice__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Has information been given to you on: (If applicable)
+Safer drug using practices:</inlineHelpText>
+        <label>Received info re Safer drug use practice</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Received_info_re_Safer_sex_practise__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Has information been given to you on: (If applicable)                                                                                               
+Safer sex practise:</inlineHelpText>
+        <label>Received info re Safer sex practise</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Recreational_activity_to_get_involved_in__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>If ‘no’ to above, is there any recreational activity you would like to get involved in? Please give details</inlineHelpText>
+        <label>Recreational activity to get involved in</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Referral_date__c</fullName>
+        <externalId>false</externalId>
+        <label>Referral date:</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Referral_made_to_service_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Referral made to service 1</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Referral_made_to_service_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Referral made to service 2</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Referral_made_to_service_3__c</fullName>
+        <externalId>false</externalId>
+        <label>Referral made to service 3</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Referral_made_to_service_4__c</fullName>
+        <externalId>false</externalId>
+        <label>Referral made to service 4</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Referral_made_to_service_5__c</fullName>
+        <externalId>false</externalId>
+        <label>Referral made to service 5</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Referred_from__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Referred from</label>
+        <referenceTo>eCASS02t1__Referral__c</referenceTo>
+        <relationshipLabel>Comprehensive Assessments</relationshipLabel>
+        <relationshipName>Comprehensive_Assessments</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Referrer_Contact__c</fullName>
+        <externalId>false</externalId>
+        <formula>HYPERLINK(Referred_from__r.eCASS02t1__Referred_from_Contact__r.Id,  Referred_from__r.eCASS02t1__Referred_from_Contact__r.eCASS02t1__Full_name__c, &quot;_self&quot; )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Referrer</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Referrer__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Referrer</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Comprehensive Assessments (Referrer)</relationshipLabel>
+        <relationshipName>Comprehensive_Assessments1</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Referring_Agency_Address__c</fullName>
+        <externalId>false</externalId>
+        <formula>Referred_from__r.eCASS02t1__Referred_from_Organisation_external__r.BillingStreet &amp;  BR() &amp;  Referred_from__r.eCASS02t1__Referred_from_Organisation_external__r.BillingCity</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Referring Agency Address</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Referring_Agency__c</fullName>
+        <externalId>false</externalId>
+        <formula>HYPERLINK(Referred_from__r.eCASS02t1__Referred_from_Organisation_external__c,  Referred_from__r.eCASS02t1__Referred_from_Organisation_external__r.Name, &quot;_self&quot; )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Referring Agency</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Relationhip_to_you_1__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Who do you currently live with? (Refer to Initial Assessment)</inlineHelpText>
+        <label>Relationhip to you 1</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Relationhip_to_you_2__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Who do you currently live with? (Refer to Initial Assessment)</inlineHelpText>
+        <label>Relationhip to you 2</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Relationhip_to_you_3__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Who do you currently live with? (Refer to Initial Assessment)</inlineHelpText>
+        <label>Relationhip to you 3</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Relationhip_to_you_4__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Who do you currently live with? (Refer to Initial Assessment)</inlineHelpText>
+        <label>Relationhip to you 4</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Relationship_to_you__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT( Client__r.NOK_Relationship__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Relationship to you</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Religious_Spiritual_Matters_NI__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>NI = Need Identified. Please tick support area as appropriate</inlineHelpText>
+        <label>Religious/Spiritual Matters-NI</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Result_outcomes_do_you_hope_for_yourself__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What results/ outcomes do you hope for yourself and your life in making these changes?</inlineHelpText>
+        <label>Result/outcomes do you hope for yourself</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>SDS_1__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>SDS 1</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SDS_1_for_which_substance__c</fullName>
+        <externalId>false</externalId>
+        <label>SDS 1 for which substance</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SDS_2__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>SDS 2</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SDS_2_for_which_substance__c</fullName>
+        <externalId>false</externalId>
+        <label>SDS 2 for which substance</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SDS_3__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>SDS 3</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SDS_3_for_which_substance__c</fullName>
+        <externalId>false</externalId>
+        <label>SDS 3 for which substance</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SDS_4__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>SDS 4</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>SDS_4_for_which_substance__c</fullName>
+        <externalId>false</externalId>
+        <label>SDS 4 for which substance</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>SDS_Total__c</fullName>
+        <externalId>false</externalId>
+        <formula>Do_you_wish_you_could_stop__c +  is_use_out_of_control__c +  Anxiety_at_prospect_of_mixing_fix__c +  Worry_about_use__c +  How_difficult_did_you_find_it_to_stop__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>SDS Total</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Substance_use_has_impacted_employment__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you think that your substance use has impacted or is impacting on your employment situation?</inlineHelpText>
+        <label>Substance use has impacted employment</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Support_1_re_family_relationship_ST__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What progress do you want/ supports do you require in relation to your family and relationships in the short term: (If applicable)</inlineHelpText>
+        <label>Support 1 re family &amp; relationship ST</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Support_1_re_general_dental_health_ST__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What progress do you want/ supports do you require in relation to your general/ dental health in the short term? (If applicable)</inlineHelpText>
+        <label>Support 1 re general/dental health ST</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Support_1_re_mental_psyco_health_ST__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What progress do you want/ supports do you require in relation to your mental/ psychological/ emotional health in the short term?  (If applicable)</inlineHelpText>
+        <label>Support 1 re mental/psyco health ST</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Support_2_re_family_relationship_ST__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What progress do you want/ supports do you require in relation to your family and relationships in the short term: (If applicable)</inlineHelpText>
+        <label>Support 2 re family &amp; relationship ST</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Support_2_re_general_dental_health_ST__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What progress do you want/ supports do you require in relation to your general/ dental health in the short term? (If applicable)</inlineHelpText>
+        <label>Support 2 re general/dental health ST</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Support_2_re_mental_psyco_health_ST__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What progress do you want/ supports do you require in relation to your mental/ psychological/ emotional health in the short term?  (If applicable)</inlineHelpText>
+        <label>Support 2 re mental/psyco health ST</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Support_3_re_family_relationship_ST__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What progress do you want/ supports do you require in relation to your family and relationships in the short term: (If applicable)</inlineHelpText>
+        <label>Support 3 re family &amp; relationship ST</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Support_3_re_general_dental_health_ST__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What progress do you want/ supports do you require in relation to your general/ dental health in the short term? (If applicable)</inlineHelpText>
+        <label>Support 3 re general/dental health ST</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Support_3_re_mental_psyco_health_ST__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What progress do you want/ supports do you require in relation to your mental/ psychological/ emotional health in the short term?  (If applicable)</inlineHelpText>
+        <label>Support 3 re mental/psyco health ST</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Support_re_Legal_Issue_ST_1__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What progress do you want/ supports do you require in relation to your legal issues in the short term</inlineHelpText>
+        <label>Support re Legal Issue ST 1</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Support_re_Legal_Issue_ST_2__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What progress do you want/ supports do you require in relation to your legal issues in the short term</inlineHelpText>
+        <label>Support re Legal Issue ST 2</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Support_re_Legal_Issue_ST_3__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What progress do you want/ supports do you require in relation to your legal issues in the short term</inlineHelpText>
+        <label>Support re Legal Issue ST 3</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Support_re__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What progress do you want/ supports do you require in relation to your education &amp; training in the short term: (If applicable)</inlineHelpText>
+        <label>Supports required re edu/training ST 2</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Support_required_re_accommodation_ST_1__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What progress do you want/ supports do you require in relation to your accommodation and living arrangements in the short term:</inlineHelpText>
+        <label>Support required re accommodation ST 1</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Support_required_re_accommodation_ST_2__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What progress do you want/ supports do you require in relation to your accommodation and living arrangements in the short term:</inlineHelpText>
+        <label>Support required re accommodation ST 2</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Support_required_re_accommodation_ST_3__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What progress do you want/ supports do you require in relation to your accommodation and living arrangements in the short term:</inlineHelpText>
+        <label>Support required re accommodation ST 3</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Support_required_re_cultural_matters_ST1__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Cultural &amp; ethnic matters: What progress do you want/ supports do you require in the short term</inlineHelpText>
+        <label>Support required re cultural matters ST1</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Support_required_re_cultural_matters_ST2__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Cultural &amp; ethnic matters: What progress do you want/ supports do you require in the short term</inlineHelpText>
+        <label>Support required re cultural matters ST2</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Support_required_re_cultural_matters_ST3__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Cultural &amp; ethnic matters: What progress do you want/ supports do you require in the short term</inlineHelpText>
+        <label>Support required re cultural matters ST3</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Support_required_re_finances_ST_1__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What progress do you want/ supports do you require in relation to your finances in the short term:</inlineHelpText>
+        <label>Support required re finances ST 1</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Support_required_re_finances_ST_2__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What progress do you want/ supports do you require in relation to your finances in the short term:</inlineHelpText>
+        <label>Support required re finances ST 2</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Support_required_re_finances_ST_3__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What progress do you want/ supports do you require in relation to your finances in the short term:</inlineHelpText>
+        <label>Support required re finances ST 3</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Support_required_re_recre_activities_ST1__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Recreational activities / hobbies: What progress do you want/ supports do you require in the short term</inlineHelpText>
+        <label>Support required re recre activities ST1</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Support_required_re_recre_activities_ST2__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Recreational activities / hobbies: What progress do you want/ supports do you require in the short term</inlineHelpText>
+        <label>Support required re recre activities ST2</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Support_required_re_recre_activities_ST3__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Recreational activities / hobbies: What progress do you want/ supports do you require in the short term</inlineHelpText>
+        <label>Support required re recre activities ST3</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Support_required_re_religious_matter_ST1__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Religious &amp; spiritual matters: What progress do you want/ supports do you require in the short term</inlineHelpText>
+        <label>Support required re religious matter ST1</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Support_required_re_religious_matter_ST2__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Religious &amp; spiritual matters: What progress do you want/ supports do you require in the short term</inlineHelpText>
+        <label>Support required re religious matter ST2</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Support_required_re_religious_matter_ST3__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Religious &amp; spiritual matters: What progress do you want/ supports do you require in the short term</inlineHelpText>
+        <label>Support required re religious matter ST3</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Supports_required_re_edu_training_ST_1__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What progress do you want/ supports do you require in relation to your education &amp; training in the short term: (If applicable)</inlineHelpText>
+        <label>Supports required re edu/training ST 1</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Supports_required_re_edu_training_ST_3__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What progress do you want/ supports do you require in relation to your education &amp; training in the short term: (If applicable)</inlineHelpText>
+        <label>Supports required re edu/training ST 3</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Supports_required_re_employment_ST_1__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What progress do you want/ supports do you require in relation to your employment situation in the short term</inlineHelpText>
+        <label>Supports required re employment ST 1</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Supports_required_re_employment_ST_2__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What progress do you want/ supports do you require in relation to your employment situation in the short term</inlineHelpText>
+        <label>Supports required re employment ST 2</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Supports_required_re_employment_ST_3__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What progress do you want/ supports do you require in relation to your employment situation in the short term</inlineHelpText>
+        <label>Supports required re employment ST 3</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Type_help_treatment_received_re_alcohol__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please describe the type of help/ treatment you received: 
+(E.g. individual counselling, group counselling, residential rehabilitation, 
+etc)</inlineHelpText>
+        <label>Type help/treatment received re alcohol</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Type_help_treatment_received_re_drug__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please describe the type of help/ treatment you received:
+(E.g. individual counselling, residential detox, residential rehabilitation, 
+methadone maintenance, etc.)</inlineHelpText>
+        <label>Type help/treatment received re drug</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Type_of_treatment_re_alcoho_required_now__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What type of help /treatment do you think would be beneficial to you now?</inlineHelpText>
+        <label>Type of treatment re alcoho required now</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Type_of_treatment_re_drug_required_now__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What type of help /treatment do you think would be beneficial to you now?</inlineHelpText>
+        <label>Type of treatment re drug required now</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>What_do_you_need_to_make_the_changes__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What do you think you need to do to make the changes you want?</inlineHelpText>
+        <label>What do you need to make the changes</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Withdrawal_symptom_stop_taking_substance__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you experience withdrawal symptoms when you stop taking substances? (Examples may include nausea, vomiting, diahorrea, abdominal discomfort, muscle aches, anxiety, irritability, insomnia, palpitations, shakes) please give details</inlineHelpText>
+        <label>Withdrawal symptom stop taking substance</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Worry_about_use__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Did you worry about your use of the preference substance?
+0 = Never/almost never
+1 =Sometimes
+2 = Often
+3 = Always/nearly always</inlineHelpText>
+        <label>Worry about use</label>
+        <precision>1</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Would_like_a_test_for_HIV__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Would like a test for HIV</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Would_like_a_test_for_Hepatitis_B__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Would like a test for Hepatitis B</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Would_like_a_test_for_Hepatitis_C__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Would like a test for Hepatitis C</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Write_to_you_at_this_address__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Write to you at this address</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Your_child_s_1_address_is_if_known__c</fullName>
+        <externalId>false</externalId>
+        <label>Your child’s 1 address is: (if known)</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Your_child_s_2_address_is_if_known__c</fullName>
+        <externalId>false</externalId>
+        <label>Your child’s 2 address is: (if known)</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>TextArea</type>
+    </fields>
+    <fields>
+        <fullName>Your_child_s_3_address_is_if_known__c</fullName>
+        <externalId>false</externalId>
+        <label>Your child’s 3 address is: (if known)</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Your_child_s_4_address_is_if_known__c</fullName>
+        <externalId>false</externalId>
+        <label>Your child’s 4 address is: (if known)</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>is_use_out_of_control__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you think the use of (preference substance) was out of control?
+0 = Never/almost never
+1 =Sometimes
+2 = Often
+3 = Always/nearly always</inlineHelpText>
+        <label>is use out of control?</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>when_you_had_your_last_smear__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>If ‘yes’ can you give me an estimated date of when you had your last smear?</inlineHelpText>
+        <label>when you had your last smear</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <label>Comprehensive Assessment</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>CA-{YY}-{0000}</displayFormat>
+        <label>Comprehensive Assessment Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Comprehensive Assessments</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>

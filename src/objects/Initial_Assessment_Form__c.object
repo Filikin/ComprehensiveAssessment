@@ -1,0 +1,3372 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<CustomObject xmlns="http://soap.sforce.com/2006/04/metadata">
+    <actionOverrides>
+        <actionName>Accept</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>CancelEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Clone</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Delete</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Edit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Follow</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>List</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>New</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>SaveEdit</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>Tab</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <actionOverrides>
+        <actionName>View</actionName>
+        <type>Default</type>
+    </actionOverrides>
+    <compactLayoutAssignment>SYSTEM</compactLayoutAssignment>
+    <deploymentStatus>Deployed</deploymentStatus>
+    <enableActivities>true</enableActivities>
+    <enableEnhancedLookup>true</enableEnhancedLookup>
+    <enableFeeds>false</enableFeeds>
+    <enableHistory>false</enableHistory>
+    <enableReports>true</enableReports>
+    <fields>
+        <fullName>AUDIT_Score__c</fullName>
+        <externalId>false</externalId>
+        <formula>VALUE(Alcohol_Use_Q1__c) + VALUE(Alcohol_Use_Q2__c) + VALUE(Alcohol_Use_Q3__c) + VALUE(Alcohol_Use_Q4__c) + VALUE(Alcohol_Use_Q5__c) + VALUE(Alcohol_Use_Q6__c) + VALUE(Alcohol_Use_Q7__c) + VALUE(Alcohol_Use_Q8__c) + VALUE(Alcohol_Use_Q9__c) + VALUE(Alcohol_Use_Q10__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>AUDIT Score</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Address__c</fullName>
+        <externalId>false</externalId>
+        <formula>IF(LEN(Client__r.MailingStreet) &gt;1, Client__r.MailingStreet&amp; BR() , &quot;&quot;)&amp;
+IF(LEN( Client__r.MailingCity ) &gt;1, Client__r.MailingCity &amp; BR() , &quot;&quot;)&amp;
+IF(LEN( Client__r.MailingState ) &gt;1, Client__r.MailingState , &quot;&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Address</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Age__c</fullName>
+        <externalId>false</externalId>
+        <formula>Client__r.eCASS02t1__Age__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Age</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Age_first_injected_Not_known__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Age first injected Not known</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Age_first_injected__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What age were you when you first injected (if applicable)</inlineHelpText>
+        <label>Age first injected</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Age_first_use_any_drug__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What age were you when you first used:</inlineHelpText>
+        <label>Age first use any drug</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Age_of_first_use_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Age of first use 1</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Age_of_first_use_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Age of first use 2</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Age_of_first_use_3__c</fullName>
+        <externalId>false</externalId>
+        <label>Age of first use 3</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Age_of_first_use_4__c</fullName>
+        <externalId>false</externalId>
+        <label>Age of first use 4</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Age_of_first_use_5__c</fullName>
+        <externalId>false</externalId>
+        <label>Age of first use 5</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Age_of_first_use_6__c</fullName>
+        <externalId>false</externalId>
+        <label>Age of first use 6</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Agency_service_1_was_person_referred_to__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>If ‘yes’ to above to which agency(ies)/ service(s) was person referred to:</inlineHelpText>
+        <label>Agency/ service 1 was person referred to</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Agency_service_2_was_person_referred_to__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>If ‘yes’ to above to which agency(ies)/ service(s) was person referred to:</inlineHelpText>
+        <label>Agency/ service 2 was person referred to</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Agency_service_3_was_person_referred_to__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>If ‘yes’ to above to which agency(ies)/ service(s) was person referred to:</inlineHelpText>
+        <label>Agency/ service 3 was person referred to</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Agency_service_4_was_person_referred_to__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>If ‘yes’ to above to which agency(ies)/ service(s) was person referred to:</inlineHelpText>
+        <label>Agency/ service 4 was person referred to</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Alcohol_Use_Q10__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE(TEXT(X10_Relative_concerned_about_you__c),
+&quot;(0) No&quot;,&quot;0&quot;, 
+&quot;(2) Yes, but not in the last year&quot;,&quot;2&quot;, 
+&quot;(4) Yes, during the last year&quot;,&quot;4&quot;, 
+&quot;&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Alcohol Use Q10</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Alcohol_Use_Q1__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE(TEXT(X1_How_often_do_you_drink_alcohol__c),
+&quot;(0) Never (skip to Qs 9 – 10)&quot;,&quot;0&quot;,
+&quot;(1) Monthly or less&quot;,&quot;1&quot;,
+&quot;(2) 2 to 4 times a month&quot;,&quot;2&quot;,
+&quot;(3) 2 to 3 times a week&quot;,&quot;3&quot;,
+&quot;(4) 4 or more times a week&quot;,&quot;4&quot;,
+&quot;&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Alcohol Use Q1</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Alcohol_Use_Q2__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE(TEXT(X2_How_many_drinks_per_occasion__c),
+&quot;(0) 1 or 2&quot;,&quot;0&quot;,
+&quot;(1) 3 or 4&quot;,&quot;1&quot;,
+&quot;(2) 5 or 6&quot;,&quot;2&quot;,
+&quot;(3) 7, 8, or 9&quot;,&quot;3&quot;,
+&quot;(4) 10 or more&quot;,&quot;4&quot;,
+&quot;&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Alcohol Use Q2</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Alcohol_Use_Q3__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE(TEXT(X3_How_often_do_you_have_six_more_drinks__c),
+&quot;(0) Never&quot;,&quot;0&quot;,
+&quot;(1) Less than monthly&quot;,&quot;1&quot;,
+&quot;(2) Monthly&quot;,&quot;2&quot;,
+&quot;(3) Weekly&quot;,&quot;3&quot;,
+&quot;(4) Daily or almost daily&quot;,&quot;4&quot;,
+&quot;&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Alcohol Use Q3</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Alcohol_Use_Q4__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE(TEXT(X4_Were_you_not_able_to_stop_drinking__c),
+&quot;(0) Never&quot;,&quot;0&quot;,
+&quot;(1) Less than monthly&quot;,&quot;1&quot;,
+&quot;(2) Monthly&quot;,&quot;2&quot;,
+&quot;(3) Weekly&quot;,&quot;3&quot;,
+&quot;(4) Daily or almost daily&quot;,&quot;4&quot;,
+&quot;&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Alcohol Use Q4</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Alcohol_Use_Q5__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE(TEXT(X5_Have_you_failed_to_do_what_was_expect__c),
+&quot;(0) Never&quot;,&quot;0&quot;,
+&quot;(1) Less than monthly&quot;,&quot;1&quot;,
+&quot;(2) Monthly&quot;,&quot;2&quot;,
+&quot;(3) Weekly&quot;,&quot;3&quot;,
+&quot;(4) Daily or almost daily&quot;,&quot;4&quot;,
+&quot;&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Alcohol Use Q5</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Alcohol_Use_Q6__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE(TEXT(X6_You_needed_a_drink_in_the_morning__c),
+&quot;(0) Never&quot;,&quot;0&quot;,
+&quot;(1) Less than monthly&quot;,&quot;1&quot;,
+&quot;(2) Monthly&quot;,&quot;2&quot;,
+&quot;(3) Weekly&quot;,&quot;3&quot;,
+&quot;(4) Daily or almost daily&quot;,&quot;4&quot;,
+&quot;&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Alcohol Use Q6</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Alcohol_Use_Q7__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE(TEXT(X7_Have_you_had_a_feeling_of_guilt__c),
+&quot;(0) Never&quot;,&quot;0&quot;,
+&quot;(1) Less than monthly&quot;,&quot;1&quot;,
+&quot;(2) Monthly&quot;,&quot;2&quot;,
+&quot;(3) Weekly&quot;,&quot;3&quot;,
+&quot;(4) Daily or almost daily&quot;,&quot;4&quot;,
+&quot;&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Alcohol Use Q7</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Alcohol_Use_Q8__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE(TEXT(X8_Have_you_been_unable_to_remember__c),
+&quot;(0) Never&quot;,&quot;0&quot;, 
+&quot;(1) Less than monthly&quot;,&quot;1&quot;, 
+&quot;(2) Monthly&quot;,&quot;2&quot;, 
+&quot;(3) Weekly&quot;,&quot;3&quot;, 
+&quot;(4) Daily or almost daily&quot;,&quot;4&quot;, 
+&quot;&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Alcohol Use Q8</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Alcohol_Use_Q9__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE(TEXT(X9_Have_you_been_injured__c),
+&quot;(0) No&quot;,&quot;0&quot;,
+&quot;(2) Yes, but not in the last year&quot;,&quot;2&quot;,
+&quot;(4) Yes, during the last year&quot;,&quot;4&quot;,
+&quot;&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Alcohol Use Q9</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Amount_used_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Amount used 1</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Amount_used_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Amount used 2</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Amount_used_3__c</fullName>
+        <externalId>false</externalId>
+        <label>Amount used 3</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Amount_used_4__c</fullName>
+        <externalId>false</externalId>
+        <label>Amount used 4</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Amount_used_5__c</fullName>
+        <externalId>false</externalId>
+        <label>Amount used 5</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Amount_used_6__c</fullName>
+        <externalId>false</externalId>
+        <label>Amount used 6</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Any_additional_information_Ongoing_care__c</fullName>
+        <externalId>false</externalId>
+        <label>Any additional information Ongoing care</label>
+        <length>2000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Any_additional_information__c</fullName>
+        <externalId>false</externalId>
+        <label>Any additional information:</label>
+        <length>2000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Any_additional_information_re_Drugs__c</fullName>
+        <externalId>false</externalId>
+        <label>Any additional information re Drugs</label>
+        <length>2000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Any_physical_access_requirements__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you have Do you have any physical access requirements/ physical disabilities?/ physical disabilities?</inlineHelpText>
+        <label>Any physical access requirements</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Any_problems_with_your_injection_sites__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Have you experienced any problems with your injection sites? Yes, No</inlineHelpText>
+        <label>Any problems with your injection sites</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Are_you_pregnant__c</fullName>
+        <externalId>false</externalId>
+        <label>Are you pregnant?</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Don’t know</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Areas_you_would_like_help_support_with_1__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Areas you would like help/support with 1</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Areas_you_would_like_help_support_with_2__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Areas you would like help/support with 2</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Areas_you_would_like_help_support_with_3__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Areas you would like help/support with 3</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Areas_you_would_like_help_support_with_4__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Areas you would like help/support with 4</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Areas_you_would_like_help_support_with_5__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Areas you would like help/support with 5</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Areas_you_would_like_help_support_with_6__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Areas you would like help/support with 6</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Areas_you_would_like_help_support_with_7__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Areas you would like help/support with 7</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Areas_you_would_like_help_support_with_8__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Areas you would like help/support with 8</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Assessment_outcome__c</fullName>
+        <externalId>false</externalId>
+        <label>Assessment outcome</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Suitable</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Unsuitable</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Audit_Total_Score__c</fullName>
+        <externalId>false</externalId>
+        <formula>1</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Audit Total Score</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Baby_due_date__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>If pregnant please specify the date your bay is due</inlineHelpText>
+        <label>Baby due date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Brief_history_of_possible_risk_behaviour__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please obtain a brief history of possible risk behaviours:</inlineHelpText>
+        <label>Brief history of possible risk behaviour</label>
+        <length>2000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Brief_relevant_alcohol_case_history__c</fullName>
+        <externalId>false</externalId>
+        <label>Brief relevant alcohol case history</label>
+        <length>2000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Centre_assessment_criteria_filled__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Centre assessment criteria filled</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Client__c</fullName>
+        <externalId>false</externalId>
+        <label>Client</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Initial Assessment Forms (Client)</relationshipLabel>
+        <relationshipName>Initial_Assessment_Forms4</relationshipName>
+        <relationshipOrder>0</relationshipOrder>
+        <reparentableMasterDetail>false</reparentableMasterDetail>
+        <trackTrending>false</trackTrending>
+        <type>MasterDetail</type>
+        <writeRequiresMasterRead>false</writeRequiresMasterRead>
+    </fields>
+    <fields>
+        <fullName>Concerns_about_your_mental_health__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you currently have any concerns about your mental health?</inlineHelpText>
+        <label>Concerns about your mental health</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Concerns_about_your_physical_health__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you currently have any concerns about your physical health?</inlineHelpText>
+        <label>Concerns about your physical health</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Consent_to_share_information_signed__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Consent to share information signed</description>
+        <externalId>false</externalId>
+        <inlineHelpText>Has a ‘Consent to share information’ form been signed?</inlineHelpText>
+        <label>Consent to share information signed</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Consent_to_transfer_Initial_Assessment__c</fullName>
+        <defaultValue>false</defaultValue>
+        <description>Consent to transfer Initial Assessment</description>
+        <externalId>false</externalId>
+        <inlineHelpText>If person is being referred for Comprehensive Assessment has consent to transfer Initial Assessment form to relevant agency/ service been signed?</inlineHelpText>
+        <label>Consent to transfer Initial Assessment</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Contact_details_phone_number_address__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please identify services / workers you have been in contact with over the past year, including drug &amp; alcohol
+services? (May include: addiction treatment service, housing / homeless services, GP, counsellor, social worker,
+legal services)</inlineHelpText>
+        <label>Contact details : phone number, address</label>
+        <length>2000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Currently_have_a_care_plan_substance_use__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you currently have a care plan to help you with your substance use?</inlineHelpText>
+        <label>Currently have a care plan/substance use</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Not known</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Currently_receiving_medical_treatment__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Are you currently receiving medical treatment for any health condition?</inlineHelpText>
+        <label>Currently receiving medical treatment</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>DOB__c</fullName>
+        <externalId>false</externalId>
+        <formula>Client__r.Birthdate</formula>
+        <label>DOB</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>DUDIT_SCORE__c</fullName>
+        <externalId>false</externalId>
+        <formula>VALUE(Drug_Use_Q1__c) + VALUE(Drug_Use_Q2__c) + VALUE(Drug_Use_Q3__c) + VALUE(Drug_Use_Q4__c) + VALUE(Drug_Use_Q5__c) + VALUE(Drug_Use_Q6__c) + VALUE(Drug_Use_Q7__c) + VALUE(Drug_Use_Q8__c) + VALUE(Drug_Use_Q9__c) + VALUE(Drug_Use_Q10__c) + VALUE(Drug_use_Q11__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>DUDIT SCORE</label>
+        <precision>18</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Date_assessment_criteria_filled__c</fullName>
+        <externalId>false</externalId>
+        <label>Date assessment criteria filled</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Date_of_initial_assessment__c</fullName>
+        <externalId>false</externalId>
+        <label>Date of initial assessment</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Do_you_know_Baby_due_date__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>If yes, do you know which date your baby is due? (Please insert expected due date if known)</inlineHelpText>
+        <label>Do you know Baby due date</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Don’t know</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Drug_Liaison_Midwife_involved_Date__c</fullName>
+        <externalId>false</externalId>
+        <label>Drug Liaison Midwife involved Date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Drug_Liaison_Midwife_involved__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Is the Drug Liaison Midwife involved in your pregnancy care?</inlineHelpText>
+        <label>Drug Liaison Midwife involved</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Drug_Use_Q10__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE(TEXT(X10_You_anyone_been_hurt_by_drug_use__c),
+&quot;(0) No&quot;,&quot;0&quot;,
+&quot;(1) Yes, but not over the past year&quot;,&quot;1&quot;,
+&quot;(2) Yes, over the past year&quot;,&quot;2&quot;,
+&quot;&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Drug Use Q10</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Drug_Use_Q1__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE(TEXT(X1_How_often_do_you_use_drugs__c),
+&quot;(0) Never&quot;,&quot;0&quot;,
+&quot;(1) Once a month or less&quot;,&quot;1&quot;,
+&quot;(2) 2-4 times a month&quot;,&quot;2&quot;,
+&quot;(3) 2-3 times a week&quot;,&quot;3&quot;,
+&quot;(4) 4 times a week or more often&quot;,&quot;4&quot;,
+&quot;&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Drug Use Q1</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Drug_Use_Q2__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE(TEXT(X2_Use_more_than_1_drug_same_occassion__c), 
+&quot;(0) Never&quot;,&quot;0&quot;, 
+&quot;(1) Once a month or less&quot;,&quot;1&quot;, 
+&quot;(2) 2-4 times a month&quot;,&quot;2&quot;, 
+&quot;(3) 2-3 times a week&quot;,&quot;3&quot;, 
+&quot;(4) 4 times a week or more often&quot;,&quot;4&quot;, 
+&quot;&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Drug Use Q2</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Drug_Use_Q3__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE(TEXT(X3_How_many_times_a_day_to_you_use_drug__c),
+&quot;(0) 0&quot;,&quot;0&quot;,
+&quot;(1) 1-2&quot;,&quot;1&quot;,
+&quot;(2) 3-4&quot;,&quot;2&quot;,
+&quot;(3) 5-6&quot;,&quot;3&quot;,
+&quot;(4) 7 or more&quot;,&quot;4&quot;,
+&quot;&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Drug Use Q3</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Drug_Use_Q4__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE(TEXT(X4_How_often_are_you_heavily_influenced__c),
+&quot;(0) Never&quot;,&quot;0&quot;,
+&quot;(1) Less often than one month&quot;,&quot;1&quot;,
+&quot;(2) Every month&quot;,&quot;2&quot;,
+&quot;(3) Every week&quot;,&quot;3&quot;,
+&quot;(4) Daily or almost every day&quot;,&quot;4&quot;,
+&quot;&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Drug Use Q4</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Drug_Use_Q5__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE(TEXT(X5_Longing_so_strong_couldnt_resist__c),
+&quot;(0) Never&quot;,&quot;0&quot;,
+&quot;(1) Less often than one month&quot;,&quot;1&quot;,
+&quot;(2) Every month&quot;,&quot;2&quot;,
+&quot;(3) Every week&quot;,&quot;3&quot;,
+&quot;(4) Daily or almost every day&quot;,&quot;4&quot;,
+&quot;&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Drug Use Q5</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Drug_Use_Q6__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE(TEXT(X6_Youve_not_been_able_to_stop_once_star__c),
+&quot;(0) Never&quot;,&quot;0&quot;,
+&quot;(1) Less often than one month&quot;,&quot;1&quot;,
+&quot;(2) Every month&quot;,&quot;2&quot;,
+&quot;(3) Every week&quot;,&quot;3&quot;,
+&quot;(4) Daily or almost every day&quot;,&quot;4&quot;,
+&quot;&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Drug Use Q6</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Drug_Use_Q7__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE(TEXT(X7_How_often_have_you_neglected__c),
+&quot;(0) Never&quot;,&quot;0&quot;,
+&quot;(1) Less often than one month&quot;,&quot;1&quot;,
+&quot;(2) Every month&quot;,&quot;2&quot;,
+&quot;(3) Every week&quot;,&quot;3&quot;,
+&quot;(4) Daily or almost every day&quot;,&quot;4&quot;,
+&quot;&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Drug Use Q7</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Drug_Use_Q8__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE(TEXT(X8_Take_a_drug_morning_after_heavy_drug__c),
+&quot;(0) Never&quot;,&quot;0&quot;,
+&quot;(1) Less often than one month&quot;,&quot;1&quot;,
+&quot;(2) Every month&quot;,&quot;2&quot;,
+&quot;(3) Every week&quot;,&quot;3&quot;,
+&quot;(4) Daily or almost every day&quot;,&quot;4&quot;,
+&quot;&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Drug Use Q8</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Drug_Use_Q9__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE(TEXT(X9_Guilt_or_bad_feelings_over_drug_use__c),
+&quot;(0) Never&quot;,&quot;0&quot;,
+&quot;(1) Less often than one month&quot;,&quot;1&quot;,
+&quot;(2) Every month&quot;,&quot;2&quot;,
+&quot;(3) Every week&quot;,&quot;3&quot;,
+&quot;(4) Daily or almost every day&quot;,&quot;4&quot;,
+&quot;&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Drug Use Q9</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Drug_type_1__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Drug type 1</label>
+        <referenceTo>eCASS02t1__Drug_HRB__c</referenceTo>
+        <relationshipLabel>Initial Assessment Forms</relationshipLabel>
+        <relationshipName>Initial_Assessment_Forms</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Drug_type_2__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Drug type 2</label>
+        <referenceTo>eCASS02t1__Drug_HRB__c</referenceTo>
+        <relationshipLabel>Initial Assessment Forms (Drug type 2)</relationshipLabel>
+        <relationshipName>Initial_Assessment_Forms1</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Drug_type_3__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Drug type 3</label>
+        <referenceTo>eCASS02t1__Drug_HRB__c</referenceTo>
+        <relationshipLabel>Initial Assessment Forms (Drug type 3)</relationshipLabel>
+        <relationshipName>Initial_Assessment_Forms2</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Drug_type_4__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Drug type 4</label>
+        <referenceTo>eCASS02t1__Drug_HRB__c</referenceTo>
+        <relationshipLabel>Initial Assessment Forms (Drug type 4)</relationshipLabel>
+        <relationshipName>Initial_Assessment_Forms3</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Drug_type_5__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Drug type 5</label>
+        <referenceTo>eCASS02t1__Drug_HRB__c</referenceTo>
+        <relationshipLabel>Initial Assessment Forms (Drug type 5)</relationshipLabel>
+        <relationshipName>Initial_Assessment_Forms4</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Drug_type_6__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Drug type 6</label>
+        <referenceTo>eCASS02t1__Drug_HRB__c</referenceTo>
+        <relationshipLabel>Initial Assessment Forms (Drug type 6)</relationshipLabel>
+        <relationshipName>Initial_Assessment_Forms5</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Drug_use_Q11__c</fullName>
+        <externalId>false</externalId>
+        <formula>CASE(TEXT(X11_Anyone_been_worried_about_drug_use__c),
+&quot;(0) No&quot;,&quot;0&quot;,
+&quot;(1) Yes, but not over the past year&quot;,&quot;1&quot;,
+&quot;(2) Yes, over the past year&quot;,&quot;2&quot;,
+&quot;&quot;)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Drug use Q11</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Ethnic_origin__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Client__r.eCASS02t1__X10b_Ethnic_Background__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Ethnic origin</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Ever_previously_treated_re_alcohol__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Have you ever previously been treated for problem alcohol use:</inlineHelpText>
+        <label>Ever previously treated re alcohol</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Never treated</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Previously treated</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Not known</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Not applicable</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Ever_previously_treated_re_drug__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Have you ever previously been treated for problem drug use:</inlineHelpText>
+        <label>Ever previously treated re drug</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Never treated</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Previously treated</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Not known</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Not applicable</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Experienced_any_ill_health_in_the_past__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Have you experienced any ill health in the past that required medical treatment?</inlineHelpText>
+        <label>Experienced any ill health in the past</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Extent_of_drinking_problem__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please categories the extent of drinking problem (as per tool):</inlineHelpText>
+        <label>Extent of drinking problem</label>
+        <picklist>
+            <picklistValues>
+                <fullName>No evidence of risky drinking</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Hazardous drinking</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Harmful drinking</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Dependent drinker</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Frequency_of_injecting_if_applicable__c</fullName>
+        <externalId>false</externalId>
+        <label>Frequency of injecting (if applicable):</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Injected in the last 30 days</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Injected in the last year but not in the last 30 days</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Ever injected but not within the Last 12 months</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Frequency_of_sharing_equipment__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Frequency of sharing equipment (spoons, filters, stericups, mixing tools, sterile water, citric acid, tourniquet, swabs, sterifilters, snorting equipment.):</inlineHelpText>
+        <label>Frequency of sharing equipment</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Has shared in the last 30 days</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Shared equipment in the last 12 months but more than 30 days ago</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Shared equipment more than 12 months ago</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Don’t know/ don’t want to answer</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Frequency_of_sharing_needles_syringe__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Frequency of sharing needles &amp; syringes (if applicable)</inlineHelpText>
+        <label>Frequency of sharing needles &amp; syringe</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Has shared in the last 30 days</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Shared needle or syringe in the last 12 months but more than 30 days ago</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Shared needles or more than 12 months ago</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Don’t know/ don’t want to answer</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Gender__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Client__r.eCASS02t1__X4_Gender__c)</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Gender</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Goals_1_you_have_for_the_future__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please identify any goals you have for the future (longer term).</inlineHelpText>
+        <label>Goals 1 you have for the future</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Goals_2_you_have_for_the_future__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please identify any goals you have for the future (longer term).</inlineHelpText>
+        <label>Goals 2 you have for the future</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Goals_3_you_have_for_the_future__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please identify any goals you have for the future (longer term).</inlineHelpText>
+        <label>Goals 3 you have for the future</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Goals_4_you_have_for_the_future__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please identify any goals you have for the future (longer term).</inlineHelpText>
+        <label>Goals 4 you have for the future</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Harm_reduction_awareness_1__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Harm reduction awareness 1</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Harm_reduction_awareness_2__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Harm reduction awareness 2</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Harm_reduction_awareness_3__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Harm reduction awareness 3</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Harm_reduction_awareness_4__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Harm reduction awareness 4</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Harm_reduction_awareness_5__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Harm reduction awareness 5</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Harm_reduction_awareness_6__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Harm reduction awareness 6</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Have_you_ever_overdosed_using_any_drug__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Have you ever overdosed using any drug?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>History_of_injecting__c</fullName>
+        <externalId>false</externalId>
+        <label>History of injecting</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Never injected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Has injected</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Not known</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>History_of_sharing_needles_syringes__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>History of sharing needles &amp; syringes</inlineHelpText>
+        <label>History of sharing needles &amp; syringes</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Never shared needles &amp; syringes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Has shared</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Not known</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>History_of_sharing_other_drug_using_equi__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>History of sharing other drug using equipment (spoons, filters, stericups, mixing tools, sterile water, citric acid, tourniquet, swabs, sterifilters, snorting equipment.):</inlineHelpText>
+        <label>History of sharing other drug using equi</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Never shared equipment</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Has shared equipment</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Not known</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>How_many_drinks_per_occasion_last_month__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>How many drinks would you have consumed over a typical drinking session over the last month (If none put 0)</inlineHelpText>
+        <label>How many drinks per occasion last month</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>How_often_used_1__c</fullName>
+        <externalId>false</externalId>
+        <label>How often used 1</label>
+        <picklist>
+            <picklistValues>
+                <fullName>1. Daily or almost daily</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2. Several times a week</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3. At least once a week</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4. Less than once a week</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5. Not known</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>How_often_used_2__c</fullName>
+        <externalId>false</externalId>
+        <label>How often used 2</label>
+        <picklist>
+            <picklistValues>
+                <fullName>1. Daily or almost daily</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2. Several times a week</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3. At least once a week</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4. Less than once a week</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5. Not known</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>How_often_used_3__c</fullName>
+        <externalId>false</externalId>
+        <label>How often used 3</label>
+        <picklist>
+            <picklistValues>
+                <fullName>1. Daily or almost daily</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2. Several times a week</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3. At least once a week</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4. Less than once a week</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5. Not known</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>How_often_used_4__c</fullName>
+        <externalId>false</externalId>
+        <label>How often used 4</label>
+        <picklist>
+            <picklistValues>
+                <fullName>1. Daily or almost daily</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2. Several times a week</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3. At least once a week</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4. Less than once a week</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5. Not known</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>How_often_used_5__c</fullName>
+        <externalId>false</externalId>
+        <label>How often used 5</label>
+        <picklist>
+            <picklistValues>
+                <fullName>1. Daily or almost daily</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2. Several times a week</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3. At least once a week</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4. Less than once a week</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5. Not known</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>How_often_used_6__c</fullName>
+        <externalId>false</externalId>
+        <label>How often used 6</label>
+        <picklist>
+            <picklistValues>
+                <fullName>1. Daily or almost daily</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2. Several times a week</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3. At least once a week</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4. Less than once a week</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5. Not known</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>If_currently_injecting_which_sites_use__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>If currently injecting, which sites do you use?</inlineHelpText>
+        <label>If currently injecting, which sites use</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>If_previously_treated_which_drugs__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>If previously treated please state for which drug(s):</inlineHelpText>
+        <label>If previously treated which drugs</label>
+        <length>150</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>If_received_opioid_specify_age__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>If you previously received opioid replacement treatment, please specify age first received opioid substitution treatment:</inlineHelpText>
+        <label>If received opioid, specify age</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>If_yes_Treatment_please_give_details__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Are you currently receiving medical treatment for any health condition? If yes, please give details:</inlineHelpText>
+        <label>If yes (Treatment), please give details:</label>
+        <length>2000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_concerns_mental_health_specify__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you currently have any concerns about your mental health? If yes, please give details:</inlineHelpText>
+        <label>If yes (concerns mental health) specify</label>
+        <length>2000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_ill_health_please_give_details__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Have you experienced any ill health in the past that required medical treatment? If yes, please give details:</inlineHelpText>
+        <label>If yes (ill health), please give details</label>
+        <length>2000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_mental_health_in_past_specify__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Have you received help for mental health difficulties in the past? If yes, please give details:</inlineHelpText>
+        <label>If yes (mental health in past) specify</label>
+        <length>2000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_mental_health_please_specify__c</fullName>
+        <externalId>false</externalId>
+        <label>If yes (mental health), please specify</label>
+        <length>2000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_overdosed_please_specify__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>If yes, please state what happened and when it happened:</inlineHelpText>
+        <label>If yes (overdosed) please specify</label>
+        <length>2000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_physical_disabilities_specify__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you have any physical access requirements/ physical disabilities?, please give details</inlineHelpText>
+        <label>If yes (physical disabilities) specify</label>
+        <length>2000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_physical_health_please_details__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you currently have any concerns about your physical health? If yes, please give details:</inlineHelpText>
+        <label>If yes (physical health), please details</label>
+        <length>2000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>If_yes_to_injecting_problems_specify__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Have you experienced any problems with your injection sites? 
+If ‘yes’ to above please elaborate.</inlineHelpText>
+        <label>If yes to injecting problems, specify</label>
+        <length>2000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Interventions_carried_out_advice_given_1__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please outline any other interventions carried out or advice/ information given:</inlineHelpText>
+        <label>Interventions carried out/advice given 1</label>
+        <length>200</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Interventions_carried_out_advice_given_2__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please outline any other interventions carried out or advice/ information given:</inlineHelpText>
+        <label>Interventions carried out/advice given 2</label>
+        <length>200</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Interventions_carried_out_advice_given_3__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please outline any other interventions carried out or advice/ information given:</inlineHelpText>
+        <label>Interventions carried out/advice given 3</label>
+        <length>200</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Interventions_carried_out_advice_given_4__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please outline any other interventions carried out or advice/ information given:</inlineHelpText>
+        <label>Interventions carried out/advice given 4</label>
+        <length>200</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Is_this_person_aware_of_your_drug_use__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Is this person aware of your drug use/ contact with this service:</inlineHelpText>
+        <label>Is this person aware of your drug use</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Living_where__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Client__r.eCASS02t1__X7b_Livin_Where__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Living where</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Living_with_whom__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Client__r.eCASS02t1__X7a_Living_with_whom__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Living with whom</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Mecation_Prescribed_By_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Mecation Prescribed By 1</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Mecation_Prescribed_By_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Mecation Prescribed By 2</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Mecation_Prescribed_By_3__c</fullName>
+        <externalId>false</externalId>
+        <label>Mecation Prescribed By 3</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Medication_Comments_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Medication Comments 1</label>
+        <length>3000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Medication_Comments_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Medication Comments 2</label>
+        <length>3000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Medication_Comments_3__c</fullName>
+        <externalId>false</externalId>
+        <label>Medication Comments 3</label>
+        <length>3000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Medication_Dose_and_Frecuency_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Medication Dose and Frecuency 1</label>
+        <length>200</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Medication_Dose_and_Frecuency_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Medication Dose and Frecuency 2</label>
+        <length>200</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Medication_Dose_and_Frecuency_3__c</fullName>
+        <externalId>false</externalId>
+        <label>Medication Dose and Frecuency 3</label>
+        <length>200</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Mobile__c</fullName>
+        <externalId>false</externalId>
+        <formula>Client__r.MobilePhone</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Mobile</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>NOK_Address__c</fullName>
+        <externalId>false</externalId>
+        <formula>Client__r.NOK_Address_if_different__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>NOK Address</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>NOK_Mobile__c</fullName>
+        <externalId>false</externalId>
+        <formula>Client__r.eCASS02t1__Next_of_Kin_mobile_phone__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>NOK Mobile</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Name_of_Medication_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Name of Medication 1</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Name_of_Medication_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Name of Medication 2</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Name_of_Medication_3__c</fullName>
+        <externalId>false</externalId>
+        <label>Name of Medication 3</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Name_of_next_of_kin__c</fullName>
+        <externalId>false</externalId>
+        <formula>Client__r.eCASS02t1__Next_of_Kin__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Name of next of kin</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Nationality_Country_on_passport__c</fullName>
+        <externalId>false</externalId>
+        <label>Nationality – Country on passport:</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_of_days_alcohol_consumed_last_M__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>How many days did you drink alcohol over the past month (If none put 0 ):</inlineHelpText>
+        <label>Number of days alcohol consumed last M</label>
+        <precision>2</precision>
+        <required>false</required>
+        <scale>0</scale>
+        <trackTrending>false</trackTrending>
+        <type>Number</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Number_of_times_started_treatment_CY__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What is the number of times you started treatment in this programme/ service this year (Jan – Dec) :</inlineHelpText>
+        <label>Number of times started treatment CY</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>On_mobile_number__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>On mobile number</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Ongoing_Carer_1_Phone__c</fullName>
+        <externalId>false</externalId>
+        <formula>Ongoing_Carer_1__r.Phone</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Ongoing Carer 1 Phone</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Ongoing_Carer_1__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Ongoing Carer 1</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Initial Assessment Forms (Ongoing Carer 1)</relationshipLabel>
+        <relationshipName>Initial_Assessment_Forms</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Ongoing_Carer_2_Phone__c</fullName>
+        <externalId>false</externalId>
+        <formula>Ongoing_Carer_2__r.Phone</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Ongoing Carer 2 Phone</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Ongoing_Carer_2__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Ongoing Carer 2</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Initial Assessment Forms (Ongoing Carer 2)</relationshipLabel>
+        <relationshipName>Initial_Assessment_Forms1</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Ongoing_Carer_3_Phone__c</fullName>
+        <externalId>false</externalId>
+        <formula>Ongoing_Carer_3__r.Phone</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Ongoing Carer 3 Phone</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Ongoing_Carer_3__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Ongoing Carer 3</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Initial Assessment Forms (Ongoing Carer 3)</relationshipLabel>
+        <relationshipName>Initial_Assessment_Forms2</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Ongoing_Carer_4_Phone__c</fullName>
+        <externalId>false</externalId>
+        <formula>Ongoing_Carer_4__r.Phone</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Ongoing Carer 4 Phone</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Ongoing_Carer_4__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <label>Ongoing Carer 4</label>
+        <referenceTo>Contact</referenceTo>
+        <relationshipLabel>Initial Assessment Forms (Ongoing Carer 4)</relationshipLabel>
+        <relationshipName>Initial_Assessment_Forms3</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Other_Drug_Treatment_Centre_Name__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>When Other Drug Treatment Centre has been chosen as the source of referral name the agency here</inlineHelpText>
+        <label>Other Drug Treatment Centre Name</label>
+        <length>50</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Other_healthcare_involved_specify__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>If other healthcare workers are involved in your pregnancy care please give details: (E.g. General Practitioner, Obstetrician, Midwife, Social Worker, etc)</inlineHelpText>
+        <label>Other healthcare involved, specify</label>
+        <length>1000</length>
+        <trackTrending>false</trackTrending>
+        <type>LongTextArea</type>
+        <visibleLines>3</visibleLines>
+    </fields>
+    <fields>
+        <fullName>PPS_Number__c</fullName>
+        <externalId>false</externalId>
+        <formula>Client__r.PPS_Number__c</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>PPS Number</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Please_specify_the_first_drug_you_used__c</fullName>
+        <deleteConstraint>SetNull</deleteConstraint>
+        <externalId>false</externalId>
+        <inlineHelpText>Please specify the first drug you used (excluding alcohol):</inlineHelpText>
+        <label>Please specify the first drug you used</label>
+        <referenceTo>eCASS02t1__Drug_HRB__c</referenceTo>
+        <relationshipLabel>Initial Assessment Forms (Please specify the first drug you used)</relationshipLabel>
+        <relationshipName>Initial_Assessment_Forms6</relationshipName>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Lookup</type>
+    </fields>
+    <fields>
+        <fullName>Received_help_for_mental_health__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Have you received help for mental health difficulties in the past?</inlineHelpText>
+        <label>Received help for mental health</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Don’t know</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Receiving_any_help_for_mental_health__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Are you currently receiving any help for mental health difficulties?</inlineHelpText>
+        <label>Receiving any help for mental health</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Reduce_problems_with_substance_use__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>Would you like to reduce any of the problems associated with your substance use?</inlineHelpText>
+        <label>Reduce problems with substance use</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Referral_date__c</fullName>
+        <externalId>false</externalId>
+        <label>Referral date</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Date</type>
+    </fields>
+    <fields>
+        <fullName>Referral_for_comprehensive_assessment__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Referral for comprehensive assessment:</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>Relationhip_to_you__c</fullName>
+        <externalId>false</externalId>
+        <formula>TEXT(Client__r.NOK_Relationship__c )</formula>
+        <formulaTreatBlanksAs>BlankAsZero</formulaTreatBlanksAs>
+        <label>Relationhip to you</label>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Route_of_transmission_1__c</fullName>
+        <externalId>false</externalId>
+        <label>Route of transmission 1</label>
+        <picklist>
+            <picklistValues>
+                <fullName>1. Inject</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2. smoke</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3. Eat/ drink</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4. Sniff/ snort</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5. Sublingual</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>6. Rectal</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>7. Topical</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Route_of_transmission_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Route of transmission 2</label>
+        <picklist>
+            <picklistValues>
+                <fullName>1. Inject</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2. smoke</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3. Eat/ drink</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4. Sniff/ snort</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5. Sublingual</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>6. Rectal</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>7. Topical</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Route_of_transmission_3__c</fullName>
+        <externalId>false</externalId>
+        <label>Route of transmission 3</label>
+        <picklist>
+            <picklistValues>
+                <fullName>1. Inject</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2. smoke</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3. Eat/ drink</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4. Sniff/ snort</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5. Sublingual</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>6. Rectal</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>7. Topical</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Route_of_transmission_4__c</fullName>
+        <externalId>false</externalId>
+        <label>Route of transmission 4</label>
+        <picklist>
+            <picklistValues>
+                <fullName>1. Inject</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2. smoke</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3. Eat/ drink</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4. Sniff/ snort</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5. Sublingual</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>6. Rectal</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>7. Topical</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Route_of_transmission_5__c</fullName>
+        <externalId>false</externalId>
+        <label>Route of transmission 5</label>
+        <picklist>
+            <picklistValues>
+                <fullName>1. Inject</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2. smoke</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3. Eat/ drink</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4. Sniff/ snort</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5. Sublingual</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>6. Rectal</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>7. Topical</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Route_of_transmission_6__c</fullName>
+        <externalId>false</externalId>
+        <label>Route of transmission 6</label>
+        <picklist>
+            <picklistValues>
+                <fullName>1. Inject</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>2. smoke</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>3. Eat/ drink</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>4. Sniff/ snort</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>5. Sublingual</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>6. Rectal</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>7. Topical</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Service_Organisation_2__c</fullName>
+        <externalId>false</externalId>
+        <label>Service /Organisation 2</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Service_Organisation_3__c</fullName>
+        <externalId>false</externalId>
+        <label>Service /Organisation 3</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Service_Organisation_4__c</fullName>
+        <externalId>false</externalId>
+        <label>Service /Organisation 4</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Service_Organisation__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please identify services / workers you have been in contact with over the past year, including drug &amp; alcohol
+services? (May include: addiction treatment service, housing / homeless services, GP, counsellor, social worker,
+legal services)</inlineHelpText>
+        <label>Service /Organisation</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Source_of_referral__c</fullName>
+        <externalId>false</externalId>
+        <label>Source of referral</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Self</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Family</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Friends</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>GP</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Outreach Worker</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Harm reduction programme</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>School</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Employer</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other drug treatment centre</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Prison</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Court/ probation/ police</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Social/ community service</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Accident &amp; emergency</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Acute hospital service (excluding A&amp;E)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Mental health liaison nurse At A&amp;E</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Mental health service including psychiatrist</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Not known</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Specify_main_type_of_alcohol_consume__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please specify the main type of alcohol you consume:</inlineHelpText>
+        <label>Specify main type of alcohol consume</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Beer</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Spirits</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Wine</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Fortified wine</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Cider</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Alcopops</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Other (specify)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>MultiselectPicklist</type>
+        <visibleLines>4</visibleLines>
+    </fields>
+    <fields>
+        <fullName>Specify_other_type_of_alcohol__c</fullName>
+        <externalId>false</externalId>
+        <label>Specify other type of alcohol</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Support_required_1_short_term__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What supports/ progress do you require/ want in this area (shorter term)?</inlineHelpText>
+        <label>Support required 1 short term</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Support_required_2_short_term__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What supports/ progress do you require/ want in this area (shorter term)?</inlineHelpText>
+        <label>Support required 2 short term</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Support_required_3_short_term__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What supports/ progress do you require/ want in this area (shorter term)?</inlineHelpText>
+        <label>Support required 3 short term</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Support_required_4_short_term__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What supports/ progress do you require/ want in this area (shorter term)?</inlineHelpText>
+        <label>Support required 4 short term</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Type_of_contact_with_this_programme__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>What has been your type of contact with this programme/ service:</inlineHelpText>
+        <label>Type of contact with this programme</label>
+        <picklist>
+            <picklistValues>
+                <fullName>First treatment</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>One or more treatment periods</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>Not known</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>Workers_Name__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Please identify services / workers you have been in contact with over the past year, including drug &amp; alcohol
+services? (May include: addiction treatment service, housing / homeless services, GP, counsellor, social worker,
+legal services)</inlineHelpText>
+        <label>Workers Name</label>
+        <length>100</length>
+        <required>false</required>
+        <trackTrending>false</trackTrending>
+        <type>Text</type>
+        <unique>false</unique>
+    </fields>
+    <fields>
+        <fullName>Write_to_you_at_this_address__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <label>Write to you at this address</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <fields>
+        <fullName>X10_Relative_concerned_about_you__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>10. Has a relative or friend or a doctor or another heath worker been concerned about your drinking or suggested you cut down?</inlineHelpText>
+        <label>10. Relative concerned about you</label>
+        <picklist>
+            <picklistValues>
+                <fullName>(0) No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(2) Yes, but not in the last year</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(4) Yes, during the last year</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>X10_You_anyone_been_hurt_by_drug_use__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Have you or anyone else been hurt (mentally or physically) because you used drugs</inlineHelpText>
+        <label>10 You/anyone been hurt by drug use?</label>
+        <picklist>
+            <picklistValues>
+                <fullName>(0) No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(1) Yes, but not over the past year</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(2) Yes, over the past year</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>X11_Anyone_been_worried_about_drug_use__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Has a relative or a friend, a doctor or a nurse, or anyone else, been worried about your drug use or said to you that you should stop using drugs?</inlineHelpText>
+        <label>11.Anyone been worried about drug use?</label>
+        <picklist>
+            <picklistValues>
+                <fullName>(0) No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(1) Yes, but not over the past year</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(2) Yes, over the past year</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>X1_How_often_do_you_drink_alcohol__c</fullName>
+        <externalId>false</externalId>
+        <label>1. How often do you drink alcohol?</label>
+        <picklist>
+            <picklistValues>
+                <fullName>(0) Never (skip to Qs 9 – 10)</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(1) Monthly or less</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(2) 2 to 4 times a month</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(3) 2 to 3 times a week</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(4) 4 or more times a week</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>X1_How_often_do_you_use_drugs__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>How often do you use drugs other than alcohol?</inlineHelpText>
+        <label>1.  How often do you use drugs</label>
+        <picklist>
+            <picklistValues>
+                <fullName>(0) Never</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(1) Once a month or less</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(2) 2-4 times a month</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(3) 2-3 times a week</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(4) 4 times a week or more often</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>X2_How_many_drinks_per_occasion__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>2. How many drinks containing alcohol do you have on a typical day when you are drinking?</inlineHelpText>
+        <label>2. How many drinks per occasion</label>
+        <picklist>
+            <picklistValues>
+                <fullName>(0) 1 or 2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(1) 3 or 4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(2) 5 or 6</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(3) 7, 8, or 9</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(4) 10 or more</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>X2_Use_more_than_1_drug_same_occassion__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Do you use more than one type of drug on the same occasion?</inlineHelpText>
+        <label>2. Use more than 1 drug same occassion?</label>
+        <picklist>
+            <picklistValues>
+                <fullName>(0) Never</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(1) Once a month or less</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(2) 2-4 times a month</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(3) 2-3 times a week</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(4) 4 times a week or more often</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>X3_How_many_times_a_day_to_you_use_drug__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>How many times do you take drugs on a typical day when you use drugs?</inlineHelpText>
+        <label>3.How many times a day to you use drugs?</label>
+        <picklist>
+            <picklistValues>
+                <fullName>(0) 0</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(1) 1-2</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(2) 3-4</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(3) 5-6</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(4) 7 or more</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>X3_How_often_do_you_have_six_more_drinks__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>3. How often do you have six or more drinks on one occasion?</inlineHelpText>
+        <label>3. How often do you have six/more drinks</label>
+        <picklist>
+            <picklistValues>
+                <fullName>(0) Never</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(1) Less than monthly</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(2) Monthly</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(3) Weekly</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(4) Daily or almost daily</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>X4_How_often_are_you_heavily_influenced__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>How often are you influenced heavily by drugs?</inlineHelpText>
+        <label>4.How often are you heavily influenced?</label>
+        <picklist>
+            <picklistValues>
+                <fullName>(0) Never</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(1) Less often that one month</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(2) Every month</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(3) Every week</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(4) Daily or almost every day</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>X4_Were_you_not_able_to_stop_drinking__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>4. How often during the last year have you found that you were not able to stop drinking once you had started?</inlineHelpText>
+        <label>4. Were you not able to stop drinking</label>
+        <picklist>
+            <picklistValues>
+                <fullName>(0) Never</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(1) Less than monthly</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(2) Monthly</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(3) Weekly</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(4) Daily or almost daily</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>X5_Have_you_failed_to_do_what_was_expect__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>5. How often during the last year have you failed to do what was normally expected of you?</inlineHelpText>
+        <label>5. Have you failed to do what was expect</label>
+        <picklist>
+            <picklistValues>
+                <fullName>(0) Never</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(1) Less than monthly</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(2) Monthly</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(3) Weekly</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(4) Daily or almost daily</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>X5_Longing_so_strong_couldnt_resist__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Over the past year, have you felt that your longing for drugs was so strong that you could not resist it?</inlineHelpText>
+        <label>5.Longing so strong couldnt resist?</label>
+        <picklist>
+            <picklistValues>
+                <fullName>(0) Never</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(1) Less often that one month</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(2) Every month</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(3) Every week</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(4) Daily or almost every day</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>X6_You_needed_a_drink_in_the_morning__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>6. How often during the last year have you needed a first drink in the morning to get yourself going after a heavy drinking session?</inlineHelpText>
+        <label>6. You needed a drink in the morning</label>
+        <picklist>
+            <picklistValues>
+                <fullName>(0) Never</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(1) Less than monthly</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(2) Monthly</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(3) Weekly</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(4) Daily or almost daily</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>X6_Youve_not_been_able_to_stop_once_star__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>Has it happened, over the past year, that you have not been able to stop taking drugs once you have started?</inlineHelpText>
+        <label>6.Youve not been able to stop once start</label>
+        <picklist>
+            <picklistValues>
+                <fullName>(0) Never</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(1) Less often that one month</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(2) Every month</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(3) Every week</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(4) Daily or almost every day</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>X7_Have_you_had_a_feeling_of_guilt__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>7. How often during the last year have you had a feeling of guilt or remorse after drinking?</inlineHelpText>
+        <label>7. Have you had a feeling of guilt</label>
+        <picklist>
+            <picklistValues>
+                <fullName>(0) Never</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(1) Less than monthly</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(2) Monthly</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(3) Weekly</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(4) Daily or almost daily</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>X7_How_often_have_you_neglected__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>How often over the past year have you taken drugs and then neglected to do something you should have done?</inlineHelpText>
+        <label>7.How often have you neglected over drug</label>
+        <picklist>
+            <picklistValues>
+                <fullName>(0) Never</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(1) Less often that one month</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(2) Every month</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(3) Every week</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(4) Daily or almost every day</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>X8_Have_you_been_unable_to_remember__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>8. How often during the last year have you been unable to remember what happened the night before because you had been drinking?</inlineHelpText>
+        <label>8. Have you been unable to remember</label>
+        <picklist>
+            <picklistValues>
+                <fullName>(0) Never</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(1) Less than monthly</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(2) Monthly</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(3) Weekly</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(4) Daily or almost daily</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>X8_Take_a_drug_morning_after_heavy_drug__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>How often over the past year have you needed to take a drug the morning after heavy drug use the day before?</inlineHelpText>
+        <label>8.Take a drug morning after heavy drug</label>
+        <picklist>
+            <picklistValues>
+                <fullName>(0) Never</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(1) Less often that one month</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(2) Every month</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(3) Every week</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(4) Daily or almost every day</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>X9_Guilt_or_bad_feelings_over_drug_use__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>How often over the past year have you had guilt feelings or a bad conscience because you used drugs?</inlineHelpText>
+        <label>9.Guilt or bad feelings over drug use?</label>
+        <picklist>
+            <picklistValues>
+                <fullName>(0) Never</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(1) Less often that one month</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(2) Every month</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(3) Every week</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(4) Daily or almost every day</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>X9_Have_you_been_injured__c</fullName>
+        <externalId>false</externalId>
+        <inlineHelpText>9. Have you or someone else been injured as a result of your drinking?</inlineHelpText>
+        <label>9. Have you been injured</label>
+        <picklist>
+            <picklistValues>
+                <fullName>(0) No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(2) Yes, but not in the last year</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>(4) Yes, during the last year</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
+        <trackTrending>false</trackTrending>
+        <type>Picklist</type>
+    </fields>
+    <fields>
+        <fullName>You_wish_to_address_your_substance_use__c</fullName>
+        <defaultValue>false</defaultValue>
+        <externalId>false</externalId>
+        <inlineHelpText>If ‘no’ to above, do you wish to address your substance use?</inlineHelpText>
+        <label>You wish to address your substance use?</label>
+        <trackTrending>false</trackTrending>
+        <type>Checkbox</type>
+    </fields>
+    <label>Initial Assessment Form</label>
+    <listViews>
+        <fullName>All</fullName>
+        <filterScope>Everything</filterScope>
+        <label>All</label>
+    </listViews>
+    <nameField>
+        <displayFormat>IAF-{YY}-{0000}</displayFormat>
+        <label>Initial Assessment Form Name</label>
+        <type>AutoNumber</type>
+    </nameField>
+    <pluralLabel>Initial Assessment Forms</pluralLabel>
+    <searchLayouts/>
+    <sharingModel>ControlledByParent</sharingModel>
+</CustomObject>
