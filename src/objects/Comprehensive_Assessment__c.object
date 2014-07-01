@@ -3262,4 +3262,14 @@ methadone maintenance, etc.)</inlineHelpText>
     <pluralLabel>Comprehensive Assessments</pluralLabel>
     <searchLayouts/>
     <sharingModel>ControlledByParent</sharingModel>
+    <webLinks>
+        <fullName>Load_Wizard</fullName>
+        <availability>online</availability>
+        <displayType>button</displayType>
+        <linkType>page</linkType>
+        <masterLabel>Load Wizard</masterLabel>
+        <openType>replace</openType>
+        <page>NDRICContinueFlowController</page>
+        <protected>false</protected>
+    </webLinks>
 </CustomObject>

@@ -1,0 +1,6 @@
+<apex:page standardController="Comprehensive_Assessment__c" extensions="NDRICFlowController">
+	<flow:interview name="Comprehensive_Assessment" interview="{!flDemo}" finishLocation="{!prFinishLocation}" >
+		<apex:param name="ClientID" value="{!Comprehensive_Assessment__c.Client__r.id}"/>
+		<apex:param name="CurrentAssessmentID" value="{!Comprehensive_Assessment__c.id}"/>
+	</flow:interview>
+</apex:page>

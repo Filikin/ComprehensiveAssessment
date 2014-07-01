@@ -1,6 +1,22 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <assignments>
+        <name>Assign_Update_Record_ID_to_New_Record_ID_Variable</name>
+        <label>Assign Update Record ID to New Record ID Variable</label>
+        <locationX>1136</locationX>
+        <locationY>292</locationY>
+        <assignmentItems>
+            <assignToReference>NewAssessment</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <elementReference>CurrentAssessmentID</elementReference>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Substance_Use_Description</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>Clear_Contraception_Concern_flag</name>
         <label>Clear Contraception Concern flag</label>
         <locationX>1302</locationX>
@@ -19,8 +35,8 @@
     <assignments>
         <name>Clear_Dental_Health_flag</name>
         <label>Clear Dental Health flag</label>
-        <locationX>500</locationX>
-        <locationY>934</locationY>
+        <locationX>718</locationX>
+        <locationY>907</locationY>
         <assignmentItems>
             <assignToReference>IsDentalHealthAnIssue</assignToReference>
             <operator>Assign</operator>
@@ -97,7 +113,7 @@
     <assignments>
         <name>Set_Sexual_Health_flag</name>
         <label>Set Sexual Health flag</label>
-        <locationX>857</locationX>
+        <locationX>952</locationX>
         <locationY>1129</locationY>
         <assignmentItems>
             <assignToReference>IsSexualHealthConcerns</assignToReference>
@@ -113,8 +129,8 @@
     <assignments>
         <name>SetDentalHealthFlag</name>
         <label>SetDentalHealthFlag</label>
-        <locationX>819</locationX>
-        <locationY>828</locationY>
+        <locationX>1254</locationX>
+        <locationY>810</locationY>
         <assignmentItems>
             <assignToReference>IsDentalHealthAnIssue</assignToReference>
             <operator>Assign</operator>
@@ -469,6 +485,31 @@
         </rules>
     </decisions>
     <decisions>
+        <name>Are_there_any_accommodation_difficulties</name>
+        <label>Are there any accommodation difficulties</label>
+        <locationX>624</locationX>
+        <locationY>4116</locationY>
+        <defaultConnector>
+            <targetReference>Finished</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No accommodation difficulties</defaultConnectorLabel>
+        <rules>
+            <name>There_are_accommodation_difficulties</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Tick_if_you_have_any_difficulty_with_your_accommodation</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Accommodation_move</targetReference>
+            </connector>
+            <label>There are accommodation difficulties</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Ask_about_smear_test_if_female</name>
         <label>Ask about smear test if female</label>
         <locationX>1296</locationX>
@@ -566,6 +607,56 @@
         </rules>
     </decisions>
     <decisions>
+        <name>Continue_or_start_new</name>
+        <label>Continue or start new</label>
+        <locationX>20</locationX>
+        <locationY>92</locationY>
+        <defaultConnector>
+            <targetReference>Get_General_Contact_Record_Type</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Start new comp assessment</defaultConnectorLabel>
+        <rules>
+            <name>Continue_Comp_Assessment</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>CurrentAssessmentID</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue></stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Find_Existing_Comp_Assessment</targetReference>
+            </connector>
+            <label>Continue Comp Assessment</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Create_of_Update_Assessment</name>
+        <label>Create of Update Assessment</label>
+        <locationX>511</locationX>
+        <locationY>481</locationY>
+        <defaultConnector>
+            <targetReference>CreateAssessmentRecord</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Create new comp assessment</defaultConnectorLabel>
+        <rules>
+            <name>Update_Comp_Assessment</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>CurrentAssessmentID</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue></stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Update_Comprehensive_Assessment</targetReference>
+            </connector>
+            <label>Update Comp Assessment</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Details_of_awareness_addressing</name>
         <label>Details of awareness addressing</label>
         <locationX>1481</locationX>
@@ -618,8 +709,8 @@
     <decisions>
         <name>Did_receive_help_for_drug_use_in_past</name>
         <label>Did receive help for drug use in past</label>
-        <locationX>1057</locationX>
-        <locationY>198</locationY>
+        <locationX>1492</locationX>
+        <locationY>180</locationY>
         <defaultConnector>
             <targetReference>SubstanceUse</targetReference>
         </defaultConnector>
@@ -643,8 +734,8 @@
     <decisions>
         <name>Did_Received_help_for_alcohol_use_in_the_past</name>
         <label>Did received help for alcohol use in the past</label>
-        <locationX>1479</locationX>
-        <locationY>194</locationY>
+        <locationX>1914</locationX>
+        <locationY>176</locationY>
         <defaultConnector>
             <targetReference>Did_receive_help_for_drug_use_in_past</targetReference>
         </defaultConnector>
@@ -818,8 +909,8 @@
     <decisions>
         <name>Is_Dental_Health_issues_filled_in</name>
         <label>Is Dental Health issues filled in</label>
-        <locationX>493</locationX>
-        <locationY>836</locationY>
+        <locationX>711</locationX>
+        <locationY>809</locationY>
         <defaultConnector>
             <targetReference>Clear_Dental_Health_flag</targetReference>
         </defaultConnector>
@@ -868,8 +959,8 @@
     <decisions>
         <name>Is_Sexual_Health_Issues</name>
         <label>Is Sexual Health Issues</label>
-        <locationX>610</locationX>
-        <locationY>1128</locationY>
+        <locationX>776</locationX>
+        <locationY>1136</locationY>
         <defaultConnector>
             <targetReference>Ever_had_HIV_or_Hepatitis_tests</targetReference>
         </defaultConnector>
@@ -893,8 +984,8 @@
     <decisions>
         <name>Is_Substance_entered</name>
         <label>Is Substance entered</label>
-        <locationX>861</locationX>
-        <locationY>612</locationY>
+        <locationX>1296</locationX>
+        <locationY>594</locationY>
         <defaultConnector>
             <targetReference>Create_Substance_Use</targetReference>
         </defaultConnector>
@@ -918,8 +1009,8 @@
     <decisions>
         <name>Is_substance_use_an_issue</name>
         <label>Is substance use an issue</label>
-        <locationX>918</locationX>
-        <locationY>87</locationY>
+        <locationX>1353</locationX>
+        <locationY>69</locationY>
         <defaultConnector>
             <targetReference>Physical_Health</targetReference>
         </defaultConnector>
@@ -1077,8 +1168,8 @@
     <recordCreates>
         <name>Create_Substance_Use</name>
         <label>Create Substance Use</label>
-        <locationX>1167</locationX>
-        <locationY>647</locationY>
+        <locationX>1602</locationX>
+        <locationY>629</locationY>
         <assignRecordIdToReference>Latestsubstanceuse</assignRecordIdToReference>
         <connector>
             <targetReference>SubstanceUse</targetReference>
@@ -1130,12 +1221,15 @@
     <recordCreates>
         <name>CreateAssessmentRecord</name>
         <label>CreateAssessmentRecord</label>
-        <locationX>495</locationX>
-        <locationY>596</locationY>
+        <locationX>435</locationX>
+        <locationY>635</locationY>
         <assignRecordIdToReference>NewAssessment</assignRecordIdToReference>
         <connector>
             <targetReference>Substance_Use_Description</targetReference>
         </connector>
+        <faultConnector>
+            <targetReference>Cannot_Create_Assessment</targetReference>
+        </faultConnector>
         <inputAssignments>
             <field>Assessment_Date__c</field>
             <value>
@@ -1228,6 +1322,151 @@
         </outputAssignments>
     </recordLookups>
     <recordLookups>
+        <name>Find_Existing_Comp_Assessment</name>
+        <label>Find Existing Comp Assessment</label>
+        <locationX>23</locationX>
+        <locationY>223</locationY>
+        <connector>
+            <targetReference>Get_General_Contact_Record_Type</targetReference>
+        </connector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>CurrentAssessmentID</elementReference>
+            </value>
+        </filters>
+        <object>Comprehensive_Assessment__c</object>
+        <outputAssignments>
+            <assignToReference>Accommodationdifficulties</assignToReference>
+            <field>Any_difficulty_with_your_accommodation__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>AssessmentDate</assignToReference>
+            <field>Assessment_Date__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>current_Concerned_running_Home</assignToReference>
+            <field>Concerned_re_maintaining_a_home__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>SubstanceUseDescriptionFromCurrentRecord</assignToReference>
+            <field>Current_substance_use_description__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>current_forhowlong1</assignToReference>
+            <field>For_how_long_1__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>current_forhowlong2</assignToReference>
+            <field>For_how_long_2__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>current_forhowlong3</assignToReference>
+            <field>For_how_long_3__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>current_forhowlong4</assignToReference>
+            <field>For_how_long_4__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>current_Goal_1_Accommodation</assignToReference>
+            <field>Goal_re_Accommodation_LT_1__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>current_Goal_2_Accommodation</assignToReference>
+            <field>Goal_re_Accommodation_LT_2__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>current_TickImpactLivingIndependently</assignToReference>
+            <field>Have_difficulties_to_live_independently__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>HaveExperiencedHomelessness</assignToReference>
+            <field>Have_you_ever_experienced_homelessness__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>current_RegisteredWithHomelessAuthority</assignToReference>
+            <field>Homeless_registered_with_Local_Authority__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>current_Accommodation_difficulties_details</assignToReference>
+            <field>If_yes_Accomodation_difficulty_specify__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>current_Concerned_running_home_details</assignToReference>
+            <field>If_yes_Maintaining_Home_specify__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>current_HomelessnessDetails</assignToReference>
+            <field>If_yes_homelessness_specify__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>current_HomeLivingIndependently</assignToReference>
+            <field>If_yes_please_specify_DLI__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>current_livingwhere1</assignToReference>
+            <field>Living_where_1__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>current_livingwhere2</assignToReference>
+            <field>Living_where_2__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>current_livingwhere3</assignToReference>
+            <field>Living_where_3__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>current_livingwhere4</assignToReference>
+            <field>Living_where_4__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>current_livingwithwhom1</assignToReference>
+            <field>Living_with_whom_1__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>current_livingwithwhom2</assignToReference>
+            <field>Living_with_whom_2__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>current_livingwithwhom3</assignToReference>
+            <field>Living_with_whom_3__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>current_livingwithwhom4</assignToReference>
+            <field>Living_with_whom_4__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>CanWePhoneYouOnMobile</assignToReference>
+            <field>On_mobile_number__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>ReasonForReferral</assignToReference>
+            <field>Reason_for_referral__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>ReferralDate</assignToReference>
+            <field>Referral_date__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>current_Support_1_Accommodation</assignToReference>
+            <field>Support_required_re_accommodation_ST_1__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>current_Support_2_Accommodation</assignToReference>
+            <field>Support_required_re_accommodation_ST_2__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>current_Support_3_Accommodation</assignToReference>
+            <field>Support_required_re_accommodation_ST_3__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>WritetoYouAtThisAddress</assignToReference>
+            <field>Write_to_you_at_this_address__c</field>
+        </outputAssignments>
+    </recordLookups>
+    <recordLookups>
         <name>Get_General_Contact_Record_Type</name>
         <label>Get General Contact Record Type</label>
         <locationX>154</locationX>
@@ -1276,6 +1515,56 @@
             <field>Id</field>
         </outputAssignments>
     </recordLookups>
+    <recordUpdates>
+        <name>Update_accommodation_goals_and_supports</name>
+        <label>Update accommodation goals and supports</label>
+        <locationX>1699</locationX>
+        <locationY>4206</locationY>
+        <connector>
+            <targetReference>Finished</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Record_Update_Fault</targetReference>
+        </faultConnector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>NewAssessment</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Goal_re_Accommodation_LT_1__c</field>
+            <value>
+                <elementReference>Goal_1_accommodation</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Goal_re_Accommodation_LT_2__c</field>
+            <value>
+                <elementReference>Goal_2_accommodation</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Support_required_re_accommodation_ST_1__c</field>
+            <value>
+                <elementReference>Support_1_accommodation</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Support_required_re_accommodation_ST_2__c</field>
+            <value>
+                <elementReference>Support_2_Accommodation</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Support_required_re_accommodation_ST_3__c</field>
+            <value>
+                <elementReference>Support_3_Accommodation</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Comprehensive_Assessment__c</object>
+    </recordUpdates>
     <recordUpdates>
         <name>Update_additional_mental_info</name>
         <label>Update additional mental info</label>
@@ -1329,8 +1618,8 @@
     <recordUpdates>
         <name>Update_Assesement_with_goals_and_changes</name>
         <label>Update Assesement with goals and changes</label>
-        <locationX>668</locationX>
-        <locationY>655</locationY>
+        <locationX>1015</locationX>
+        <locationY>710</locationY>
         <connector>
             <targetReference>Physical_Health</targetReference>
         </connector>
@@ -1382,8 +1671,8 @@
     <recordUpdates>
         <name>Update_Assessement_with_Alcohol_Use_Details</name>
         <label>Update Assessement with Alcohol Use Details</label>
-        <locationX>1223</locationX>
-        <locationY>247</locationY>
+        <locationX>1658</locationX>
+        <locationY>229</locationY>
         <connector>
             <targetReference>Did_receive_help_for_drug_use_in_past</targetReference>
         </connector>
@@ -1435,8 +1724,8 @@
     <recordUpdates>
         <name>Update_Assessement_with_Drug_Use_Details</name>
         <label>Update Assessement with Drug Use Details</label>
-        <locationX>1080</locationX>
-        <locationY>498</locationY>
+        <locationX>1515</locationX>
+        <locationY>480</locationY>
         <connector>
             <targetReference>SubstanceUse</targetReference>
         </connector>
@@ -1685,6 +1974,62 @@
             </value>
         </inputAssignments>
         <object>Contact</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Comprehensive_Assessment</name>
+        <label>Update Comprehensive Assessment</label>
+        <locationX>568</locationX>
+        <locationY>674</locationY>
+        <connector>
+            <targetReference>Assign_Update_Record_ID_to_New_Record_ID_Variable</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Cannot_Update_Assessment</targetReference>
+        </faultConnector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>CurrentAssessmentID</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Assessment_Date__c</field>
+            <value>
+                <elementReference>Assessment_Date</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Is_this_person_aware_of_your_drug_use__c</field>
+            <value>
+                <elementReference>Is_this_person_aware_of_your_drug_use</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>On_mobile_number__c</field>
+            <value>
+                <elementReference>Can_we_phone_you_on_your_mobile</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Reason_for_referral__c</field>
+            <value>
+                <elementReference>Reason_for_referral</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Referral_date__c</field>
+            <value>
+                <elementReference>Referral_date</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Write_to_you_at_this_address__c</field>
+            <value>
+                <elementReference>Can_we_write_to_you_at_this_address</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Comprehensive_Assessment__c</object>
     </recordUpdates>
     <recordUpdates>
         <name>Update_concerns_about_children</name>
@@ -2142,7 +2487,7 @@
         <locationX>1335</locationX>
         <locationY>3849</locationY>
         <connector>
-            <targetReference>Finished</targetReference>
+            <targetReference>ACCOMODATION_AND_LIVING_ARRANGEMENTS</targetReference>
         </connector>
         <faultConnector>
             <targetReference>Record_Update_Fault</targetReference>
@@ -2307,8 +2652,8 @@
     <recordUpdates>
         <name>Update_physical_health</name>
         <label>Update physical/Dental health</label>
-        <locationX>507</locationX>
-        <locationY>1024</locationY>
+        <locationX>725</locationX>
+        <locationY>997</locationY>
         <connector>
             <targetReference>Is_Sexual_Health_Issues</targetReference>
         </connector>
@@ -2408,6 +2753,50 @@
             <field>If_yes_family_mental_health_specify__c</field>
             <value>
                 <elementReference>Details_of_family_history_of_mental_health_problems</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Comprehensive_Assessment__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_running_a_home</name>
+        <label>Update running a home</label>
+        <locationX>1825</locationX>
+        <locationY>4088</locationY>
+        <connector>
+            <targetReference>Drug_Alcohol_Impacted_on_Accommodation</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Record_Update_Fault</targetReference>
+        </faultConnector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>NewAssessment</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Concerned_re_maintaining_a_home__c</field>
+            <value>
+                <elementReference>Tick_if_there_is_anything_about_running_or_maintaining_a_home</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Have_difficulties_to_live_independently__c</field>
+            <value>
+                <elementReference>Tick_if_you_think_that_impact_on_your_capacity_to_live_independently</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>If_yes_Maintaining_Home_specify__c</field>
+            <value>
+                <elementReference>If_there_is_please_give_details_running_a_home</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>If_yes_please_specify_DLI__c</field>
+            <value>
+                <elementReference>If_there_is_please_give_details_home</elementReference>
             </value>
         </inputAssignments>
         <object>Comprehensive_Assessment__c</object>
@@ -2582,6 +2971,468 @@
         </inputAssignments>
         <object>Comprehensive_Assessment__c</object>
     </recordUpdates>
+    <recordUpdates>
+        <name>Update_with_accommodation_difficulties</name>
+        <label>Update with accommodation difficulties</label>
+        <locationX>1173</locationX>
+        <locationY>4092</locationY>
+        <connector>
+            <targetReference>Homelessness</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Record_Update_Fault</targetReference>
+        </faultConnector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>NewAssessment</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>For_how_long_1__c</field>
+            <value>
+                <elementReference>For_how_long_1</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>For_how_long_2__c</field>
+            <value>
+                <elementReference>For_how_long_2</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>For_how_long_3__c</field>
+            <value>
+                <elementReference>For_how_long_3</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>For_how_long_4__c</field>
+            <value>
+                <elementReference>For_how_long_4</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Living_where_1__c</field>
+            <value>
+                <elementReference>Living_where_1</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Living_where_2__c</field>
+            <value>
+                <elementReference>Living_where_2</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Living_where_3__c</field>
+            <value>
+                <elementReference>Living_where_3</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Living_where_4__c</field>
+            <value>
+                <elementReference>Living_where_4</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Living_with_whom_1__c</field>
+            <value>
+                <elementReference>Living_with_whom_1</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Living_with_whom_2__c</field>
+            <value>
+                <elementReference>Living_with_whom_2</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Living_with_whom_3__c</field>
+            <value>
+                <elementReference>Living_with_whom_3</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Living_with_whom_4__c</field>
+            <value>
+                <elementReference>Living_with_whom_4</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Comprehensive_Assessment__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_with_accommodation_difficulties_0</name>
+        <label>Update with accommodation difficulties</label>
+        <locationX>640</locationX>
+        <locationY>4035</locationY>
+        <connector>
+            <targetReference>Are_there_any_accommodation_difficulties</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Record_Update_Fault</targetReference>
+        </faultConnector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>NewAssessment</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Any_difficulty_with_your_accommodation__c</field>
+            <value>
+                <elementReference>Tick_if_you_have_any_difficulty_with_your_accommodation</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>If_yes_Accomodation_difficulty_specify__c</field>
+            <value>
+                <elementReference>Accommodation_difficulties_details</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Comprehensive_Assessment__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_with_accommodation_difficulties_1</name>
+        <label>Update with accommodation difficulties</label>
+        <locationX>1520</locationX>
+        <locationY>4087</locationY>
+        <connector>
+            <targetReference>RunningOrMaintainingAHome</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Record_Update_Fault</targetReference>
+        </faultConnector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>NewAssessment</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Have_you_ever_experienced_homelessness__c</field>
+            <value>
+                <elementReference>Tick_if_you_have_ever_experienced_homelessness</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Homeless_registered_with_Local_Authority__c</field>
+            <value>
+                <elementReference>If_you_are_currently_homeless_tick_if_you_are_registered_with_a_Local_Authority</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>If_yes_homelessness_specify__c</field>
+            <value>
+                <elementReference>If_you_have_experienced_homelessness_please_give_details</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Comprehensive_Assessment__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_with_drug_effecting_accommodation</name>
+        <label>Update with drug effecting accommodation</label>
+        <locationX>1178</locationX>
+        <locationY>4206</locationY>
+        <connector>
+            <targetReference>Accommodation_Goals</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Record_Update_Fault</targetReference>
+        </faultConnector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>NewAssessment</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Drug_Alco_use_impacted_accomodation__c</field>
+            <value>
+                <elementReference>current_drug_effected_accommodation</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>If_yes_Drug_Alco_impacted_Acco_specify__c</field>
+            <value>
+                <elementReference>current_Drug_effect_accommodation</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Comprehensive_Assessment__c</object>
+    </recordUpdates>
+    <screens>
+        <name>Accommocation_Support</name>
+        <label>Accommocation Support</label>
+        <locationX>1520</locationX>
+        <locationY>4207</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Update_accommodation_goals_and_supports</targetReference>
+        </connector>
+        <fields>
+            <name>Whatprogressdoyouwantsupportsdoyourequireinrelationtoyouraccommodationandlivinga</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;What progress do you want / supports do you require in relation to your accommodation and living arrangements in the short term&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Support_1_accommodation</name>
+            <defaultValue>
+                <elementReference>current_Support_1_Accommodation</elementReference>
+            </defaultValue>
+            <fieldText>Support 1</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Support_2_Accommodation</name>
+            <defaultValue>
+                <elementReference>current_Support_2_Accommodation</elementReference>
+            </defaultValue>
+            <fieldText>Support 2</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Support_3_Accommodation</name>
+            <defaultValue>
+                <elementReference>current_Support_3_Accommodation</elementReference>
+            </defaultValue>
+            <fieldText>Support 3</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+    </screens>
+    <screens>
+        <name>Accommodation_Goals</name>
+        <label>Accommodation Goals</label>
+        <locationX>1366</locationX>
+        <locationY>4209</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Accommocation_Support</targetReference>
+        </connector>
+        <fields>
+            <name>Pleaseidentifyanygoalsyoumayhaveinrelationtoyouraccommodationandlivingarrangemen</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Please identify any goals you may have in relation to your accommodation and living arrangements in the long term&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Goal_1_accommodation</name>
+            <defaultValue>
+                <elementReference>current_Goal_1_Accommodation</elementReference>
+            </defaultValue>
+            <fieldText>Goal 1</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Goal_2_accommodation</name>
+            <defaultValue>
+                <elementReference>current_Goal_2_Accommodation</elementReference>
+            </defaultValue>
+            <fieldText>Goal 2</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+    </screens>
+    <screens>
+        <name>Accommodation_move</name>
+        <label>Accommodation move</label>
+        <locationX>1012</locationX>
+        <locationY>4099</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Update_with_accommodation_difficulties</targetReference>
+        </connector>
+        <fields>
+            <name>Howmanyaccommodationmoveshaveyouhadinthepastfiveyears</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Please give details of the accommodation moves have you had in the past five years&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Accommodation1</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Accommodation 1&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Living_where_1</name>
+            <dataType>String</dataType>
+            <defaultValue>
+                <elementReference>current_livingwhere1</elementReference>
+            </defaultValue>
+            <fieldText>Living where</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Living_with_whom_1</name>
+            <dataType>String</dataType>
+            <defaultValue>
+                <elementReference>current_livingwithwhom1</elementReference>
+            </defaultValue>
+            <fieldText>Living with whom</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>For_how_long_1</name>
+            <dataType>String</dataType>
+            <defaultValue>
+                <elementReference>current_forhowlong1</elementReference>
+            </defaultValue>
+            <fieldText>For how long</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Accommodation2</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Accommodation 2&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Living_where_2</name>
+            <dataType>String</dataType>
+            <defaultValue>
+                <elementReference>current_livingwhere2</elementReference>
+            </defaultValue>
+            <fieldText>Living where</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Living_with_whom_2</name>
+            <dataType>String</dataType>
+            <defaultValue>
+                <elementReference>current_livingwithwhom2</elementReference>
+            </defaultValue>
+            <fieldText>Living with whom</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>For_how_long_2</name>
+            <dataType>String</dataType>
+            <defaultValue>
+                <elementReference>current_forhowlong2</elementReference>
+            </defaultValue>
+            <fieldText>For how long</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Accommodation3</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Accommodation 3&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Living_where_3</name>
+            <dataType>String</dataType>
+            <defaultValue>
+                <elementReference>current_livingwhere3</elementReference>
+            </defaultValue>
+            <fieldText>Living where</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Living_with_whom_3</name>
+            <dataType>String</dataType>
+            <defaultValue>
+                <elementReference>current_livingwithwhom3</elementReference>
+            </defaultValue>
+            <fieldText>Living with whom</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>For_how_long_3</name>
+            <dataType>String</dataType>
+            <defaultValue>
+                <elementReference>current_forhowlong3</elementReference>
+            </defaultValue>
+            <fieldText>For how long</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Accommodation4</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Accommodation 4&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Living_where_4</name>
+            <dataType>String</dataType>
+            <defaultValue>
+                <elementReference>current_livingwhere4</elementReference>
+            </defaultValue>
+            <fieldText>Living where</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Living_with_whom_4</name>
+            <dataType>String</dataType>
+            <defaultValue>
+                <elementReference>current_livingwithwhom4</elementReference>
+            </defaultValue>
+            <fieldText>Living with whom</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>For_how_long_4</name>
+            <dataType>String</dataType>
+            <defaultValue>
+                <elementReference>current_forhowlong4</elementReference>
+            </defaultValue>
+            <fieldText>For how long</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+    </screens>
+    <screens>
+        <name>ACCOMODATION_AND_LIVING_ARRANGEMENTS</name>
+        <label>ACCOMODATION AND LIVING ARRANGEMENTS</label>
+        <locationX>637</locationX>
+        <locationY>3951</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Update_with_accommodation_difficulties_0</targetReference>
+        </connector>
+        <fields>
+            <name>ACCOMODATIONANDLIVINGARRANGEMENTS</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;ACCOMMODATION AND LIVING ARRANGEMENTS&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Tick_if_you_have_any_difficulty_with_your_accommodation</name>
+            <dataType>Boolean</dataType>
+            <defaultValue>
+                <elementReference>Accommodationdifficulties</elementReference>
+            </defaultValue>
+            <fieldText>Tick if you have any difficulty with your accommodation</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Accommodation_difficulties_details</name>
+            <defaultValue>
+                <elementReference>current_Accommodation_difficulties_details</elementReference>
+            </defaultValue>
+            <fieldText>If yes, please give details</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+    </screens>
     <screens>
         <name>Additional_Mental_Info</name>
         <label>Additional Mental Info</label>
@@ -2698,6 +3549,32 @@
         </fields>
     </screens>
     <screens>
+        <name>Cannot_Create_Assessment</name>
+        <label>Cannot Create Assessment</label>
+        <locationX>417</locationX>
+        <locationY>778</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <fields>
+            <name>CannotCreateAssessmentTitle</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:18px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Cannot Create this Assessment - please contact your system administrator&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+    </screens>
+    <screens>
+        <name>Cannot_Update_Assessment</name>
+        <label>Cannot Update Assessment</label>
+        <locationX>549</locationX>
+        <locationY>782</locationY>
+        <allowBack>false</allowBack>
+        <allowFinish>true</allowFinish>
+        <fields>
+            <name>CannotUpdateAssessmentTitle</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:18px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Cannot Update this Assessment - please contact your system administrator&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+    </screens>
+    <screens>
         <name>Concerns_about_children</name>
         <label>Concerns about children</label>
         <locationX>1491</locationX>
@@ -2773,8 +3650,8 @@
     <screens>
         <name>Dental_Health</name>
         <label>Dental Health</label>
-        <locationX>809</locationX>
-        <locationY>969</locationY>
+        <locationX>1244</locationX>
+        <locationY>951</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <connector>
@@ -2989,6 +3866,41 @@
             <dataType>Boolean</dataType>
             <fieldText>Do you think that your family members or friends would support you in addressing your substance use</fieldText>
             <fieldType>DropdownBox</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+    </screens>
+    <screens>
+        <name>Drug_Alcohol_Impacted_on_Accommodation</name>
+        <label>Drug / Alcohol Impacted on Accommodation</label>
+        <locationX>1013</locationX>
+        <locationY>4205</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Update_with_drug_effecting_accommodation</targetReference>
+        </connector>
+        <fields>
+            <name>Doyouthinkthatyourdrugalcoholusehasimpactedonyouraccommodation</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Do you think that your drug/ alcohol use has impacted on your accommodation&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Tick_if_you_think_it_has_accommodation</name>
+            <dataType>Boolean</dataType>
+            <defaultValue>
+                <elementReference>current_drug_effected_accommodation</elementReference>
+            </defaultValue>
+            <fieldText>Tick if you think it has</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>If_it_has_please_give_details_drug_accommodation</name>
+            <defaultValue>
+                <elementReference>current_Drug_effect_accommodation</elementReference>
+            </defaultValue>
+            <fieldText>If it has, please give details</fieldText>
+            <fieldType>LargeTextArea</fieldType>
             <isRequired>false</isRequired>
         </fields>
     </screens>
@@ -3253,8 +4165,8 @@
     <screens>
         <name>Finished</name>
         <label>Finished</label>
-        <locationX>600</locationX>
-        <locationY>3943</locationY>
+        <locationX>624</locationX>
+        <locationY>4240</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <fields>
@@ -3266,8 +4178,8 @@
     <screens>
         <name>Goals_and_changes</name>
         <label>Goals and changes</label>
-        <locationX>802</locationX>
-        <locationY>735</locationY>
+        <locationX>1237</locationX>
+        <locationY>717</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <connector>
@@ -3433,8 +4345,8 @@
     <screens>
         <name>Help_for_alcohol_in_past</name>
         <label>Help for alcohol in past</label>
-        <locationX>1332</locationX>
-        <locationY>359</locationY>
+        <locationX>1767</locationX>
+        <locationY>341</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <connector>
@@ -3483,8 +4395,8 @@
     <screens>
         <name>Help_for_drug_use_in_the_past</name>
         <label>Help for drug use in the past</label>
-        <locationX>1152</locationX>
-        <locationY>389</locationY>
+        <locationX>1587</locationX>
+        <locationY>371</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <connector>
@@ -3537,6 +4449,51 @@
 (Examples may include nausea, vomiting, diahorrea, abdominal discomfort, muscle aches, anxiety, irritability, insomnia, palpitations, shakes) 
 Please give details</helpText>
             <isRequired>false</isRequired>
+        </fields>
+    </screens>
+    <screens>
+        <name>Homelessness</name>
+        <label>Homelessness</label>
+        <locationX>1361</locationX>
+        <locationY>4090</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Update_with_accommodation_difficulties_1</targetReference>
+        </connector>
+        <fields>
+            <name>Homelessnesstitle</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Homelessness&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Tick_if_you_have_ever_experienced_homelessness</name>
+            <dataType>Boolean</dataType>
+            <defaultValue>
+                <elementReference>HaveExperiencedHomelessness</elementReference>
+            </defaultValue>
+            <fieldText>Tick if you have ever experienced homelessness</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>If_you_have_experienced_homelessness_please_give_details</name>
+            <defaultValue>
+                <elementReference>current_HomelessnessDetails</elementReference>
+            </defaultValue>
+            <fieldText>If you have experienced homelessness, please give details</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>If_you_are_currently_homeless_tick_if_you_are_registered_with_a_Local_Authority</name>
+            <dataType>Boolean</dataType>
+            <defaultValue>
+                <elementReference>current_RegisteredWithHomelessAuthority</elementReference>
+            </defaultValue>
+            <fieldText>If you are currently homeless tick if you are registered with a Local Authority</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
         </fields>
     </screens>
     <screens>
@@ -3598,8 +4555,7 @@ Please give details</helpText>
             <choiceReferences>Yes</choiceReferences>
             <choiceReferences>No</choiceReferences>
             <dataType>Boolean</dataType>
-            <defaultSelectedChoiceReference>Yes</defaultSelectedChoiceReference>
-            <fieldText>Is this person aware of your drug use?</fieldText>
+            <fieldText>Is this person aware of your drug use / contact with this service</fieldText>
             <fieldType>DropdownBox</fieldType>
             <isRequired>false</isRequired>
         </fields>
@@ -3623,7 +4579,7 @@ Please give details</helpText>
             <name>Assessment_Date</name>
             <dataType>Date</dataType>
             <defaultValue>
-                <elementReference>$Flow.CurrentDate</elementReference>
+                <elementReference>AssessmentDate</elementReference>
             </defaultValue>
             <fieldText>Assessment Date</fieldText>
             <fieldType>InputField</fieldType>
@@ -3637,6 +4593,9 @@ Please give details</helpText>
         <fields>
             <name>Can_we_write_to_you_at_this_address</name>
             <dataType>Boolean</dataType>
+            <defaultValue>
+                <elementReference>WritetoYouAtThisAddress</elementReference>
+            </defaultValue>
             <fieldText>Can we write to you at this address</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>true</isRequired>
@@ -3644,6 +4603,9 @@ Please give details</helpText>
         <fields>
             <name>Can_we_phone_you_on_your_mobile</name>
             <dataType>Boolean</dataType>
+            <defaultValue>
+                <elementReference>CanWePhoneYouOnMobile</elementReference>
+            </defaultValue>
             <fieldText>Can we phone you on your mobile</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>true</isRequired>
@@ -3781,8 +4743,8 @@ Please give details</helpText>
     <screens>
         <name>Physical_Health</name>
         <label>Physical Health</label>
-        <locationX>507</locationX>
-        <locationY>737</locationY>
+        <locationX>725</locationX>
+        <locationY>710</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <connector>
@@ -3865,12 +4827,12 @@ Please give details</helpText>
     <screens>
         <name>Referral_Details</name>
         <label>Referral Details</label>
-        <locationX>500</locationX>
-        <locationY>478</locationY>
+        <locationX>501</locationX>
+        <locationY>390</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <connector>
-            <targetReference>CreateAssessmentRecord</targetReference>
+            <targetReference>Create_of_Update_Assessment</targetReference>
         </connector>
         <fields>
             <name>TODOReferral</name>
@@ -3879,6 +4841,9 @@ Please give details</helpText>
         </fields>
         <fields>
             <name>Reason_for_referral</name>
+            <defaultValue>
+                <elementReference>ReasonForReferral</elementReference>
+            </defaultValue>
             <fieldText>Reason for referral</fieldText>
             <fieldType>LargeTextArea</fieldType>
             <helpText>Can you give me some details about the reason for your referral? (What are the issues / difficulties you have been experiencing?)</helpText>
@@ -3887,6 +4852,9 @@ Please give details</helpText>
         <fields>
             <name>Referral_date</name>
             <dataType>Date</dataType>
+            <defaultValue>
+                <elementReference>ReferralDate</elementReference>
+            </defaultValue>
             <fieldText>Referral date</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>false</isRequired>
@@ -3905,6 +4873,60 @@ Please give details</helpText>
         <fields>
             <name>Detailsfamily_members_have_difficulties_with_drugs_or_alcohol</name>
             <fieldText>Details of your family members (including your spouse or partner) difficulties with drugs or alcohol or have a history of addiction</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+    </screens>
+    <screens>
+        <name>RunningOrMaintainingAHome</name>
+        <label>RunningOrMaintainingAHome</label>
+        <locationX>1677</locationX>
+        <locationY>4090</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Update_running_a_home</targetReference>
+        </connector>
+        <fields>
+            <name>Anythingaboutrunningormaintainingahomethatyouareconcernedabout</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Anything about running or maintaining a home that you are concerned about&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Tick_if_you_think_that_impact_on_your_capacity_to_live_independently</name>
+            <dataType>Boolean</dataType>
+            <defaultValue>
+                <elementReference>current_TickImpactLivingIndependently</elementReference>
+            </defaultValue>
+            <fieldText>Tick if you think that there is anything that impacts/ would impact on your capacity to live independently (E.g. disabilities, mental health problems, etc)</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>If_there_is_please_give_details_home</name>
+            <defaultValue>
+                <elementReference>current_HomeLivingIndependently</elementReference>
+            </defaultValue>
+            <fieldText>If there is, please give details</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Tick_if_there_is_anything_about_running_or_maintaining_a_home</name>
+            <dataType>Boolean</dataType>
+            <defaultValue>
+                <elementReference>current_Concerned_running_Home</elementReference>
+            </defaultValue>
+            <fieldText>Tick if there is anything about running or maintaining a home that you are concerned about or think you might need help with</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>If_there_is_please_give_details_running_a_home</name>
+            <defaultValue>
+                <elementReference>current_Concerned_running_home_details</elementReference>
+            </defaultValue>
+            <fieldText>If there is, please give details</fieldText>
             <fieldType>LargeTextArea</fieldType>
             <isRequired>false</isRequired>
         </fields>
@@ -3938,8 +4960,8 @@ Please give details</helpText>
     <screens>
         <name>Substance_Use_Description</name>
         <label>Substance Use Description</label>
-        <locationX>729</locationX>
-        <locationY>95</locationY>
+        <locationX>1164</locationX>
+        <locationY>77</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <connector>
@@ -3957,6 +4979,9 @@ Please give details</helpText>
         </fields>
         <fields>
             <name>Current_substance_use_description</name>
+            <defaultValue>
+                <elementReference>SubstanceUseDescriptionFromCurrentRecord</elementReference>
+            </defaultValue>
             <fieldText>Current substance use description</fieldText>
             <fieldType>LargeTextArea</fieldType>
             <isRequired>false</isRequired>
@@ -3967,8 +4992,8 @@ Please give details</helpText>
     <screens>
         <name>Substance_use_details_past</name>
         <label>Substance use details</label>
-        <locationX>1169</locationX>
-        <locationY>90</locationY>
+        <locationX>1604</locationX>
+        <locationY>72</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <connector>
@@ -4001,8 +5026,8 @@ Please give details</helpText>
     <screens>
         <name>SubstanceUse</name>
         <label>Substance Use</label>
-        <locationX>890</locationX>
-        <locationY>483</locationY>
+        <locationX>1325</locationX>
+        <locationY>465</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <connector>
@@ -4269,7 +5294,28 @@ Please give details</helpText>
             <isRequired>true</isRequired>
         </fields>
     </screens>
-    <startElementReference>Get_General_Contact_Record_Type</startElementReference>
+    <startElementReference>Continue_or_start_new</startElementReference>
+    <variables>
+        <name>Accommodationdifficulties</name>
+        <dataType>Boolean</dataType>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>AssessmentDate</name>
+        <dataType>Date</dataType>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+        <value>
+            <elementReference>$Flow.CurrentDate</elementReference>
+        </value>
+    </variables>
+    <variables>
+        <name>CanWePhoneYouOnMobile</name>
+        <dataType>Boolean</dataType>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
     <variables>
         <name>ClientAddressFromLookup</name>
         <dataType>String</dataType>
@@ -4322,9 +5368,177 @@ Please give details</helpText>
         <isOutput>true</isOutput>
     </variables>
     <variables>
+        <name>current_Accommodation_difficulties_details</name>
+        <dataType>String</dataType>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>current_Concerned_running_Home</name>
+        <dataType>Boolean</dataType>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>current_Concerned_running_home_details</name>
+        <dataType>String</dataType>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>current_Drug_effect_accommodation</name>
+        <dataType>String</dataType>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>current_drug_effected_accommodation</name>
+        <dataType>Boolean</dataType>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>current_forhowlong1</name>
+        <dataType>String</dataType>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>current_forhowlong2</name>
+        <dataType>String</dataType>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>current_forhowlong3</name>
+        <dataType>String</dataType>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>current_forhowlong4</name>
+        <dataType>String</dataType>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>current_Goal_1_Accommodation</name>
+        <dataType>String</dataType>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>current_Goal_2_Accommodation</name>
+        <dataType>String</dataType>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>current_HomelessnessDetails</name>
+        <dataType>String</dataType>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>current_HomeLivingIndependently</name>
+        <dataType>String</dataType>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>current_livingwhere1</name>
+        <dataType>String</dataType>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>current_livingwhere2</name>
+        <dataType>String</dataType>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>current_livingwhere3</name>
+        <dataType>String</dataType>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>current_livingwhere4</name>
+        <dataType>String</dataType>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>current_livingwithwhom1</name>
+        <dataType>String</dataType>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>current_livingwithwhom2</name>
+        <dataType>String</dataType>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>current_livingwithwhom3</name>
+        <dataType>String</dataType>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>current_livingwithwhom4</name>
+        <dataType>String</dataType>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>current_RegisteredWithHomelessAuthority</name>
+        <dataType>Boolean</dataType>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>current_Support_1_Accommodation</name>
+        <dataType>String</dataType>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>current_Support_2_Accommodation</name>
+        <dataType>String</dataType>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>current_Support_3_Accommodation</name>
+        <dataType>String</dataType>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>current_TickImpactLivingIndependently</name>
+        <dataType>Boolean</dataType>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>CurrentAssessmentID</name>
+        <dataType>String</dataType>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
         <name>GeneralRecordTypeID</name>
         <dataType>String</dataType>
         <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>HaveExperiencedHomelessness</name>
+        <dataType>Boolean</dataType>
+        <isInput>true</isInput>
         <isOutput>false</isOutput>
     </variables>
     <variables>
@@ -4364,6 +5578,18 @@ Please give details</helpText>
         <isOutput>true</isOutput>
     </variables>
     <variables>
+        <name>ReasonForReferral</name>
+        <dataType>String</dataType>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
+    </variables>
+    <variables>
+        <name>ReferralDate</name>
+        <dataType>Date</dataType>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
         <name>ReferrerID</name>
         <dataType>String</dataType>
         <isInput>false</isInput>
@@ -4372,6 +5598,18 @@ Please give details</helpText>
     <variables>
         <name>ReferringAgencyID</name>
         <dataType>String</dataType>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>SubstanceUseDescriptionFromCurrentRecord</name>
+        <dataType>String</dataType>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>WritetoYouAtThisAddress</name>
+        <dataType>Boolean</dataType>
         <isInput>false</isInput>
         <isOutput>false</isOutput>
     </variables>
