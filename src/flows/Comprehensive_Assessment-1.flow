@@ -1,6 +1,38 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <Flow xmlns="http://soap.sforce.com/2006/04/metadata">
     <assignments>
+        <name>Clear_Contraception_Concern_flag</name>
+        <label>Clear Contraception Concern flag</label>
+        <locationX>1302</locationX>
+        <locationY>1242</locationY>
+        <assignmentItems>
+            <assignToReference>ConcernsaboutContraception</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Ask_about_smear_test_if_female</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Clear_Dental_Health_flag</name>
+        <label>Clear Dental Health flag</label>
+        <locationX>500</locationX>
+        <locationY>934</locationY>
+        <assignmentItems>
+            <assignToReference>IsDentalHealthAnIssue</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>false</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Update_physical_health</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
         <name>Note_no_next_of_kin</name>
         <label>Note no next of kin</label>
         <locationX>232</locationX>
@@ -14,6 +46,22 @@
         </assignmentItems>
         <connector>
             <targetReference>EnterNOKDetails</targetReference>
+        </connector>
+    </assignments>
+    <assignments>
+        <name>Set_Contraception_Concern_flag</name>
+        <label>Set Contraception Concern flag</label>
+        <locationX>1662</locationX>
+        <locationY>1117</locationY>
+        <assignmentItems>
+            <assignToReference>ConcernsaboutContraception</assignToReference>
+            <operator>Assign</operator>
+            <value>
+                <booleanValue>true</booleanValue>
+            </value>
+        </assignmentItems>
+        <connector>
+            <targetReference>Ask_about_smear_test_if_female</targetReference>
         </connector>
     </assignments>
     <assignments>
@@ -239,6 +287,30 @@
         </value>
     </choices>
     <choices>
+        <name>TextDon_t_Know</name>
+        <choiceText>Don&apos;t Know</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Don&apos;t Know</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>TextNo</name>
+        <choiceText>No</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>No</stringValue>
+        </value>
+    </choices>
+    <choices>
+        <name>TextYes</name>
+        <choiceText>Yes</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <stringValue>Yes</stringValue>
+        </value>
+    </choices>
+    <choices>
         <name>Very_difficult</name>
         <choiceText>Very difficult</choiceText>
         <dataType>Number</dataType>
@@ -347,6 +419,106 @@
         </value>
     </constants>
     <decisions>
+        <name>Any_MENTAL_PSYCHOLOGICAL_EMOTIONAL_HEALTH_issues</name>
+        <label>Any MENTAL/ PSYCHOLOGICAL/ EMOTIONAL HEALTH issues</label>
+        <locationX>631</locationX>
+        <locationY>2647</locationY>
+        <defaultConnector>
+            <targetReference>FAMILY_AND_CURRENT_RELATIONSHIPS</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No MENTAL/ PSYCHOLOGICAL/ EMOTIONAL HEALTH issues</defaultConnectorLabel>
+        <rules>
+            <name>There_are_MENTAL_PSYCHOLOGICAL_EMOTIONAL_HEALTH_issues</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Are_there_any_MENTAL_PSYCHOLOGICAL_EMOTIONAL_health_issues</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Additional_Mental_Info</targetReference>
+            </connector>
+            <label>There are MENTAL/ PSYCHOLOGICAL/ EMOTIONAL HEALTH issues</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Any_relative_aware_of_your_substance_use</name>
+        <label>Any relative aware of your substance use</label>
+        <locationX>925</locationX>
+        <locationY>3302</locationY>
+        <defaultConnector>
+            <targetReference>Relative_with_difficulties</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>family not aware is substance use</defaultConnectorLabel>
+        <rules>
+            <name>Family_are_aware_of_substance_use</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Are_any_of_your_family_members_aware_of_your_substance_use</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Details_of_family_awareness_of_substance_use</targetReference>
+            </connector>
+            <label>Family are aware of substance use</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Ask_about_smear_test_if_female</name>
+        <label>Ask about smear test if female</label>
+        <locationX>1296</locationX>
+        <locationY>1346</locationY>
+        <defaultConnector>
+            <targetReference>Update_sexual_health_Male</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Client is male</defaultConnectorLabel>
+        <rules>
+            <name>Client_is_female</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>ClientGender</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <stringValue>Female</stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Ask_about_smear_test</targetReference>
+            </connector>
+            <label>Client is female</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Aware_of_family_history_mental_health</name>
+        <label>Aware of family history mental health</label>
+        <locationX>1384</locationX>
+        <locationY>2489</locationY>
+        <defaultConnector>
+            <targetReference>Ever_attended_counsellor_psychotherapist</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not aware of family history mental health</defaultConnectorLabel>
+        <rules>
+            <name>Is_aware_of_family_history_mental_health</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Are_you_aware_of_any_family_history_of_mental_health_problems</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>family_history_of_mental_health_problem_details</targetReference>
+            </connector>
+            <label>Is aware of family history mental health</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Check_for_next_of_kin</name>
         <label>Check for next of kin</label>
         <locationX>504</locationX>
@@ -366,6 +538,81 @@
                 <targetReference>Note_no_next_of_kin</targetReference>
             </connector>
             <label>No Next of Kin</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Concerns_about_contraception</name>
+        <label>Concerns about contraception</label>
+        <locationX>1297</locationX>
+        <locationY>1125</locationY>
+        <defaultConnector>
+            <targetReference>Clear_Contraception_Concern_flag</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No concerns about contraception</defaultConnectorLabel>
+        <rules>
+            <name>Has_concerns_about_contraception</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>If_you_have_any_concerns_about_contraception_please_give_details</leftValueReference>
+                <operator>NotEqualTo</operator>
+                <rightValue>
+                    <stringValue></stringValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Set_Contraception_Concern_flag</targetReference>
+            </connector>
+            <label>Has concerns about contraception</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Details_of_awareness_addressing</name>
+        <label>Details of awareness addressing</label>
+        <locationX>1481</locationX>
+        <locationY>3301</locationY>
+        <defaultConnector>
+            <targetReference>Details_of_family_support</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Family no aware addressing</defaultConnectorLabel>
+        <rules>
+            <name>Family_aware_addressing</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Are_any_of_your_family_members_aware_that_address_your_substance_use</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Family_aware_addressing_detials</targetReference>
+            </connector>
+            <label>Family aware addressing</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Details_of_family_support</name>
+        <label>Details of family support</label>
+        <locationX>1477</locationX>
+        <locationY>3402</locationY>
+        <defaultConnector>
+            <targetReference>Relative_with_difficulties</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Family would not support addressing</defaultConnectorLabel>
+        <rules>
+            <name>Family_would_support_addressing</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Do_you_think_that_your_family_members_or_friends_would_support</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Family_Support</targetReference>
+            </connector>
+            <label>Family would support addressing</label>
         </rules>
     </decisions>
     <decisions>
@@ -419,12 +666,162 @@
         </rules>
     </decisions>
     <decisions>
+        <name>Does_drug_alcohol_impact_on_relationships</name>
+        <label>Does drug / alcohol impact on relationships</label>
+        <locationX>927</locationX>
+        <locationY>3734</locationY>
+        <defaultConnector>
+            <targetReference>Goals_for_relationships</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Does not impact</defaultConnectorLabel>
+        <rules>
+            <name>It_does_impact</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Do_you_think_that_your_drug_alcohol_use_has_impacted_on_your_relationships</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Ways_drug_alcohol_use_impacted_on_relationships</targetReference>
+            </connector>
+            <label>It does impact</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Ever_attended_counsellor_psychotherapist</name>
+        <label>Ever attended counsellor/psychotherapist</label>
+        <locationX>1387</locationX>
+        <locationY>2649</locationY>
+        <defaultConnector>
+            <targetReference>Have_you_ever_deliberately_self_harmed_decision</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Has not attended counsellor/psychotherapist</defaultConnectorLabel>
+        <rules>
+            <name>Has_attended_counsellor_psychotherapist</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Have_you_ever_attended_a_counsellor_psychotherapist_support_worker</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Has_attended_counsellor</targetReference>
+            </connector>
+            <label>Has attended counsellor/psychotherapist</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Ever_considered_or_attempted_suicide</name>
+        <label>Ever considered or attempted suicide</label>
+        <locationX>1390</locationX>
+        <locationY>2902</locationY>
+        <defaultConnector>
+            <targetReference>Links_Mental_Health</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Never considered or attempted suicide</defaultConnectorLabel>
+        <rules>
+            <name>Has_considered_or_attempted_suicide</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Have_you_ever_considered_or_attempted_suicide</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Attempted_suicide_details</targetReference>
+            </connector>
+            <label>Has considered or attempted suicide</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Have_any_children</name>
+        <label>Have any children</label>
+        <locationX>933</locationX>
+        <locationY>3636</locationY>
+        <defaultConnector>
+            <targetReference>Does_drug_alcohol_impact_on_relationships</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Does not have any children</defaultConnectorLabel>
+        <rules>
+            <name>Has_children</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Do_you_have_any_children</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Details_of_children</targetReference>
+            </connector>
+            <label>Has children</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Have_any_family_members_living_with_user</name>
+        <label>Have any family members living with user</label>
+        <locationX>930</locationX>
+        <locationY>3188</locationY>
+        <defaultConnector>
+            <targetReference>Any_relative_aware_of_your_substance_use</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No family members living with user</defaultConnectorLabel>
+        <rules>
+            <name>There_are_family_members_living_with_service_user</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Do_you_live_with_anyone_currently</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Name_of_people_you_currently_live_with</targetReference>
+            </connector>
+            <label>There are family members living with service user</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Have_you_ever_deliberately_self_harmed_decision</name>
+        <label>Have you ever deliberately self-harmed</label>
+        <locationX>1388</locationX>
+        <locationY>2780</locationY>
+        <defaultConnector>
+            <targetReference>Ever_considered_or_attempted_suicide</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Has not deliberately self-harmed</defaultConnectorLabel>
+        <rules>
+            <name>Has_deliberately_self_harmed</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Have_you_ever_deliberately_self_harmed</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Deliberately_Self_Harmed_Screen</targetReference>
+            </connector>
+            <label>Has deliberately self-harmed</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Is_Dental_Health_issues_filled_in</name>
         <label>Is Dental Health issues filled in</label>
         <locationX>493</locationX>
         <locationY>836</locationY>
         <defaultConnector>
-            <targetReference>Update_physical_health</targetReference>
+            <targetReference>Clear_Dental_Health_flag</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>No dental health issues</defaultConnectorLabel>
         <rules>
@@ -444,12 +841,37 @@
         </rules>
     </decisions>
     <decisions>
+        <name>Is_service_user_receiving_help</name>
+        <label>Is service user receiving help</label>
+        <locationX>1385</locationX>
+        <locationY>2337</locationY>
+        <defaultConnector>
+            <targetReference>Aware_of_family_history_mental_health</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>Not receiving mental health help</defaultConnectorLabel>
+        <rules>
+            <name>Is_receiving_help_for_mental_health</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Are_you_currently_receiving_help_or_have_in_the_past_received_help</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Receiving_help_for_mental_health</targetReference>
+            </connector>
+            <label>Is receiving help for mental health</label>
+        </rules>
+    </decisions>
+    <decisions>
         <name>Is_Sexual_Health_Issues</name>
         <label>Is Sexual Health Issues</label>
         <locationX>610</locationX>
         <locationY>1128</locationY>
         <defaultConnector>
-            <targetReference>Update_sexual_health_0</targetReference>
+            <targetReference>Ever_had_HIV_or_Hepatitis_tests</targetReference>
         </defaultConnector>
         <defaultConnectorLabel>No Sexual Health Issues</defaultConnectorLabel>
         <rules>
@@ -538,6 +960,31 @@
                 <targetReference>Create_new_NOK</targetReference>
             </connector>
             <label>New NOK</label>
+        </rules>
+    </decisions>
+    <decisions>
+        <name>Relative_with_difficulties</name>
+        <label>Relative with difficulties</label>
+        <locationX>931</locationX>
+        <locationY>3504</locationY>
+        <defaultConnector>
+            <targetReference>Have_any_children</targetReference>
+        </defaultConnector>
+        <defaultConnectorLabel>No relatives with difficulties</defaultConnectorLabel>
+        <rules>
+            <name>Relative_has_difficulties</name>
+            <conditionLogic>and</conditionLogic>
+            <conditions>
+                <leftValueReference>Do_any_of_your_family_members_have_difficulties_with_drugs</leftValueReference>
+                <operator>EqualTo</operator>
+                <rightValue>
+                    <booleanValue>true</booleanValue>
+                </rightValue>
+            </conditions>
+            <connector>
+                <targetReference>Relatives_with_difficulties</targetReference>
+            </connector>
+            <label>Relative has difficulties</label>
         </rules>
     </decisions>
     <decisions>
@@ -775,6 +1222,10 @@
             <assignToReference>NOKID</assignToReference>
             <field>eCASS02t1__Next_of_Kin__c</field>
         </outputAssignments>
+        <outputAssignments>
+            <assignToReference>ClientGender</assignToReference>
+            <field>eCASS02t1__X4_Gender__c</field>
+        </outputAssignments>
     </recordLookups>
     <recordLookups>
         <name>Get_General_Contact_Record_Type</name>
@@ -825,6 +1276,56 @@
             <field>Id</field>
         </outputAssignments>
     </recordLookups>
+    <recordUpdates>
+        <name>Update_additional_mental_info</name>
+        <label>Update additional mental info</label>
+        <locationX>1215</locationX>
+        <locationY>2334</locationY>
+        <connector>
+            <targetReference>Is_service_user_receiving_help</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Record_Update_Fault</targetReference>
+        </faultConnector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>NewAssessment</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Additional_info_re_mental_psycolo_health__c</field>
+            <value>
+                <elementReference>Is_there_any_additional_information_mental</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Ever_attended_counsellor_psychotherapist__c</field>
+            <value>
+                <elementReference>Have_you_ever_attended_a_counsellor_psychotherapist_support_worker</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Ever_considered_or_attempted_suicide__c</field>
+            <value>
+                <elementReference>Have_you_ever_considered_or_attempted_suicide</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Ever_deliberately_self_harmed__c</field>
+            <value>
+                <elementReference>Have_you_ever_deliberately_self_harmed</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Family_history_of_mental_health_problems__c</field>
+            <value>
+                <elementReference>Are_you_aware_of_any_family_history_of_mental_health_problems</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Comprehensive_Assessment__c</object>
+    </recordUpdates>
     <recordUpdates>
         <name>Update_Assesement_with_goals_and_changes</name>
         <label>Update Assesement with goals and changes</label>
@@ -991,6 +1492,172 @@
         <object>Comprehensive_Assessment__c</object>
     </recordUpdates>
     <recordUpdates>
+        <name>Update_attended_counsellor_psychotherapist_support_worker</name>
+        <label>Update attended counsellor/ psychotherapist/ support worker</label>
+        <locationX>1817</locationX>
+        <locationY>2649</locationY>
+        <connector>
+            <targetReference>Have_you_ever_deliberately_self_harmed_decision</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Record_Update_Fault</targetReference>
+        </faultConnector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>NewAssessment</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>If_yes_counsellor_the_most_useful__c</field>
+            <value>
+                <elementReference>What_did_you_find_most_useful_about_attending_the</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Comprehensive_Assessment__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_children_details</name>
+        <label>Update children details</label>
+        <locationX>1328</locationX>
+        <locationY>3635</locationY>
+        <connector>
+            <targetReference>Concerns_about_children</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Record_Update_Fault</targetReference>
+        </faultConnector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>NewAssessment</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Age_child_1__c</field>
+            <value>
+                <elementReference>Age_child_1</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Age_child_2__c</field>
+            <value>
+                <elementReference>Age_child_2</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Age_child_3__c</field>
+            <value>
+                <elementReference>Age_child_3</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Age_child_4__c</field>
+            <value>
+                <elementReference>Age_child_4</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Do_you_see_child_1_regularly_How_often__c</field>
+            <value>
+                <elementReference>Child_1_Do_you_see_this_child_regularly_How_often</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Do_you_see_child_2_regularly_How_often__c</field>
+            <value>
+                <elementReference>Child_2_Do_you_see_this_child_regularly_How_often</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Do_you_see_child_3_regularly_How_often__c</field>
+            <value>
+                <elementReference>Child_3_Do_you_see_this_child_regularly_How_often</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Do_you_see_child_4_regularly_How_often__c</field>
+            <value>
+                <elementReference>Child_4_Do_you_see_this_child_regularly_How_often</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>If_child_1_not_with_you_who_with__c</field>
+            <value>
+                <elementReference>Child_1_If_this_child_does_not_live_with_you_who_do_they_live_with</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>If_child_2_not_with_you_who_with__c</field>
+            <value>
+                <elementReference>Child_2_If_this_child_does_not_live_with_you_who_do_they_live_with</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>If_child_3_not_with_you_who_with__c</field>
+            <value>
+                <elementReference>Child_3_If_this_child_does_not_live_with_you_who_do_they_live_with</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>If_child_4_not_with_you_who_with__c</field>
+            <value>
+                <elementReference>Child_4_If_this_child_does_not_live_with_you_who_do_they_live_with</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Name_of_child_1__c</field>
+            <value>
+                <elementReference>Name_child_1</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Name_of_child_2__c</field>
+            <value>
+                <elementReference>Name_child_2</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Name_of_child_3__c</field>
+            <value>
+                <elementReference>Name_child_3</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Name_of_child_4__c</field>
+            <value>
+                <elementReference>Name_child_4</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Your_child_s_1_address_is_if_known__c</field>
+            <value>
+                <elementReference>Child_1_address_if_known</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Your_child_s_2_address_is_if_known__c</field>
+            <value>
+                <elementReference>Child_2_address_if_known</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Your_child_s_3_address_is_if_known__c</field>
+            <value>
+                <elementReference>Child_3_address_if_known</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Your_child_s_4_address_is_if_known__c</field>
+            <value>
+                <elementReference>Child_4_address_if_known</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Comprehensive_Assessment__c</object>
+    </recordUpdates>
+    <recordUpdates>
         <name>Update_Client_with_NOK</name>
         <label>Update Client with NOK</label>
         <locationX>268</locationX>
@@ -1020,6 +1687,624 @@
         <object>Contact</object>
     </recordUpdates>
     <recordUpdates>
+        <name>Update_concerns_about_children</name>
+        <label>Update concerns about children</label>
+        <locationX>1659</locationX>
+        <locationY>3616</locationY>
+        <connector>
+            <targetReference>Does_drug_alcohol_impact_on_relationships</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Record_Update_Fault</targetReference>
+        </faultConnector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>NewAssessment</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Concerns_about_your_children_s_health__c</field>
+            <value>
+                <elementReference>Do_you_have_any_concerns_about_your_children_s_health_welfare_or_development</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Do_you_need_assistance_with_children__c</field>
+            <value>
+                <elementReference>Do_you_need_assistance_with_your_children_s_health</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Ever_received_assistance_re_childrens_H__c</field>
+            <value>
+                <elementReference>Have_you_ever_received_assistance_for_your_children_s_health</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>If_yes_assistance_child_H_specify__c</field>
+            <value>
+                <elementReference>Is_Yes_please_give_details_assistance</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>If_yes_concerns_children_health_specif__c</field>
+            <value>
+                <elementReference>Child_health_Please_detail_those_concerns</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Need_Assistance_with_Children_details__c</field>
+            <value>
+                <elementReference>Assistance_you_need_from_any_service_agency_to_help_with_your_children_s_health</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Comprehensive_Assessment__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_deliberate_self_harm</name>
+        <label>Update deliberate self-harm</label>
+        <locationX>1810</locationX>
+        <locationY>2777</locationY>
+        <connector>
+            <targetReference>Ever_considered_or_attempted_suicide</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Record_Update_Fault</targetReference>
+        </faultConnector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>NewAssessment</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>If_yes_self_harmed_please_specify__c</field>
+            <value>
+                <elementReference>Can_you_give_me_more_details_about_your_deliberate_self_harm</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Comprehensive_Assessment__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_family_aware_addressing_of_substance_use</name>
+        <label>Update family aware addressing of substance use</label>
+        <locationX>1839</locationX>
+        <locationY>3304</locationY>
+        <connector>
+            <targetReference>Details_of_family_support</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Record_Update_Fault</targetReference>
+        </faultConnector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>NewAssessment</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>If_yes_aware_addressing_subs_use_speci__c</field>
+            <value>
+                <elementReference>Detailsofhowyourfamilymembersareawarethatyouaretryingtoaddressyoursubstanceuse</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Comprehensive_Assessment__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_family_awareness</name>
+        <label>Update family awareness of substance use</label>
+        <locationX>1315</locationX>
+        <locationY>3299</locationY>
+        <connector>
+            <targetReference>Details_of_awareness_addressing</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Record_Update_Fault</targetReference>
+        </faultConnector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>NewAssessment</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Family_aware_you_addressing_substanc_use__c</field>
+            <value>
+                <elementReference>Are_any_of_your_family_members_aware_that_address_your_substance_use</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Family_would_support_you__c</field>
+            <value>
+                <elementReference>Do_you_think_that_your_family_members_or_friends_would_support</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>If_yes_family_aware_of_subs_use_specif__c</field>
+            <value>
+                <elementReference>Please_give_details_of_the_family_awareness_of_your_substance_use</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Comprehensive_Assessment__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_family_difficulties_of_substance_use</name>
+        <label>Update family difficulties of substance use</label>
+        <locationX>1370</locationX>
+        <locationY>3496</locationY>
+        <connector>
+            <targetReference>Have_any_children</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Record_Update_Fault</targetReference>
+        </faultConnector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>NewAssessment</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>If_yes_relative_drugs_issues_specify__c</field>
+            <value>
+                <elementReference>Detailsfamily_members_have_difficulties_with_drugs_or_alcohol</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Comprehensive_Assessment__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_family_relationships_overview</name>
+        <label>Update family relationships overview</label>
+        <locationX>632</locationX>
+        <locationY>3245</locationY>
+        <connector>
+            <targetReference>Have_any_family_members_living_with_user</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Record_Update_Fault</targetReference>
+        </faultConnector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>NewAssessment</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Any_relative_aware_of_your_substance_use__c</field>
+            <value>
+                <elementReference>Are_any_of_your_family_members_aware_of_your_substance_use</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Any_relative_has_drugs_difficulties__c</field>
+            <value>
+                <elementReference>Do_any_of_your_family_members_have_difficulties_with_drugs</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Drug_alcohol_use_impacted_relationships__c</field>
+            <value>
+                <elementReference>Do_you_think_that_your_drug_alcohol_use_has_impacted_on_your_relationships</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Comprehensive_Assessment__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_family_relationships_overview_0</name>
+        <label>Update family relationships overview</label>
+        <locationX>1291</locationX>
+        <locationY>3180</locationY>
+        <connector>
+            <targetReference>Any_relative_aware_of_your_substance_use</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Record_Update_Fault</targetReference>
+        </faultConnector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>NewAssessment</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Name_1_person_you_currently_live_with__c</field>
+            <value>
+                <elementReference>Name_1</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Name_2_person_you_currently_live_with__c</field>
+            <value>
+                <elementReference>Name_2</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Name_3_person_you_currently_live_with__c</field>
+            <value>
+                <elementReference>Name_3</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Name_4_person_you_currently_live_with__c</field>
+            <value>
+                <elementReference>Relationship_to_you_4</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Relationhip_to_you_1__c</field>
+            <value>
+                <elementReference>Relationship_to_you_1</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Relationhip_to_you_2__c</field>
+            <value>
+                <elementReference>Relationship_to_you_2</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Relationhip_to_you_3__c</field>
+            <value>
+                <elementReference>Relationship_to_you_3</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Comprehensive_Assessment__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_family_support</name>
+        <label>Update family support</label>
+        <locationX>1838</locationX>
+        <locationY>3402</locationY>
+        <connector>
+            <targetReference>Relative_with_difficulties</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Record_Update_Fault</targetReference>
+        </faultConnector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>NewAssessment</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>If_yes_family_support_specify__c</field>
+            <value>
+                <elementReference>In_what_ways_would_your_friends_or_family_support_you</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Comprehensive_Assessment__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_for_Health_Goals</name>
+        <label>Update for Health Goals</label>
+        <locationX>622</locationX>
+        <locationY>2217</locationY>
+        <connector>
+            <targetReference>What_progress_do_you_want_supports</targetReference>
+        </connector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>NewAssessment</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Goals_1_re_general_dental_health_LT__c</field>
+            <value>
+                <elementReference>Goal_1_General_Health</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Goals_2_re_general_dental_health_LT__c</field>
+            <value>
+                <elementReference>Goal_2_General_Health</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Goals_3_re_general_dental_health_LT__c</field>
+            <value>
+                <elementReference>Goal_3_General_Health</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Comprehensive_Assessment__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_for_Health_Support</name>
+        <label>Update for Health Support</label>
+        <locationX>624</locationX>
+        <locationY>2430</locationY>
+        <connector>
+            <targetReference>MENTAL_PSYCHOLOGICAL_EMOTIONAL_HEALTH</targetReference>
+        </connector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>NewAssessment</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Support_1_re_general_dental_health_ST__c</field>
+            <value>
+                <elementReference>Support_1_General_Health</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Support_2_re_general_dental_health_ST__c</field>
+            <value>
+                <elementReference>Support_2_General_Health</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Support_3_re_general_dental_health_ST__c</field>
+            <value>
+                <elementReference>Support_3_General_Health</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Comprehensive_Assessment__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_for_Info_given_on</name>
+        <label>Update for Info given on</label>
+        <locationX>620</locationX>
+        <locationY>2021</locationY>
+        <connector>
+            <targetReference>Identify_any_goals_you_have_related_to_your_general_dental_health_in_longer_term</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Record_Update_Fault</targetReference>
+        </faultConnector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>NewAssessment</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Received_info_re_Needle_exchange_service__c</field>
+            <value>
+                <elementReference>Needle_Exchange_Services</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Received_info_re_Safer_drug_use_practice__c</field>
+            <value>
+                <elementReference>Safer_drug_using_practices</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Received_info_re_Safer_sex_practise__c</field>
+            <value>
+                <elementReference>Safe_sex_practice</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Comprehensive_Assessment__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_for_would_like_blood_tests</name>
+        <label>Update for would like blood tests</label>
+        <locationX>619</locationX>
+        <locationY>1826</locationY>
+        <connector>
+            <targetReference>Has_information_been_given_to_you_on_If_applicable</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Record_Update_Fault</targetReference>
+        </faultConnector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>NewAssessment</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Aware_HIV_hepatitis_can_be_transmitted__c</field>
+            <value>
+                <elementReference>Are_you_aware_of_the_ways_in_which_HIV_hepatitis_B_C_can_be_transmitted</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Would_like_a_test_for_HIV__c</field>
+            <value>
+                <elementReference>WouldLikeTestForHIV</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Would_like_a_test_for_Hepatitis_B__c</field>
+            <value>
+                <elementReference>WouldLikeTestFor_Hepatitis_B</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Would_like_a_test_for_Hepatitis_C__c</field>
+            <value>
+                <elementReference>WouldLikeTestFor_Hepatitis_C</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Comprehensive_Assessment__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_goals_and_supports_relationships</name>
+        <label>Update goals and supports relationships</label>
+        <locationX>1335</locationX>
+        <locationY>3849</locationY>
+        <connector>
+            <targetReference>Finished</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Record_Update_Fault</targetReference>
+        </faultConnector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>NewAssessment</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Goal_1_re_family_relationship_LT__c</field>
+            <value>
+                <elementReference>Goal_1_relationships</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Goal_2_re_family_relationship_LT__c</field>
+            <value>
+                <elementReference>Goal_2_relationships</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Support_1_re_family_relationship_ST__c</field>
+            <value>
+                <elementReference>Support_1_relationships</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Support_2_re_family_relationship_ST__c</field>
+            <value>
+                <elementReference>Support_2_relationships</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Support_3_re_family_relationship_ST__c</field>
+            <value>
+                <elementReference>Support_3_relationships</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Comprehensive_Assessment__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_HIV_and_HEP_tests</name>
+        <label>Update HIV and HEP tests</label>
+        <locationX>619</locationX>
+        <locationY>1616</locationY>
+        <connector>
+            <targetReference>Would_you_like_to_have_a_blood_test_taken_to_screen_for</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Record_Update_Fault</targetReference>
+        </faultConnector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>NewAssessment</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Date_vaccinated_against_hepatitis_B__c</field>
+            <value>
+                <elementReference>If_Yes_please_give_estimated_date_Hep_B</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Ever_been_vaccinated_against_hepatitis_B__c</field>
+            <value>
+                <elementReference>Have_you_Ever_been_vaccinated_against_hepatitis_B</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>HIV_test__c</field>
+            <value>
+                <elementReference>Have_you_ever_had_a_HIV_test</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Hepatitis_B_test__c</field>
+            <value>
+                <elementReference>Have_you_ever_had_a_Hepatitis_B_test</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Hepatitis_C_test__c</field>
+            <value>
+                <elementReference>Have_you_ever_had_a_Hepatitis_C_test</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>If_received_a_positive_BBV_specify__c</field>
+            <value>
+                <elementReference>If_you_received_a_positive_Blood_Borne_Virus_BBV</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>If_yes_are_you_aware_of_results_specify__c</field>
+            <value>
+                <elementReference>If_Yes_to_any_of_these_tests_are_you_aware_of_the_test_results</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Comprehensive_Assessment__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_mental_health_support_and_goals</name>
+        <label>Update mental health support and goals</label>
+        <locationX>1483</locationX>
+        <locationY>3082</locationY>
+        <connector>
+            <targetReference>FAMILY_AND_CURRENT_RELATIONSHIPS</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Record_Update_Fault</targetReference>
+        </faultConnector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>NewAssessment</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Drug_alcohol_use_re_mental_psycho_health__c</field>
+            <value>
+                <elementReference>Do_you_think_that_there_is_a_link_between_your_drug_alcohol_use_and_your_mental</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Goals_1_re_mental_psyco_health_LT__c</field>
+            <value>
+                <elementReference>Goal_1_Mental_Health</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Goals_2_re_mental_psyco_health_LT__c</field>
+            <value>
+                <elementReference>Goal_2_Mental_Health</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Support_1_re_mental_psyco_health_ST__c</field>
+            <value>
+                <elementReference>Support_1_Mental_Health</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Support_2_re_mental_psyco_health_ST__c</field>
+            <value>
+                <elementReference>Support_2_Mental_Health</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Support_3_re_mental_psyco_health_ST__c</field>
+            <value>
+                <elementReference>Support_3_Mental_Health</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Comprehensive_Assessment__c</object>
+    </recordUpdates>
+    <recordUpdates>
         <name>Update_physical_health</name>
         <label>Update physical/Dental health</label>
         <locationX>507</locationX>
@@ -1027,6 +2312,9 @@
         <connector>
             <targetReference>Is_Sexual_Health_Issues</targetReference>
         </connector>
+        <faultConnector>
+            <targetReference>Record_Update_Fault</targetReference>
+        </faultConnector>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>
@@ -1038,6 +2326,12 @@
             <field>Do_you_have_any_dental_health_needs__c</field>
             <value>
                 <elementReference>IsDentalHealthAnIssue</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Drug_alcohol_use_re_physical_health__c</field>
+            <value>
+                <elementReference>Do_you_think_that_your_drug_alcohol_use_has_had_an_effect_on_your_phys</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -1055,13 +2349,80 @@
         <object>Comprehensive_Assessment__c</object>
     </recordUpdates>
     <recordUpdates>
-        <name>Update_sexual_health_0</name>
-        <label>Update sexual health</label>
-        <locationX>529</locationX>
-        <locationY>1359</locationY>
+        <name>Update_receiving_mental_help</name>
+        <label>Update receiving mental help</label>
+        <locationX>1784</locationX>
+        <locationY>2340</locationY>
         <connector>
-            <targetReference>Finished</targetReference>
+            <targetReference>Aware_of_family_history_mental_health</targetReference>
         </connector>
+        <faultConnector>
+            <targetReference>Record_Update_Fault</targetReference>
+        </faultConnector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>NewAssessment</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Have_you_been_treated_for__c</field>
+            <value>
+                <elementReference>What_are_you_have_you_been_treated_for_if_known_your_diagnosis</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Most_useful_about_this_help_treatment__c</field>
+            <value>
+                <elementReference>What_do_did_you_find_most_useful_about_this_help_treatment</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Psychiatrist_or_doctor_that_treated_you__c</field>
+            <value>
+                <elementReference>Can_you_tell_me_the_name_and_address_of_the_psychiat</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Comprehensive_Assessment__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_receiving_mental_help_0</name>
+        <label>Update receiving mental help</label>
+        <locationX>1811</locationX>
+        <locationY>2484</locationY>
+        <connector>
+            <targetReference>Ever_attended_counsellor_psychotherapist</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Record_Update_Fault</targetReference>
+        </faultConnector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>NewAssessment</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>If_yes_family_mental_health_specify__c</field>
+            <value>
+                <elementReference>Details_of_family_history_of_mental_health_problems</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Comprehensive_Assessment__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_sexual_health_Female</name>
+        <label>Update sexual health Female</label>
+        <locationX>916</locationX>
+        <locationY>1464</locationY>
+        <connector>
+            <targetReference>Ever_had_HIV_or_Hepatitis_tests</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Record_Update_Fault</targetReference>
+        </faultConnector>
         <filters>
             <field>Id</field>
             <operator>EqualTo</operator>
@@ -1073,6 +2434,86 @@
             <field>Concerns_about_your_sexual_health__c</field>
             <value>
                 <elementReference>IsSexualHealthConcerns</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Ever_had_a_smear_test__c</field>
+            <value>
+                <elementReference>Have_you_ever_had_a_smear_test</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Have_any_concerns_about_contraception__c</field>
+            <value>
+                <elementReference>ConcernsaboutContraception</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>If_no_would_you_like_a_smear_test_taken__c</field>
+            <value>
+                <elementReference>If_No_would_you_like_to_have_a_smear_test_taken</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>If_yes_concern_re_contraception_specif__c</field>
+            <value>
+                <elementReference>If_you_have_any_concerns_about_contraception_please_give_details</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>If_yes_sexual_health_please_specify__c</field>
+            <value>
+                <elementReference>If_you_have_any_sexual_health_concerns_please_specify</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Protect_against_sexual_trans_infections__c</field>
+            <value>
+                <elementReference>Do_you_know_how_you_can_protect_yourself_against_sexually_transmitted_infections</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>when_you_had_your_last_smear__c</field>
+            <value>
+                <elementReference>If_Yes_please_give_estimate_of_last_smear_test</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Comprehensive_Assessment__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_sexual_health_Male</name>
+        <label>Update sexual health Male</label>
+        <locationX>907</locationX>
+        <locationY>1306</locationY>
+        <connector>
+            <targetReference>Ever_had_HIV_or_Hepatitis_tests</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Record_Update_Fault</targetReference>
+        </faultConnector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>NewAssessment</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Concerns_about_your_sexual_health__c</field>
+            <value>
+                <elementReference>IsSexualHealthConcerns</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Have_any_concerns_about_contraception__c</field>
+            <value>
+                <elementReference>ConcernsaboutContraception</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>If_yes_concern_re_contraception_specif__c</field>
+            <value>
+                <elementReference>If_you_have_any_concerns_about_contraception_please_give_details</elementReference>
             </value>
         </inputAssignments>
         <inputAssignments>
@@ -1089,6 +2530,246 @@
         </inputAssignments>
         <object>Comprehensive_Assessment__c</object>
     </recordUpdates>
+    <recordUpdates>
+        <name>Update_suicide_attempt</name>
+        <label>Update suicide attempt</label>
+        <locationX>1800</locationX>
+        <locationY>2905</locationY>
+        <connector>
+            <targetReference>Links_Mental_Health</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Record_Update_Fault</targetReference>
+        </faultConnector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>NewAssessment</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>If_yes_attempted_suicide_please_specif__c</field>
+            <value>
+                <elementReference>Can_you_give_me_more_details_of_suicide_attempt</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Comprehensive_Assessment__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_ways_impacted_relationships</name>
+        <label>Update ways impacted relationships</label>
+        <locationX>1330</locationX>
+        <locationY>3727</locationY>
+        <connector>
+            <targetReference>Goals_for_relationships</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Record_Update_Fault</targetReference>
+        </faultConnector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>NewAssessment</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>If_yes_drug_alcohol_use_impact_specify__c</field>
+            <value>
+                <elementReference>In_what_ways_has_your_drug_alcohol_use_impacted_on_your_relationships</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Comprehensive_Assessment__c</object>
+    </recordUpdates>
+    <screens>
+        <name>Additional_Mental_Info</name>
+        <label>Additional Mental Info</label>
+        <locationX>871</locationX>
+        <locationY>2324</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Update_additional_mental_info</targetReference>
+        </connector>
+        <fields>
+            <name>Is_there_any_additional_information_mental</name>
+            <fieldText>Is there any additional information about your past or current mental/ psychological/ emotional health that you think it would be helpful for us to know about? (Refer to initial assessment)</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Are_you_currently_receiving_help_or_have_in_the_past_received_help</name>
+            <choiceReferences>Yes</choiceReferences>
+            <choiceReferences>No</choiceReferences>
+            <dataType>Boolean</dataType>
+            <fieldText>Are you currently receiving help or have in the past received help for mental health</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Are_you_aware_of_any_family_history_of_mental_health_problems</name>
+            <choiceReferences>Yes</choiceReferences>
+            <choiceReferences>No</choiceReferences>
+            <dataType>Boolean</dataType>
+            <fieldText>Are you aware of any family history of mental health problems</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Have_you_ever_attended_a_counsellor_psychotherapist_support_worker</name>
+            <choiceReferences>Yes</choiceReferences>
+            <choiceReferences>No</choiceReferences>
+            <dataType>Boolean</dataType>
+            <fieldText>Have you ever attended a counsellor/ psychotherapist/ support worker</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Have_you_ever_deliberately_self_harmed</name>
+            <choiceReferences>Yes</choiceReferences>
+            <choiceReferences>No</choiceReferences>
+            <dataType>Boolean</dataType>
+            <fieldText>Have you ever deliberately self-harmed?</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Have_you_ever_considered_or_attempted_suicide</name>
+            <choiceReferences>Yes</choiceReferences>
+            <choiceReferences>No</choiceReferences>
+            <dataType>Boolean</dataType>
+            <fieldText>Have you ever considered or attempted suicide?</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+    </screens>
+    <screens>
+        <name>Ask_about_smear_test</name>
+        <label>Ask about smear test</label>
+        <locationX>1305</locationX>
+        <locationY>1474</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Update_sexual_health_Female</targetReference>
+        </connector>
+        <fields>
+            <name>Have_you_ever_had_a_smear_test</name>
+            <choiceReferences>Yes</choiceReferences>
+            <choiceReferences>No</choiceReferences>
+            <dataType>Boolean</dataType>
+            <fieldText>Have you ever had a smear test</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>If_Yes_please_give_estimate_of_last_smear_test</name>
+            <dataType>Date</dataType>
+            <fieldText>If &apos;Yes&apos;, please give estimate of last smear test</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>If_No_would_you_like_to_have_a_smear_test_taken</name>
+            <choiceReferences>Yes</choiceReferences>
+            <choiceReferences>No</choiceReferences>
+            <dataType>Boolean</dataType>
+            <fieldText>If &apos;No&apos;, would you like to have a smear test taken</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+    </screens>
+    <screens>
+        <name>Attempted_suicide_details</name>
+        <label>Attempted suicide details</label>
+        <locationX>1632</locationX>
+        <locationY>2897</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Update_suicide_attempt</targetReference>
+        </connector>
+        <fields>
+            <name>Can_you_give_me_more_details_of_suicide_attempt</name>
+            <fieldText>Can you give me more details of suicide attempt</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+    </screens>
+    <screens>
+        <name>Concerns_about_children</name>
+        <label>Concerns about children</label>
+        <locationX>1491</locationX>
+        <locationY>3629</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Update_concerns_about_children</targetReference>
+        </connector>
+        <fields>
+            <name>Do_you_have_any_concerns_about_your_children_s_health_welfare_or_development</name>
+            <choiceReferences>Yes</choiceReferences>
+            <choiceReferences>No</choiceReferences>
+            <dataType>Boolean</dataType>
+            <fieldText>Do you have any concerns about your children’s health, welfare or development</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Child_health_Please_detail_those_concerns</name>
+            <fieldText>Is &apos;Yes&apos;, please detail those concerns</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Have_you_ever_received_assistance_for_your_children_s_health</name>
+            <choiceReferences>Yes</choiceReferences>
+            <choiceReferences>No</choiceReferences>
+            <dataType>Boolean</dataType>
+            <fieldText>Have you ever received assistance for your children&apos;s health</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Is_Yes_please_give_details_assistance</name>
+            <fieldText>Is &apos;Yes&apos;, please give details of assistance from any service/ agency to help you with your children’s health, welfare or development</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Do_you_need_assistance_with_your_children_s_health</name>
+            <choiceReferences>Yes</choiceReferences>
+            <choiceReferences>No</choiceReferences>
+            <dataType>Boolean</dataType>
+            <fieldText>Do you need assistance with your children&apos;s health</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Assistance_you_need_from_any_service_agency_to_help_with_your_children_s_health</name>
+            <fieldText>Please give details of the assistance you need from any service/agency to help with your children&apos;s health, welfare or development</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+    </screens>
+    <screens>
+        <name>Deliberately_Self_Harmed_Screen</name>
+        <label>Deliberately Self Harmed Screen</label>
+        <locationX>1624</locationX>
+        <locationY>2775</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Update_deliberate_self_harm</targetReference>
+        </connector>
+        <fields>
+            <name>Can_you_give_me_more_details_about_your_deliberate_self_harm</name>
+            <fieldText>Can you give me more details about your deliberate self-harm</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+    </screens>
     <screens>
         <name>Dental_Health</name>
         <label>Dental Health</label>
@@ -1099,6 +2780,217 @@
         <connector>
             <targetReference>Update_physical_health</targetReference>
         </connector>
+    </screens>
+    <screens>
+        <name>Details_of_children</name>
+        <label>Details of children</label>
+        <locationX>1153</locationX>
+        <locationY>3637</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Update_children_details</targetReference>
+        </connector>
+        <fields>
+            <name>Detailsofchildren</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Details of your children&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Child1</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;First Child&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Name_child_1</name>
+            <dataType>String</dataType>
+            <fieldText>Name</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Age_child_1</name>
+            <dataType>Number</dataType>
+            <fieldText>Age</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+            <scale>0</scale>
+        </fields>
+        <fields>
+            <name>Child_1_If_this_child_does_not_live_with_you_who_do_they_live_with</name>
+            <dataType>String</dataType>
+            <fieldText>If this child does not live with you who do they live with</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Child_1_Do_you_see_this_child_regularly_How_often</name>
+            <dataType>String</dataType>
+            <fieldText>Do you see this child regularly? How often?</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Child_1_address_if_known</name>
+            <fieldText>Child&apos;s address (if known)</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>SecondChild</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Second Child&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Name_child_2</name>
+            <dataType>String</dataType>
+            <fieldText>Name</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Age_child_2</name>
+            <dataType>Number</dataType>
+            <fieldText>Age</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+            <scale>0</scale>
+        </fields>
+        <fields>
+            <name>Child_2_If_this_child_does_not_live_with_you_who_do_they_live_with</name>
+            <dataType>String</dataType>
+            <fieldText>If this child does not live with you who do they live with</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Child_2_Do_you_see_this_child_regularly_How_often</name>
+            <dataType>String</dataType>
+            <fieldText>Do you see this child regularly? How often?</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Child_2_address_if_known</name>
+            <fieldText>Child&apos;s address (if known)</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>ThirdChild</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Third Child&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Name_child_3</name>
+            <dataType>String</dataType>
+            <fieldText>Name</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Age_child_3</name>
+            <dataType>Number</dataType>
+            <fieldText>Age</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+            <scale>0</scale>
+        </fields>
+        <fields>
+            <name>Child_3_If_this_child_does_not_live_with_you_who_do_they_live_with</name>
+            <dataType>String</dataType>
+            <fieldText>If this child does not live with you who do they live with</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Child_3_Do_you_see_this_child_regularly_How_often</name>
+            <dataType>String</dataType>
+            <fieldText>Do you see this child regularly? How often?</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Child_3_address_if_known</name>
+            <fieldText>Child&apos;s address (if known)</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>FourthChild</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Fourth Child&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Name_child_4</name>
+            <dataType>String</dataType>
+            <fieldText>Name</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Age_child_4</name>
+            <dataType>Number</dataType>
+            <fieldText>Age</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+            <scale>0</scale>
+        </fields>
+        <fields>
+            <name>Child_4_If_this_child_does_not_live_with_you_who_do_they_live_with</name>
+            <dataType>String</dataType>
+            <fieldText>If this child does not live with you who do they live with</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Child_4_Do_you_see_this_child_regularly_How_often</name>
+            <dataType>String</dataType>
+            <fieldText>Do you see this child regularly? How often?</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Child_4_address_if_known</name>
+            <fieldText>Child&apos;s address (if known)</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+    </screens>
+    <screens>
+        <name>Details_of_family_awareness_of_substance_use</name>
+        <label>Details of family awareness of substance use</label>
+        <locationX>1127</locationX>
+        <locationY>3300</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Update_family_awareness</targetReference>
+        </connector>
+        <fields>
+            <name>Please_give_details_of_the_family_awareness_of_your_substance_use</name>
+            <fieldText>Please give details of the family awareness of your substance use</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Are_any_of_your_family_members_aware_that_address_your_substance_use</name>
+            <choiceReferences>Yes</choiceReferences>
+            <choiceReferences>No</choiceReferences>
+            <dataType>Boolean</dataType>
+            <fieldText>Are any of your family members (including your spouse/ partner) aware that you are trying to address your substance use</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Do_you_think_that_your_family_members_or_friends_would_support</name>
+            <choiceReferences>Yes</choiceReferences>
+            <choiceReferences>No</choiceReferences>
+            <dataType>Boolean</dataType>
+            <fieldText>Do you think that your family members or friends would support you in addressing your substance use</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
     </screens>
     <screens>
         <name>EnterNOKDetails</name>
@@ -1177,10 +3069,192 @@
         </fields>
     </screens>
     <screens>
+        <name>Ever_had_HIV_or_Hepatitis_tests</name>
+        <label>Ever had HIV or Hepatitis tests</label>
+        <locationX>618</locationX>
+        <locationY>1480</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Update_HIV_and_HEP_tests</targetReference>
+        </connector>
+        <fields>
+            <name>Have_you_ever_had_a_HIV_test</name>
+            <choiceReferences>TextYes</choiceReferences>
+            <choiceReferences>TextNo</choiceReferences>
+            <choiceReferences>TextDon_t_Know</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Have you ever had a HIV test</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Have_you_ever_had_a_Hepatitis_B_test</name>
+            <choiceReferences>TextYes</choiceReferences>
+            <choiceReferences>TextNo</choiceReferences>
+            <choiceReferences>TextDon_t_Know</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Have you ever had a Hepatitis B test</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Have_you_ever_had_a_Hepatitis_C_test</name>
+            <choiceReferences>TextYes</choiceReferences>
+            <choiceReferences>TextNo</choiceReferences>
+            <choiceReferences>TextDon_t_Know</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Have you ever had a Hepatitis C test</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>If_Yes_to_any_of_these_tests_are_you_aware_of_the_test_results</name>
+            <fieldText>If &apos;Yes&apos; to any of these tests, are you aware of the test results? Please give details</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>If_you_received_a_positive_Blood_Borne_Virus_BBV</name>
+            <fieldText>If you received a positive Blood Borne Virus (BBV) test result, did you receive any treatment? Please give details</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Have_you_Ever_been_vaccinated_against_hepatitis_B</name>
+            <choiceReferences>TextYes</choiceReferences>
+            <choiceReferences>TextNo</choiceReferences>
+            <choiceReferences>TextDon_t_Know</choiceReferences>
+            <dataType>String</dataType>
+            <fieldText>Have you ever been vaccinated against hepatitis B</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>If_Yes_please_give_estimated_date_Hep_B</name>
+            <dataType>Date</dataType>
+            <fieldText>If &apos;Yes&apos;, please give estimated date</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+    </screens>
+    <screens>
+        <name>FAMILY_AND_CURRENT_RELATIONSHIPS</name>
+        <label>FAMILY AND CURRENT RELATIONSHIPS</label>
+        <locationX>626</locationX>
+        <locationY>3142</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Update_family_relationships_overview</targetReference>
+        </connector>
+        <fields>
+            <name>FAMILYANDCURRENTRELATIONSHIPS</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;FAMILY AND CURRENT RELATIONSHIPS&lt;/FONT&gt;&lt;/SPAN&gt;&lt;DIV ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;&lt;/FONT&gt;&lt;/DIV&gt;&lt;DIV ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;On the next few screens you will be asked for details of the people you live with and your children&lt;FONT STYLE=&quot;font-size:12px&quot;&gt;.&lt;/FONT&gt;&lt;/FONT&gt;&lt;/DIV&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Do_you_live_with_anyone_currently</name>
+            <choiceReferences>Yes</choiceReferences>
+            <choiceReferences>No</choiceReferences>
+            <dataType>Boolean</dataType>
+            <fieldText>Do you live with anyone currently</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Are_any_of_your_family_members_aware_of_your_substance_use</name>
+            <choiceReferences>Yes</choiceReferences>
+            <choiceReferences>No</choiceReferences>
+            <dataType>Boolean</dataType>
+            <fieldText>Are any of your family members aware of your substance use</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Do_any_of_your_family_members_have_difficulties_with_drugs</name>
+            <choiceReferences>Yes</choiceReferences>
+            <choiceReferences>No</choiceReferences>
+            <dataType>Boolean</dataType>
+            <fieldText>Do any of your family members (including your spouse or partner) have difficulties with drugs or alcohol or have a history of addiction</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Do_you_have_any_children</name>
+            <choiceReferences>Yes</choiceReferences>
+            <choiceReferences>No</choiceReferences>
+            <dataType>Boolean</dataType>
+            <fieldText>Do you have any children</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Do_you_think_that_your_drug_alcohol_use_has_impacted_on_your_relationships</name>
+            <choiceReferences>Yes</choiceReferences>
+            <choiceReferences>No</choiceReferences>
+            <dataType>Boolean</dataType>
+            <fieldText>Do you think that your drug / alcohol use has impacted on your relationships</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+    </screens>
+    <screens>
+        <name>Family_aware_addressing_detials</name>
+        <label>Family aware addressing detials</label>
+        <locationX>1659</locationX>
+        <locationY>3299</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Update_family_aware_addressing_of_substance_use</targetReference>
+        </connector>
+        <fields>
+            <name>Detailsofhowyourfamilymembersareawarethatyouaretryingtoaddressyoursubstanceuse</name>
+            <fieldText>Details of how your family members are aware that you are trying to address your substance use</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+    </screens>
+    <screens>
+        <name>family_history_of_mental_health_problem_details</name>
+        <label>family history of mental health problem details</label>
+        <locationX>1649</locationX>
+        <locationY>2488</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Update_receiving_mental_help_0</targetReference>
+        </connector>
+        <fields>
+            <name>Details_of_family_history_of_mental_health_problems</name>
+            <fieldText>Details of family history of mental health problems</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+    </screens>
+    <screens>
+        <name>Family_Support</name>
+        <label>Family Support</label>
+        <locationX>1666</locationX>
+        <locationY>3396</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Update_family_support</targetReference>
+        </connector>
+        <fields>
+            <name>In_what_ways_would_your_friends_or_family_support_you</name>
+            <fieldText>In what ways would your friends or family support you</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+    </screens>
+    <screens>
         <name>Finished</name>
         <label>Finished</label>
-        <locationX>510</locationX>
-        <locationY>1506</locationY>
+        <locationX>600</locationX>
+        <locationY>3943</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <fields>
@@ -1244,6 +3318,116 @@
             <fieldText>Change 3</fieldText>
             <fieldType>LargeTextArea</fieldType>
             <isRequired>false</isRequired>
+        </fields>
+    </screens>
+    <screens>
+        <name>Goals_for_relationships</name>
+        <label>Goals for relationships</label>
+        <locationX>925</locationX>
+        <locationY>3837</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Supports_Relationships</targetReference>
+        </connector>
+        <fields>
+            <name>Identifygoalsyouhaverelatedtoyourfamilyandrelationshipsinlongterm</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Identify goals you have related to your family and relationships in long term&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Goal_1_relationships</name>
+            <fieldText>Goal 1</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Goal_2_relationships</name>
+            <fieldText>Goal 2</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+    </screens>
+    <screens>
+        <name>Goals_Mental_Health</name>
+        <label>Goals Mental Health</label>
+        <locationX>1117</locationX>
+        <locationY>3050</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Support_Mental_Health</targetReference>
+        </connector>
+        <fields>
+            <name>Identifyanygoalsyouhaveinrelationtomentalpsychologicalemotionalhealth</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Please identify any goals you have in relation to your mental / psychological / emotional health in the long term&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Goal_1_Mental_Health</name>
+            <fieldText>Goal 1</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Goal_2_Mental_Health</name>
+            <fieldText>Goal 2</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+    </screens>
+    <screens>
+        <name>Has_attended_counsellor</name>
+        <label>Has attended counsellor/psychotherapist</label>
+        <locationX>1648</locationX>
+        <locationY>2637</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Update_attended_counsellor_psychotherapist_support_worker</targetReference>
+        </connector>
+        <fields>
+            <name>What_did_you_find_most_useful_about_attending_the</name>
+            <fieldText>What did you find most useful about attending the counsellor/ psychotherapist/ support worker</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+    </screens>
+    <screens>
+        <name>Has_information_been_given_to_you_on_If_applicable</name>
+        <label>Has information been given to you on: (If applicable)</label>
+        <locationX>624</locationX>
+        <locationY>1918</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Update_for_Info_given_on</targetReference>
+        </connector>
+        <fields>
+            <name>HasinformationbeengiventoyouonIfapplicable</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#CC0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Has information been given to you on: (If applicable)&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Needle_Exchange_Services</name>
+            <dataType>Boolean</dataType>
+            <fieldText>Needle Exchange Services</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Safer_drug_using_practices</name>
+            <dataType>Boolean</dataType>
+            <fieldText>Safer drug using practices</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Safe_sex_practice</name>
+            <dataType>Boolean</dataType>
+            <fieldText>Safe sex practice</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
         </fields>
     </screens>
     <screens>
@@ -1356,6 +3540,40 @@ Please give details</helpText>
         </fields>
     </screens>
     <screens>
+        <name>Identify_any_goals_you_have_related_to_your_general_dental_health_in_longer_term</name>
+        <label>Identify any goals you have related to your general/dental health in longer term</label>
+        <locationX>619</locationX>
+        <locationY>2127</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Update_for_Health_Goals</targetReference>
+        </connector>
+        <fields>
+            <name>Identifyanygoalsyouhaverelatedtoyourgeneraldentalhealthinlongerterm</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Identify any goals you have related to your general/dental health in longer term&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Goal_1_General_Health</name>
+            <fieldText>Goal 1</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Goal_2_General_Health</name>
+            <fieldText>Goal 2</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Goal_3_General_Health</name>
+            <fieldText>Goal 3</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+    </screens>
+    <screens>
         <name>In_Case_Of_An_Emergency</name>
         <label>In Case Of An Emergency</label>
         <locationX>504</locationX>
@@ -1432,6 +3650,135 @@ Please give details</helpText>
         </fields>
     </screens>
     <screens>
+        <name>Links_Mental_Health</name>
+        <label>Links Mental Health</label>
+        <locationX>926</locationX>
+        <locationY>3007</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Goals_Mental_Health</targetReference>
+        </connector>
+        <fields>
+            <name>Do_you_think_that_there_is_a_link_between_your_drug_alcohol_use_and_your_mental</name>
+            <fieldText>Do you think that there is a link between your drug/ alcohol use and your mental/ psychological/ emotional health? If ‘yes’ please give details</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+    </screens>
+    <screens>
+        <name>MENTAL_PSYCHOLOGICAL_EMOTIONAL_HEALTH</name>
+        <label>MENTAL/ PSYCHOLOGICAL/ EMOTIONAL HEALTH</label>
+        <locationX>628</locationX>
+        <locationY>2533</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Any_MENTAL_PSYCHOLOGICAL_EMOTIONAL_HEALTH_issues</targetReference>
+        </connector>
+        <fields>
+            <name>Are_there_any_MENTAL_PSYCHOLOGICAL_EMOTIONAL_health_issues</name>
+            <choiceReferences>Yes</choiceReferences>
+            <choiceReferences>No</choiceReferences>
+            <dataType>Boolean</dataType>
+            <fieldText>Are there any MENTAL/ PSYCHOLOGICAL/ EMOTIONAL health issues</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+    </screens>
+    <screens>
+        <name>Name_of_people_you_currently_live_with</name>
+        <label>Name of people you currently live with</label>
+        <locationX>1117</locationX>
+        <locationY>3182</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Update_family_relationships_overview_0</targetReference>
+        </connector>
+        <fields>
+            <name>Peopleyoucurrentlylivewith</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;People you currently live with&lt;FONT STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot;&gt; (refer to initial assessment)&lt;/FONT&gt;&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>FirstPerson</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;First Person&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Name_1</name>
+            <dataType>String</dataType>
+            <fieldText>Name</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Relationship_to_you_1</name>
+            <dataType>String</dataType>
+            <fieldText>Relationship to you</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>SecondPerson</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Second Person&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Name_2</name>
+            <dataType>String</dataType>
+            <fieldText>Name</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Relationship_to_you_2</name>
+            <dataType>String</dataType>
+            <fieldText>Relationship to you</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>ThirdPerson</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Third Person&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Name_3</name>
+            <dataType>String</dataType>
+            <fieldText>Name</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Relationship_to_you_3</name>
+            <dataType>String</dataType>
+            <fieldText>Relationship to you</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>FourthPerson</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Fourth Person&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Name_4</name>
+            <dataType>String</dataType>
+            <fieldText>Name</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Relationship_to_you_4</name>
+            <dataType>String</dataType>
+            <fieldText>Relationship to you</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+    </screens>
+    <screens>
         <name>Physical_Health</name>
         <label>Physical Health</label>
         <locationX>507</locationX>
@@ -1466,13 +3813,53 @@ Please give details</helpText>
             <isRequired>false</isRequired>
         </fields>
         <fields>
-            <name>Do_you_know_how_you_can_protect_yourself_against_sexually_transmitted_infections</name>
-            <choiceReferences>Yes</choiceReferences>
-            <choiceReferences>No</choiceReferences>
-            <dataType>Boolean</dataType>
-            <fieldText>Do you know how you can protect yourself against sexually transmitted infections?</fieldText>
-            <fieldType>DropdownBox</fieldType>
+            <name>Do_you_think_that_your_drug_alcohol_use_has_had_an_effect_on_your_phys</name>
+            <fieldText>Do you think that your drug/ alcohol use has had an effect on your physical health? If ‘yes’ please give details:</fieldText>
+            <fieldType>LargeTextArea</fieldType>
             <isRequired>false</isRequired>
+        </fields>
+    </screens>
+    <screens>
+        <name>Receiving_help_for_mental_health</name>
+        <label>Receiving help for mental health</label>
+        <locationX>1601</locationX>
+        <locationY>2344</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Update_receiving_mental_help</targetReference>
+        </connector>
+        <fields>
+            <name>What_are_you_have_you_been_treated_for_if_known_your_diagnosis</name>
+            <fieldText>What are you/ have you been treated for, if known: (your diagnosis)</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Can_you_tell_me_the_name_and_address_of_the_psychiat</name>
+            <dataType>String</dataType>
+            <fieldText>Can you tell me the name and address of the psychiatrist or doctor that treated you:</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>What_do_did_you_find_most_useful_about_this_help_treatment</name>
+            <fieldText>What do/ did you find most useful about this help / treatment?</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+    </screens>
+    <screens>
+        <name>Record_Update_Fault</name>
+        <label>Record Update Fault</label>
+        <locationX>122</locationX>
+        <locationY>3457</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <fields>
+            <name>DisplayFaultOnUpdate</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#CC0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;There was a problem updating the Comprehensive Assessment:&lt;/FONT&gt;&lt;/SPAN&gt;&lt;DIV ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;{!$Flow.FaultMessage}&lt;/FONT&gt;&lt;/DIV&gt;&lt;DIV ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Please ask your systems administrator to contact the Enclude support line about this issue&lt;/FONT&gt;&lt;/DIV&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
         </fields>
     </screens>
     <screens>
@@ -1506,15 +3893,47 @@ Please give details</helpText>
         </fields>
     </screens>
     <screens>
-        <name>Sexual_Health_Issues_Screen</name>
-        <label>Sexual Health Issues</label>
-        <locationX>792</locationX>
-        <locationY>1290</locationY>
+        <name>Relatives_with_difficulties</name>
+        <label>Relatives with difficulties</label>
+        <locationX>1139</locationX>
+        <locationY>3506</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <connector>
-            <targetReference>Update_sexual_health_0</targetReference>
+            <targetReference>Update_family_difficulties_of_substance_use</targetReference>
         </connector>
+        <fields>
+            <name>Detailsfamily_members_have_difficulties_with_drugs_or_alcohol</name>
+            <fieldText>Details of your family members (including your spouse or partner) difficulties with drugs or alcohol or have a history of addiction</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+    </screens>
+    <screens>
+        <name>Sexual_Health_Issues_Screen</name>
+        <label>Sexual Health Issues</label>
+        <locationX>1098</locationX>
+        <locationY>1125</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Concerns_about_contraception</targetReference>
+        </connector>
+        <fields>
+            <name>Do_you_know_how_you_can_protect_yourself_against_sexually_transmitted_infections</name>
+            <choiceReferences>Yes</choiceReferences>
+            <choiceReferences>No</choiceReferences>
+            <dataType>Boolean</dataType>
+            <fieldText>Do you know how you can protect yourself against sexually transmitted infections?</fieldText>
+            <fieldType>DropdownBox</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>If_you_have_any_concerns_about_contraception_please_give_details</name>
+            <fieldText>If you have any concerns about contraception, please give details</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
     </screens>
     <screens>
         <name>Substance_Use_Description</name>
@@ -1682,6 +4101,174 @@ Please give details</helpText>
             <scale>0</scale>
         </fields>
     </screens>
+    <screens>
+        <name>Support_Mental_Health</name>
+        <label>Support Mental Health</label>
+        <locationX>1300</locationX>
+        <locationY>3073</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Update_mental_health_support_and_goals</targetReference>
+        </connector>
+        <fields>
+            <name>Whatprogressdoyouwantsupportsdoyourequireinrelationtoyourmentalpsychologicalemot</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;What progress do you want / supports do you require in relation to your mental/ psychological/ emotional health in the short term&lt;FONT STYLE=&quot;font-size:12px&quot;&gt;&lt;/FONT&gt;&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Support_1_Mental_Health</name>
+            <fieldText>Support 1</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Support_2_Mental_Health</name>
+            <fieldText>Support 2</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Support_3_Mental_Health</name>
+            <fieldText>Support 3</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+    </screens>
+    <screens>
+        <name>Supports_Relationships</name>
+        <label>Supports Relationships</label>
+        <locationX>1157</locationX>
+        <locationY>3839</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Update_goals_and_supports_relationships</targetReference>
+        </connector>
+        <fields>
+            <name>Whatprogressdoyouwantsupportsdoyourequireinrelationtoyourfamilyandrelationshipsi</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;What progress do you want / supports do you require in relation to your family and relationships in the short term (If applicable)&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Support_1_relationships</name>
+            <fieldText>Support 1</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Support_2_relationships</name>
+            <fieldText>Support 2</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Support_3_relationships</name>
+            <fieldText>Support 3</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+    </screens>
+    <screens>
+        <name>Ways_drug_alcohol_use_impacted_on_relationships</name>
+        <label>Ways drug / alcohol use impacted on relationships</label>
+        <locationX>1178</locationX>
+        <locationY>3739</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Update_ways_impacted_relationships</targetReference>
+        </connector>
+        <fields>
+            <name>In_what_ways_has_your_drug_alcohol_use_impacted_on_your_relationships</name>
+            <fieldText>In what ways has your drug / alcohol use impacted on your relationships</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+    </screens>
+    <screens>
+        <name>What_progress_do_you_want_supports</name>
+        <label>What progress do you want/ supports do you require in relation to your general/ dental health in the short term? (If applicable)</label>
+        <locationX>624</locationX>
+        <locationY>2325</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Update_for_Health_Support</targetReference>
+        </connector>
+        <fields>
+            <name>Whatprogressdoyouwantsupportsdoyourequireinrelationtoyourgeneraldentalhealthinth</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;What progress do you want/ supports do you require in relation to your general/ dental health in the short term? (If applicable)&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Support_1_General_Health</name>
+            <fieldText>Support 1</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Support_2_General_Health</name>
+            <fieldText>Support 2</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Support_3_General_Health</name>
+            <fieldText>Support 3</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+    </screens>
+    <screens>
+        <name>Would_you_like_to_have_a_blood_test_taken_to_screen_for</name>
+        <label>Would you like to have a blood test taken to screen for</label>
+        <locationX>612</locationX>
+        <locationY>1722</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <connector>
+            <targetReference>Update_for_would_like_blood_tests</targetReference>
+        </connector>
+        <fields>
+            <name>Wouldyouliketohaveabloodtesttakentoscreenfor</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#CC0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Would you like to have a blood test taken to screen for the following&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>WouldLikeTestForHIV</name>
+            <dataType>Boolean</dataType>
+            <fieldText>HIV</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>WouldLikeTestFor_Hepatitis_B</name>
+            <dataType>Boolean</dataType>
+            <fieldText>Hepatitis B</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>WouldLikeTestFor_Hepatitis_C</name>
+            <dataType>Boolean</dataType>
+            <fieldText>Hepatitis C</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>AreyouawareofthewaysinwhichHIVhepatitisBCcanbetransmittedfromonepersontoanother</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#CC0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Spreading HIV, hepatitis B or hepatitis C&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Are_you_aware_of_the_ways_in_which_HIV_hepatitis_B_C_can_be_transmitted</name>
+            <dataType>Boolean</dataType>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#CC0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Are you aware of the ways in which HIV, hepatitis B &amp;amp; C can be transmitted from one person to another?&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+    </screens>
     <startElementReference>Get_General_Contact_Record_Type</startElementReference>
     <variables>
         <name>ClientAddressFromLookup</name>
@@ -1691,6 +4278,12 @@ Please give details</helpText>
     </variables>
     <variables>
         <name>ClientCity</name>
+        <dataType>String</dataType>
+        <isInput>false</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>ClientGender</name>
         <dataType>String</dataType>
         <isInput>false</isInput>
         <isOutput>false</isOutput>
@@ -1721,6 +4314,12 @@ Please give details</helpText>
         <dataType>String</dataType>
         <isInput>false</isInput>
         <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>ConcernsaboutContraception</name>
+        <dataType>Boolean</dataType>
+        <isInput>false</isInput>
+        <isOutput>true</isOutput>
     </variables>
     <variables>
         <name>GeneralRecordTypeID</name>

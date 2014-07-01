@@ -555,6 +555,7 @@ IF(LEN( Client__r.MailingState ) &gt;1, Client__r.MailingState , &quot;&quot;)</
     <fields>
         <fullName>Date_vaccinated_against_hepatitis_B__c</fullName>
         <externalId>false</externalId>
+        <inlineHelpText>If ‘yes’ please give estimate of date</inlineHelpText>
         <label>Date vaccinated against hepatitis B</label>
         <required>false</required>
         <trackTrending>false</trackTrending>
@@ -777,7 +778,7 @@ IF(LEN( Client__r.MailingState ) &gt;1, Client__r.MailingState , &quot;&quot;)</
         <label>Ever been vaccinated against hepatitis B</label>
         <picklist>
             <picklistValues>
-                <fullName>Yes (If ‘yes’ please give estimate of date)</fullName>
+                <fullName>Yes</fullName>
                 <default>false</default>
             </picklistValues>
             <picklistValues>
