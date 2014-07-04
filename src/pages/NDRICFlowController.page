@@ -1,5 +1,6 @@
 <apex:page standardController="Contact" extensions="NDRICFlowController">
-	<flow:interview name="Comprehensive_Assessment" interview="{!flDemo}" finishLocation="{!prFinishLocation}" >
-		<apex:param name="ClientID" value="{!contact.id}"/>
-	</flow:interview>
+    <flow:interview name="Comprehensive_Assessment" interview="{!flDemo}" finishLocation="{!prFinishLocation}" >
+        <apex:param name="ClientID" value="{!contact.id}"/>
+        <apex:param name="v_InitialScreenTitle" value="{!$Label.CA_Flow_Initial_Screen_Title}"/>
+    </flow:interview>
 </apex:page>
