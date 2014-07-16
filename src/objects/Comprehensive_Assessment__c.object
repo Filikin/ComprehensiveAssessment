@@ -830,22 +830,40 @@ IF(LEN( Client__r.MailingState ) &gt;1, Client__r.MailingState , &quot;&quot;)</
         <type>Checkbox</type>
     </fields>
     <fields>
-        <fullName>Ever_received_help_re_alcohol_use__c</fullName>
-        <defaultValue>false</defaultValue>
+        <fullName>Ever_received_help_re_alcohol_use1__c</fullName>
         <externalId>false</externalId>
-        <inlineHelpText>Have you ever received help for your alcohol use in the past?</inlineHelpText>
         <label>Ever received help re alcohol use</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
         <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
+        <type>Picklist</type>
     </fields>
     <fields>
-        <fullName>Ever_received_help_re_drug_use__c</fullName>
-        <defaultValue>false</defaultValue>
+        <fullName>Ever_received_help_re_drug_use1__c</fullName>
         <externalId>false</externalId>
-        <inlineHelpText>Have you ever received help for your drug use in the past?</inlineHelpText>
         <label>Ever received help re drug use</label>
+        <picklist>
+            <picklistValues>
+                <fullName>Yes</fullName>
+                <default>false</default>
+            </picklistValues>
+            <picklistValues>
+                <fullName>No</fullName>
+                <default>false</default>
+            </picklistValues>
+            <sorted>false</sorted>
+        </picklist>
         <trackTrending>false</trackTrending>
-        <type>Checkbox</type>
+        <type>Picklist</type>
     </fields>
     <fields>
         <fullName>Family_Current_Relationships_NI__c</fullName>

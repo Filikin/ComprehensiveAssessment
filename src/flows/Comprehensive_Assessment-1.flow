@@ -164,7 +164,7 @@
             </value>
         </assignmentItems>
         <connector>
-            <targetReference>Dental_Health</targetReference>
+            <targetReference>Update_physical_health</targetReference>
         </connector>
     </assignments>
     <choices>
@@ -214,6 +214,37 @@
         <value>
             <elementReference>c_Daughter</elementReference>
         </value>
+    </choices>
+    <choices>
+        <name>DefaultAlcoholUseHelp</name>
+        <choiceText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;&lt;/FONT&gt;&lt;/SPAN&gt;</choiceText>
+        <dataType>Boolean</dataType>
+    </choices>
+    <choices>
+        <name>DefaultDrugUseHelp</name>
+        <choiceText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;&lt;/FONT&gt;&lt;/SPAN&gt;</choiceText>
+        <dataType>Boolean</dataType>
+    </choices>
+    <choices>
+        <name>DefaultEverReceivedHelpReDrug</name>
+        <choiceText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;{!current_EverReceivedHelpReDrug}&lt;/FONT&gt;&lt;/SPAN&gt;</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <elementReference>current_EverReceivedHelpReDrug</elementReference>
+        </value>
+    </choices>
+    <choices>
+        <name>DefaultEverReceiveHelpReAlcohol</name>
+        <choiceText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;{!current_EverReceiveHelpReAlcohol}&lt;/FONT&gt;&lt;/SPAN&gt;</choiceText>
+        <dataType>String</dataType>
+        <value>
+            <elementReference>current_EverReceiveHelpReAlcohol</elementReference>
+        </value>
+    </choices>
+    <choices>
+        <name>DefaultYesNo</name>
+        <choiceText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;{!current_DrugUseAsText}&lt;/FONT&gt;&lt;/SPAN&gt;</choiceText>
+        <dataType>String</dataType>
     </choices>
     <choices>
         <name>Father</name>
@@ -527,8 +558,8 @@
     <decisions>
         <name>Are_there_any_accommodation_difficulties</name>
         <label>Are there any accommodation difficulties</label>
-        <locationX>397</locationX>
-        <locationY>3937</locationY>
+        <locationX>283</locationX>
+        <locationY>3947</locationY>
         <defaultConnector>
             <targetReference>Are_there_any_financial_concerns</targetReference>
         </defaultConnector>
@@ -787,7 +818,7 @@
                 <leftValueReference>Have_you_ever_received_help_for_your_drug_use_in_the_past</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <booleanValue>true</booleanValue>
+                    <stringValue>No</stringValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -812,7 +843,7 @@
                 <leftValueReference>Have_you_ever_received_help_for_your_alcohol_use_in_the_past</leftValueReference>
                 <operator>EqualTo</operator>
                 <rightValue>
-                    <booleanValue>true</booleanValue>
+                    <stringValue>Yes</stringValue>
                 </rightValue>
             </conditions>
             <connector>
@@ -1518,8 +1549,20 @@
             <field>Current_substance_use_description__c</field>
         </outputAssignments>
         <outputAssignments>
+            <assignToReference>current_Tick_Regular_Income</assignToReference>
+            <field>Do_you_have_a_regular_income__c</field>
+        </outputAssignments>
+        <outputAssignments>
             <assignToReference>EverVaccincatedHepB</assignToReference>
             <field>Ever_been_vaccinated_against_hepatitis_B__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>current_EverReceiveHelpReAlcohol</assignToReference>
+            <field>Ever_received_help_re_alcohol_use1__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>current_EverReceivedHelpReDrug</assignToReference>
+            <field>Ever_received_help_re_drug_use1__c</field>
         </outputAssignments>
         <outputAssignments>
             <assignToReference>current_forhowlong1</assignToReference>
@@ -1592,6 +1635,10 @@
         <outputAssignments>
             <assignToReference>current_HomeLivingIndependently</assignToReference>
             <field>If_yes_please_specify_DLI__c</field>
+        </outputAssignments>
+        <outputAssignments>
+            <assignToReference>current_RegularIncomeDetails</assignToReference>
+            <field>If_yes_regular_income_from_where__c</field>
         </outputAssignments>
         <outputAssignments>
             <assignToReference>current_IsNOKAwareOfDrugUse</assignToReference>
@@ -1882,12 +1929,6 @@
             </value>
         </filters>
         <inputAssignments>
-            <field>Ever_received_help_re_alcohol_use__c</field>
-            <value>
-                <elementReference>Have_you_ever_received_help_for_your_alcohol_use_in_the_past</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
             <field>If_help_received_re_alcohol_where_when__c</field>
             <value>
                 <elementReference>Where_did_you_receive_the_treatment_help_for_alcohol_use</elementReference>
@@ -1938,12 +1979,6 @@
             </value>
         </filters>
         <inputAssignments>
-            <field>Ever_received_help_re_drug_use__c</field>
-            <value>
-                <elementReference>Have_you_ever_received_help_for_your_drug_use_in_the_past</elementReference>
-            </value>
-        </inputAssignments>
-        <inputAssignments>
             <field>If_help_received_re_drug_where_when__c</field>
             <value>
                 <elementReference>Where_did_you_receive_the_treatment_help_for_drug_use</elementReference>
@@ -1977,6 +2012,38 @@
             <field>Withdrawal_symptom_stop_taking_substance__c</field>
             <value>
                 <elementReference>Withdrawal_symptoms_when_you_stop_taking_substance</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Comprehensive_Assessment__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_Assessement_with_Past_Alcohol_Drug_flags</name>
+        <label>Update Assessement with Past Alcohol Drug flags</label>
+        <locationX>1925</locationX>
+        <locationY>50</locationY>
+        <connector>
+            <targetReference>Did_Received_help_for_alcohol_use_in_the_past</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Record_Update_Fault_2</targetReference>
+        </faultConnector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>NewAssessment</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Ever_received_help_re_alcohol_use1__c</field>
+            <value>
+                <elementReference>Have_you_ever_received_help_for_your_alcohol_use_in_the_past</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>Ever_received_help_re_drug_use1__c</field>
+            <value>
+                <elementReference>Have_you_ever_received_help_for_your_drug_use_in_the_past</elementReference>
             </value>
         </inputAssignments>
         <object>Comprehensive_Assessment__c</object>
@@ -2179,8 +2246,8 @@
     <recordUpdates>
         <name>Update_Comprehensive_Assessment</name>
         <label>Update Comprehensive Assessment</label>
-        <locationX>568</locationX>
-        <locationY>674</locationY>
+        <locationX>597</locationX>
+        <locationY>627</locationY>
         <connector>
             <targetReference>Assign_Update_Record_ID_to_New_Record_ID_Variable</targetReference>
         </connector>
@@ -3287,6 +3354,9 @@
         </filters>
         <inputAssignments>
             <field>Any_difficulty_with_your_accommodation__c</field>
+            <value>
+                <elementReference>ACCOMODATION_AND_LIVING_ARRANGEMENTS_area_of_interest</elementReference>
+            </value>
         </inputAssignments>
         <inputAssignments>
             <field>If_yes_Accomodation_difficulty_specify__c</field>
@@ -3394,6 +3464,38 @@
             <field>If_yes_Financial_concerns_specify__c</field>
             <value>
                 <elementReference>Financial_concerns_details</elementReference>
+            </value>
+        </inputAssignments>
+        <object>Comprehensive_Assessment__c</object>
+    </recordUpdates>
+    <recordUpdates>
+        <name>Update_with_regular_income</name>
+        <label>Update with regular income</label>
+        <locationX>1076</locationX>
+        <locationY>4329</locationY>
+        <connector>
+            <targetReference>Receipt_of_any_benefits</targetReference>
+        </connector>
+        <faultConnector>
+            <targetReference>Record_Update_Fault</targetReference>
+        </faultConnector>
+        <filters>
+            <field>Id</field>
+            <operator>EqualTo</operator>
+            <value>
+                <elementReference>NewAssessment</elementReference>
+            </value>
+        </filters>
+        <inputAssignments>
+            <field>Do_you_have_a_regular_income__c</field>
+            <value>
+                <elementReference>Tick_if_you_have_a_regular_income</elementReference>
+            </value>
+        </inputAssignments>
+        <inputAssignments>
+            <field>If_yes_regular_income_from_where__c</field>
+            <value>
+                <elementReference>If_you_have_a_regular_income_where_is_it_from</elementReference>
             </value>
         </inputAssignments>
         <object>Comprehensive_Assessment__c</object>
@@ -3667,6 +3769,11 @@
             <targetReference>Update_additional_mental_info</targetReference>
         </connector>
         <fields>
+            <name>MENTALPSYCHOLOGICALEMOTIONALHEALTH</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;MENTAL/ PSYCHOLOGICAL/ EMOTIONAL HEALTH&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
             <name>Is_there_any_additional_information_mental</name>
             <fieldText>Is there any additional information about your past or current mental/ psychological/ emotional health that you think it would be helpful for us to know about? (Refer to initial assessment)</fieldText>
             <fieldType>LargeTextArea</fieldType>
@@ -3883,6 +3990,11 @@
             <targetReference>Update_suicide_attempt</targetReference>
         </connector>
         <fields>
+            <name>Haveyoueverconsideredorattemptedsuicide</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;If you have ever considered or attempted suicide&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
             <name>Can_you_give_me_more_details_of_suicide_attempt</name>
             <fieldText>Can you give me more details of suicide attempt</fieldText>
             <fieldType>LargeTextArea</fieldType>
@@ -3925,6 +4037,11 @@
         <connector>
             <targetReference>Update_concerns_about_children</targetReference>
         </connector>
+        <fields>
+            <name>Concernsaboutyourchildrenshealthwelfareordevelopment</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Your children’s health, welfare or development&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
         <fields>
             <name>Do_you_have_any_concerns_about_your_children_s_health_welfare_or_development</name>
             <choiceReferences>Yes</choiceReferences>
@@ -3982,22 +4099,16 @@
             <targetReference>Update_deliberate_self_harm</targetReference>
         </connector>
         <fields>
+            <name>Haveyoueverdeliberatelyselfharmed</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;If you have ever deliberately self-harmed&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
             <name>Can_you_give_me_more_details_about_your_deliberate_self_harm</name>
             <fieldText>Can you give me more details about your deliberate self-harm</fieldText>
             <fieldType>LargeTextArea</fieldType>
             <isRequired>false</isRequired>
         </fields>
-    </screens>
-    <screens>
-        <name>Dental_Health</name>
-        <label>Dental Health</label>
-        <locationX>1455</locationX>
-        <locationY>1007</locationY>
-        <allowBack>true</allowBack>
-        <allowFinish>true</allowFinish>
-        <connector>
-            <targetReference>Update_physical_health</targetReference>
-        </connector>
     </screens>
     <screens>
         <name>Details_of_children</name>
@@ -4185,6 +4296,11 @@
         <connector>
             <targetReference>Update_family_awareness</targetReference>
         </connector>
+        <fields>
+            <name>Areanyofyourfamilymembersawareofyoursubstanceuse</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;If any of your family members are aware of your substance use&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
         <fields>
             <name>Please_give_details_of_the_family_awareness_of_your_substance_use</name>
             <fieldText>Please give details of the family awareness of your substance use</fieldText>
@@ -4408,7 +4524,7 @@
         </connector>
         <fields>
             <name>FAMILYANDCURRENTRELATIONSHIPS</name>
-            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;FAMILY AND CURRENT RELATIONSHIPS&lt;/FONT&gt;&lt;/SPAN&gt;&lt;DIV ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;&lt;/FONT&gt;&lt;/DIV&gt;&lt;DIV ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;On the next few screens you will be asked for details of the people you live with and your children&lt;FONT STYLE=&quot;font-size:12px&quot;&gt;.&lt;/FONT&gt;&lt;/FONT&gt;&lt;/DIV&gt;</fieldText>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;FAMILY AND CURRENT RELATIONSHIPS&lt;/FONT&gt;&lt;/SPAN&gt;&lt;DIV ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;&lt;/FONT&gt;&lt;/DIV&gt;&lt;DIV ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;&lt;/FONT&gt;&lt;/DIV&gt;&lt;DIV ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;On the next few screens you will be asked for details of the people you live with and your children&lt;FONT STYLE=&quot;font-size:12px&quot;&gt;.&lt;/FONT&gt;&lt;/FONT&gt;&lt;/DIV&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
@@ -4468,6 +4584,11 @@
             <targetReference>Update_family_aware_addressing_of_substance_use</targetReference>
         </connector>
         <fields>
+            <name>FamilyAwareAddressingDetailsTitle</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;If any of your family members are aware that you are addressing your substance use&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
             <name>Detailsofhowyourfamilymembersareawarethatyouaretryingtoaddressyoursubstanceuse</name>
             <fieldText>Details of how your family members are aware that you are trying to address your substance use</fieldText>
             <fieldType>LargeTextArea</fieldType>
@@ -4485,6 +4606,11 @@
             <targetReference>Update_receiving_mental_help_0</targetReference>
         </connector>
         <fields>
+            <name>Areyouawareofanyfamilyhistoryofmentalhealthproblems</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;If you are aware of any family history of mental health problems&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
             <name>Details_of_family_history_of_mental_health_problems</name>
             <fieldText>Details of family history of mental health problems</fieldText>
             <fieldType>LargeTextArea</fieldType>
@@ -4501,6 +4627,11 @@
         <connector>
             <targetReference>Update_family_support</targetReference>
         </connector>
+        <fields>
+            <name>FamilyFriendsSupportTitle</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Support from family or friends&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
         <fields>
             <name>In_what_ways_would_your_friends_or_family_support_you</name>
             <fieldText>In what ways would your friends or family support you</fieldText>
@@ -4645,8 +4776,13 @@
             <targetReference>Update_attended_counsellor_psychotherapist_support_worker</targetReference>
         </connector>
         <fields>
+            <name>Haveyoueverattendedacounsellorpsychotherapistsupportworker</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;If you have ever attended a counsellor / psychotherapist or support worker&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
             <name>What_did_you_find_most_useful_about_attending_the</name>
-            <fieldText>What did you find most useful about attending the counsellor/ psychotherapist/ support worker</fieldText>
+            <fieldText>What did you find most useful about attending the counsellor / psychotherapist / support worker</fieldText>
             <fieldType>LargeTextArea</fieldType>
             <isRequired>false</isRequired>
         </fields>
@@ -4700,7 +4836,7 @@
         </connector>
         <fields>
             <name>AlcoholTreatmentDetails</name>
-            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Alcohol Treatment Details&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Alcohol Treatment Details&lt;FONT STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot;&gt;&lt;/FONT&gt;&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
@@ -4750,7 +4886,7 @@
         </connector>
         <fields>
             <name>DrugTreatmentDetails</name>
-            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Drug Treatment Details&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Drug Treatment Details&lt;FONT STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot;&gt;&lt;/FONT&gt;&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
@@ -4888,7 +5024,7 @@ Please give details</helpText>
         </connector>
         <fields>
             <name>InCaseOfEmergencyTitle</name>
-            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#CC0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;In Case If An Emergency&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#CC0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;In Case Of An Emergency&lt;FONT STYLE=&quot;font-size:12px&quot;&gt;&lt;/FONT&gt;&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
@@ -4940,12 +5076,31 @@ Please give details</helpText>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <connector>
-            <targetReference>Finished</targetReference>
+            <targetReference>Update_with_regular_income</targetReference>
         </connector>
         <fields>
             <name>Incomeandfinance</name>
             <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Income and Finance&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Tick_if_you_have_a_regular_income</name>
+            <dataType>Boolean</dataType>
+            <defaultValue>
+                <elementReference>current_Tick_Regular_Income</elementReference>
+            </defaultValue>
+            <fieldText>Tick if you have a regular income</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>If_you_have_a_regular_income_where_is_it_from</name>
+            <defaultValue>
+                <elementReference>current_RegularIncomeDetails</elementReference>
+            </defaultValue>
+            <fieldText>If you have a regular income, where is it from</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
         </fields>
     </screens>
     <screens>
@@ -4975,7 +5130,7 @@ Please give details</helpText>
         </fields>
         <fields>
             <name>ClientAddress</name>
-            <fieldText>&lt;SPAN ALIGN=&quot;CENTER&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;&lt;/FONT&gt;&lt;/SPAN&gt;&lt;DIV ALIGN=&quot;CENTER&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;{!ClientStreet}&lt;/FONT&gt;&lt;/DIV&gt;&lt;DIV ALIGN=&quot;CENTER&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;1&quot;&gt;{!ClientCity}&lt;/FONT&gt;&lt;/DIV&gt;</fieldText>
+            <fieldText>&lt;SPAN class=&quot;labelCol&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;&lt;/FONT&gt;&lt;/SPAN&gt;&lt;DIV class=&quot;labelCol&quot; align=&quot;left&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;{!ClientStreet}&lt;/FONT&gt;&lt;/DIV&gt;&lt;DIV class=&quot;labelCol&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;1&quot;&gt;{!ClientCity}&lt;/FONT&gt;&lt;/DIV&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
@@ -5009,6 +5164,11 @@ Please give details</helpText>
         <connector>
             <targetReference>Goals_Mental_Health</targetReference>
         </connector>
+        <fields>
+            <name>Linkbetweendrugalcoholuseandmentalpsychologicalemotionalhealth</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Link between drug/alcohol use and mental/psychological/emotional health?&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
         <fields>
             <name>Do_you_think_that_there_is_a_link_between_your_drug_alcohol_use_and_your_mental</name>
             <fieldText>Do you think that there is a link between your drug/ alcohol use and your mental/ psychological/ emotional health? If ‘yes’ please give details</fieldText>
@@ -5163,6 +5323,45 @@ Please give details</helpText>
         </fields>
     </screens>
     <screens>
+        <name>Receipt_of_any_benefits</name>
+        <label>Receipt of any benefits</label>
+        <locationX>1240</locationX>
+        <locationY>4332</locationY>
+        <allowBack>true</allowBack>
+        <allowFinish>true</allowFinish>
+        <fields>
+            <name>Areyoucurrentlyinreceiptofanybenefits</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Benefits you receive or should receive&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
+            <name>Tick_if_you_are_currently_in_receipt_of_any_benefits</name>
+            <dataType>Boolean</dataType>
+            <fieldText>Tick if you are currently in receipt of any benefits</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>If_yes_what_benefits_do_you_receive</name>
+            <fieldText>If ‘yes’ what benefits do you receive</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+        <fields>
+            <name>Tick_if_there_any_benefits_you_think_you_may_be_entitled</name>
+            <dataType>Boolean</dataType>
+            <fieldText>Tick if there any benefits you think you may be entitled to that you are not receiving</fieldText>
+            <fieldType>InputField</fieldType>
+            <isRequired>true</isRequired>
+        </fields>
+        <fields>
+            <name>Details_of_the_benefits_you_may_be_entitled_to</name>
+            <fieldText>Details of the benefits you may be entitled to</fieldText>
+            <fieldType>LargeTextArea</fieldType>
+            <isRequired>false</isRequired>
+        </fields>
+    </screens>
+    <screens>
         <name>Receiving_help_for_mental_health</name>
         <label>Receiving help for mental health</label>
         <locationX>1601</locationX>
@@ -5172,6 +5371,11 @@ Please give details</helpText>
         <connector>
             <targetReference>Update_receiving_mental_help</targetReference>
         </connector>
+        <fields>
+            <name>Ifcurrentlyreceivinghelporhaveinthepastreceivedhelpformentalhealth</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;If currently receiving help or have in the past received help for mental health&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
         <fields>
             <name>What_are_you_have_you_been_treated_for_if_known_your_diagnosis</name>
             <fieldText>What are you/ have you been treated for, if known: (your diagnosis)</fieldText>
@@ -5229,6 +5433,11 @@ Please give details</helpText>
             <targetReference>Create_of_Update_Assessment</targetReference>
         </connector>
         <fields>
+            <name>ReferralDetailsTitle</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Referral Details&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
             <name>TODOReferral</name>
             <fieldText>Add code here to select the referral</fieldText>
             <fieldType>DisplayText</fieldType>
@@ -5264,6 +5473,11 @@ Please give details</helpText>
         <connector>
             <targetReference>Update_family_difficulties_of_substance_use</targetReference>
         </connector>
+        <fields>
+            <name>RelativesWithDifficultiesTitle</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Relatives with difficulties with drugs or alcohol&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
         <fields>
             <name>Detailsfamily_members_have_difficulties_with_drugs_or_alcohol</name>
             <fieldText>Details of your family members (including your spouse or partner) difficulties with drugs or alcohol or have a history of addiction</fieldText>
@@ -5354,19 +5568,24 @@ Please give details</helpText>
     <screens>
         <name>Substance_Use_Description</name>
         <label>Substance Use Description</label>
-        <locationX>1374</locationX>
-        <locationY>80</locationY>
+        <locationX>1274</locationX>
+        <locationY>91</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <connector>
             <targetReference>Substance_use_details_past</targetReference>
         </connector>
         <fields>
+            <name>SubstanceUseHeader</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Substance Use&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
+        <fields>
             <name>Current_substance_use_description</name>
             <defaultValue>
                 <elementReference>SubstanceUseDescriptionFromCurrentRecord</elementReference>
             </defaultValue>
-            <fieldText>Current substance use description</fieldText>
+            <fieldText>Is there anything you would like to tell me about your current substance use including any current Drug Using Risk Behaviours?</fieldText>
             <fieldType>LargeTextArea</fieldType>
             <isRequired>false</isRequired>
         </fields>
@@ -5375,33 +5594,37 @@ Please give details</helpText>
     </screens>
     <screens>
         <name>Substance_use_details_past</name>
-        <label>Substance use details</label>
+        <label>Substance use alcohol or drugs</label>
         <locationX>1604</locationX>
         <locationY>72</locationY>
         <allowBack>true</allowBack>
         <allowFinish>true</allowFinish>
         <connector>
-            <targetReference>Did_Received_help_for_alcohol_use_in_the_past</targetReference>
+            <targetReference>Update_Assessement_with_Past_Alcohol_Drug_flags</targetReference>
         </connector>
         <fields>
             <name>SubstanceUsePastTitle</name>
-            <fieldText>Have you ever received help for your drug or alcohol use in the past?</fieldText>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Have you ever received help for your drug or alcohol use in the past?&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
             <name>Have_you_ever_received_help_for_your_drug_use_in_the_past</name>
-            <choiceReferences>Yes</choiceReferences>
-            <choiceReferences>No</choiceReferences>
-            <dataType>Boolean</dataType>
+            <choiceReferences>TextYes</choiceReferences>
+            <choiceReferences>TextNo</choiceReferences>
+            <choiceReferences>DefaultEverReceivedHelpReDrug</choiceReferences>
+            <dataType>String</dataType>
+            <defaultSelectedChoiceReference>DefaultEverReceivedHelpReDrug</defaultSelectedChoiceReference>
             <fieldText>Have you ever received help for your drug use in the past?</fieldText>
             <fieldType>DropdownBox</fieldType>
             <isRequired>false</isRequired>
         </fields>
         <fields>
             <name>Have_you_ever_received_help_for_your_alcohol_use_in_the_past</name>
-            <choiceReferences>Yes</choiceReferences>
-            <choiceReferences>No</choiceReferences>
-            <dataType>Boolean</dataType>
+            <choiceReferences>TextYes</choiceReferences>
+            <choiceReferences>TextNo</choiceReferences>
+            <choiceReferences>DefaultEverReceiveHelpReAlcohol</choiceReferences>
+            <dataType>String</dataType>
+            <defaultSelectedChoiceReference>DefaultEverReceiveHelpReAlcohol</defaultSelectedChoiceReference>
             <fieldText>Have you ever received help for your alcohol use in the past?</fieldText>
             <fieldType>DropdownBox</fieldType>
             <isRequired>false</isRequired>
@@ -5419,12 +5642,15 @@ Please give details</helpText>
         </connector>
         <fields>
             <name>SubstanceUseTitle</name>
-            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Substance Use - Leave blank if no further substances&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Substance Use - Leave blank if no further substances&lt;FONT STYLE=&quot;font-size:12px&quot; COLOR=&quot;#000000&quot;&gt;&lt;/FONT&gt;&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
             <fieldType>DisplayText</fieldType>
         </fields>
         <fields>
             <name>Name_of_substance</name>
             <dataType>String</dataType>
+            <defaultValue>
+                <stringValue></stringValue>
+            </defaultValue>
             <fieldText>Name of substance</fieldText>
             <fieldType>InputField</fieldType>
             <isRequired>false</isRequired>
@@ -5588,6 +5814,11 @@ Please give details</helpText>
         <connector>
             <targetReference>Update_ways_impacted_relationships</targetReference>
         </connector>
+        <fields>
+            <name>Yourdrugalcoholusehasimpactedonyourrelationships</name>
+            <fieldText>&lt;SPAN ALIGN=&quot;LEFT&quot;&gt;&lt;FONT FACE=&quot;Arial&quot; STYLE=&quot;font-size:14px&quot; COLOR=&quot;#FF0000&quot; LETTERSPACING=&quot;0&quot; KERNING=&quot;0&quot;&gt;Impact of your drug / alcohol use on your relationships&lt;/FONT&gt;&lt;/SPAN&gt;</fieldText>
+            <fieldType>DisplayText</fieldType>
+        </fields>
         <fields>
             <name>In_what_ways_has_your_drug_alcohol_use_impacted_on_your_relationships</name>
             <fieldText>In what ways has your drug / alcohol use impacted on your relationships</fieldText>
@@ -5782,6 +6013,24 @@ Please give details</helpText>
         <isOutput>false</isOutput>
     </variables>
     <variables>
+        <name>current_DrugUseAsText</name>
+        <dataType>String</dataType>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>current_EverReceivedHelpReDrug</name>
+        <dataType>String</dataType>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>current_EverReceiveHelpReAlcohol</name>
+        <dataType>String</dataType>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
         <name>current_FinancialConcernsDetails</name>
         <dataType>String</dataType>
         <isInput>true</isInput>
@@ -5896,6 +6145,12 @@ Please give details</helpText>
         <isOutput>false</isOutput>
     </variables>
     <variables>
+        <name>current_RegularIncomeDetails</name>
+        <dataType>String</dataType>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
         <name>current_Support_1_Accommodation</name>
         <dataType>String</dataType>
         <isInput>true</isInput>
@@ -5910,6 +6165,12 @@ Please give details</helpText>
     <variables>
         <name>current_Support_3_Accommodation</name>
         <dataType>String</dataType>
+        <isInput>true</isInput>
+        <isOutput>false</isOutput>
+    </variables>
+    <variables>
+        <name>current_Tick_Regular_Income</name>
+        <dataType>Boolean</dataType>
         <isInput>true</isInput>
         <isOutput>false</isOutput>
     </variables>
